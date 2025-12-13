@@ -36,26 +36,26 @@ internal sealed class RichTextMapper : IRichTextMapper
     {
         var links = doc.DocumentNode.SelectNodes("//a");
 
-        if (links is null)
+        if (links is null or [])
         {
             return;
         }
 
         foreach (var link in links)
         {
-            var entityType = link.GetAttributeValue("data-content-type", string.Empty);
+            var entityType = link.GetAttributeValue("data-link-type", string.Empty);
             var anchor = link.GetAttributeValue("data-anchor", string.Empty);
 
             if (string.IsNullOrWhiteSpace(entityType))
             {
-                link.Attributes.Remove("data-content-type");
+                link.Attributes.Remove("data-link-type");
                 continue;
             }
 
             switch (entityType)
             {
-                case "document":
-                    var contentId = link.GetAttributeValue("data-content-id", string.Empty);
+                case "Content":
+                    var contentId = link.GetAttributeValue("data-destination-id", string.Empty);
                     if (!string.IsNullOrWhiteSpace(contentId) && Guid.TryParse(contentId, out var contentGuid))
                     {
                         var contentLink = await _linkMapper.Map(new()
@@ -73,7 +73,7 @@ internal sealed class RichTextMapper : IRichTextMapper
                     link.Attributes.Remove("data-content-id");
                     break;
 
-                case "media":
+                case "Media":
                     var href = link.GetAttributeValue("href", string.Empty);
                     if (!string.IsNullOrWhiteSpace(href))
                     {
@@ -98,7 +98,7 @@ internal sealed class RichTextMapper : IRichTextMapper
             }
 
             link.Attributes.Remove("data-anchor");
-            link.Attributes.Remove("data-content-type");
+            link.Attributes.Remove("data-link-type");
         }
     }
 
@@ -106,7 +106,7 @@ internal sealed class RichTextMapper : IRichTextMapper
     {
         var images = doc.DocumentNode.SelectNodes("//img");
 
-        if (images is null)
+        if (images is null or [])
         {
             return;
         }

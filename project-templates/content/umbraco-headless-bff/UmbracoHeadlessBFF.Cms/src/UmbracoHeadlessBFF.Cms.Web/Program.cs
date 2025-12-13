@@ -57,7 +57,6 @@ builder.AddCorrelationCommonSharedModule();
 builder.AddPreviewModule();
 builder.AddLinksModule();
 builder.AddUrlsModule();
-builder.AddUmbracoOverrides();
 
 builder.Services.Configure<KestrelServerOptions>(o =>
 {
