@@ -19,12 +19,17 @@ def main():
 
     for root, dirs, files in os.walk(base_dir):
         # Skip dot-prefixed folders and common .NET build folders
+        # Skips uSync folder as well
         dirs[:] = [
             d for d in dirs
-            if not d.startswith('.') and d.lower() not in {"bin", "obj", "packages"}
+            if not d.startswith('.') and d.lower() not in {"bin", "obj", "packages", 'usync'}
         ]
 
         for name in files:
+            if name.startswith('.'):
+                continue  # Skip dot-prefixed files
+            if any(sub in name.lower() for sub in ["generated", "minified", ".min.", ".g."]):
+                continue  # Skip generated or minified files
             file_path = os.path.join(root, name)
             remove_bom_from_file(file_path)
 
