@@ -17,7 +17,7 @@ public record DefaultCachingOptions
         public bool FailSafeIsEnabled { get; init; }
         public int FailSafeMaxDuration { get; init; }
         public int DistributedCacheFailSafeMaxDuration { get; set; }
-
+        public bool DistributedLocking { get; set; }
         public int FailSafeThrottleDuration { get; init; }
         public int FactorySoftTimeoutMs { get; init; }
         public int FactoryHardTimeout { get; init; }

@@ -3,12 +3,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Caching.StackExchangeRedis;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
+using StackExchange.Redis;
 using UmbracoHeadlessBFF.SharedModules.Common.Versioning;
 using ZiggyCreatures.Caching.Fusion;
+using ZiggyCreatures.Caching.Fusion.Locking.Distributed.Redis;
 using ZiggyCreatures.Caching.Fusion.Serialization.SystemTextJson;
 
 namespace UmbracoHeadlessBFF.SharedModules.Common.Caching;
@@ -103,21 +104,34 @@ public static class CachingConfiguration
                         o.AllowBackgroundBackplaneOperations = defaultCachingOptions.Default.AllowBackgroundBackplaneOperations;
 
                         o.JitterMaxDuration = TimeSpan.FromSeconds(defaultCachingOptions.Default.JitterMaxDuration);
-
                         o.EagerRefreshThreshold = defaultCachingOptions.Default.EagerRefreshThreshold;
+                        o.SkipDistributedLocker = !defaultCachingOptions.Default.DistributedLocking;
                     }
 
                     configureEntryOptions?.Invoke(o);
                 })
-                .WithSerializer(new FusionCacheSystemTextJsonSerializer(jsonOptions))
-                .WithDistributedCache(new RedisCache(new RedisCacheOptions
-                {
-                    Configuration = builder.Configuration.GetConnectionString(CachingConstants.ConnectionStringName)
-                }))
-                .WithStackExchangeRedisBackplane(o =>
-                {
-                    o.Configuration = builder.Configuration.GetConnectionString(CachingConstants.ConnectionStringName);
-                });
+                .WithSerializer(new FusionCacheSystemTextJsonSerializer(jsonOptions));
+
+            var redisConnectionString = builder.Configuration.GetConnectionString(CachingConstants.ConnectionStringName);
+
+            if (!string.IsNullOrWhiteSpace(redisConnectionString))
+            {
+                var multiplexer = ConnectionMultiplexer.ConnectAsync(redisConnectionString);
+
+                cacheBuilder
+                    .WithDistributedCache(new RedisCache(new RedisCacheOptions
+                    {
+                        ConnectionMultiplexerFactory = async () => await multiplexer
+                    }))
+                    .WithStackExchangeRedisBackplane(o =>
+                    {
+                        o.ConnectionMultiplexerFactory = async () => await multiplexer;
+                    })
+                    .WithDistributedLocker(new RedisDistributedLocker(new RedisDistributedLockerOptions
+                    {
+                        ConnectionMultiplexerFactory = async () => await multiplexer
+                    }));
+            }
 
             builder.Services.AddOpenTelemetry()
                 .WithTracing(tracing => tracing.AddFusionCacheInstrumentation())

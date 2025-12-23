@@ -7,6 +7,7 @@
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" />
     <PackageReference Include="ZiggyCreatures.FusionCache" />
     <PackageReference Include="ZiggyCreatures.FusionCache.Backplane.StackExchangeRedis" />
+    <PackageReference Include="ZiggyCreatures.FusionCache.Locking.Distributed.Redis" />
     <PackageReference Include="ZiggyCreatures.FusionCache.OpenTelemetry" />
     <PackageReference Include="Microsoft.AspNetCore.HeaderPropagation" />
     <PackageReference Include="ZiggyCreatures.FusionCache.Serialization.SystemTextJson" />
