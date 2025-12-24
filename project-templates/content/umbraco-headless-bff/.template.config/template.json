@@ -17,7 +17,6 @@
     "9cb15381-ae74-415a-985c-98e1f6e779ed", // UmbracoHeadlessBFF.SiteApi user-secrets
     "759145f7-38d6-4b5f-a862-55c536235b63", // UmbracoHeadlessBFF.Aspire user-secrets
     "eaa22c3c-81e2-4fcb-b013-093c372258c9", // UmbracoHeadlessBFF.Cms user-secrets
-    "eb281fdb-b0b5-41ab-a107-dd0a655c514f" // Umbraco Global Id (appsettings.json)
   ],
   "identity": "MiguelGuedelha.UmbracoHeadlessBFF",
   "preferNameDirectory": true,
