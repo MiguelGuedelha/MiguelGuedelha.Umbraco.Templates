@@ -22,7 +22,7 @@ public sealed record ApiSiteSettingsProperties
     public ApiBlockList<ApiMainNavigationLink>? HeaderNavigation { get; init; }
     public IReadOnlyCollection<ApiMediaWithCrops>? FooterLogo { get; init; }
     public ApiBlockList<ApiHeadingWithLinks>? FooterLinks { get; init; }
-    public ApiBlockList<ApiHeadingWithSocialLinks>? FooterSocialLinks { get; init; }
+    public ApiBlockSingleItem<ApiHeadingWithSocialLinks>? FooterSocialLinks { get; init; }
     public IReadOnlyCollection<ApiLink>? FooterFootnoteLinks { get; init; }
     public string? Copyright { get; init; }
     public IReadOnlyCollection<ApiContentReference>? SearchPage { get; init; }

@@ -41,7 +41,7 @@ internal sealed class CardMapper : ICardMapper
             return null;
         }
 
-        var image = model.Properties.Image?.Items.FirstOrDefault()?.Content;
+        var image = model.Properties.Image?.Content;
         var link = model.Properties.Link?.FirstOrDefault();
 
         return new()

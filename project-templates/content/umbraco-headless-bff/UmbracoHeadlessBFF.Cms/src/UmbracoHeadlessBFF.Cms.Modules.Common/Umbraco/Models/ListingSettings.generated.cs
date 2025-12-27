@@ -34,7 +34,7 @@ namespace UmbracoHeadlessBFF.Cms.Modules.Common.Umbraco.Models
 		/// <summary>Image</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		global::Umbraco.Cms.Core.Models.Blocks.BlockListModel ListingImage { get; }
+		global::Umbraco.Cms.Core.Models.Blocks.BlockListItem ListingImage { get; }
 
 		/// <summary>Title</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "")]
@@ -103,12 +103,12 @@ namespace UmbracoHeadlessBFF.Cms.Modules.Common.Umbraco.Models
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("listingImage")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel ListingImage => GetListingImage(this, _publishedValueFallback);
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListItem ListingImage => GetListingImage(this, _publishedValueFallback);
 
 		/// <summary>Static getter for Image</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static global::Umbraco.Cms.Core.Models.Blocks.BlockListModel GetListingImage(IListingSettings that, IPublishedValueFallback publishedValueFallback) => that.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(publishedValueFallback, "listingImage");
+		public static global::Umbraco.Cms.Core.Models.Blocks.BlockListItem GetListingImage(IListingSettings that, IPublishedValueFallback publishedValueFallback) => that.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListItem>(publishedValueFallback, "listingImage");
 
 		///<summary>
 		/// Title

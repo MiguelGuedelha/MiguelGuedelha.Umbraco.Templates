@@ -8,5 +8,5 @@ public interface IApiListingSettingsProperties
     bool ExcludeFromSearch { get; init; }
     string? ListingTitle { get; init; }
     string? ListingDescription { get; init; }
-    ApiBlockList<ApiResponsiveImage>? ListingImage { get; init; }
+    ApiBlockSingleItem<ApiResponsiveImage>? ListingImage { get; init; }
 }

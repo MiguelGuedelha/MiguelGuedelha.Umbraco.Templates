@@ -24,7 +24,7 @@ internal sealed class FullWidthImageMapper : IComponentMapper
             return null;
         }
 
-        var image = apiModel.Properties.Image?.Items.FirstOrDefault()?.Content;
+        var image = apiModel.Properties.Image?.Content;
 
         return new FullWidthImage
         {

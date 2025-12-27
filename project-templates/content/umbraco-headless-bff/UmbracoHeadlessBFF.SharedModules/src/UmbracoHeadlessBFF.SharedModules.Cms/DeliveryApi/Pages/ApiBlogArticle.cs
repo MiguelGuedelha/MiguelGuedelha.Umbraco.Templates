@@ -34,7 +34,7 @@ public sealed record ApiBlogArticleProperties : IApiSeoSettingsProperties, IApiL
     public bool ExcludeFromSearch { get; init; }
     public string? ListingTitle { get; init; }
     public string? ListingDescription { get; init; }
-    public ApiBlockList<ApiResponsiveImage>? ListingImage { get; init; }
+    public ApiBlockSingleItem<ApiResponsiveImage>? ListingImage { get; init; }
     public bool ShowBreadcrumbs { get; init; }
     public bool ShowInBreadcrumbs { get; init; }
     public string? BreadcrumbNameOverride { get; init; }

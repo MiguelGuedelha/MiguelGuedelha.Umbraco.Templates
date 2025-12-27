@@ -95,7 +95,7 @@ namespace UmbracoHeadlessBFF.Cms.Modules.Common.Umbraco.Models
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("footerSocialLinks")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel FooterSocialLinks => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "footerSocialLinks");
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListItem FooterSocialLinks => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListItem>(_publishedValueFallback, "footerSocialLinks");
 
 		///<summary>
 		/// Logo

@@ -70,7 +70,7 @@ namespace UmbracoHeadlessBFF.Cms.Modules.Common.Umbraco.Models
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("listingImage")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel ListingImage => global::UmbracoHeadlessBFF.Cms.Modules.Common.Umbraco.Models.ListingSettings.GetListingImage(this, _publishedValueFallback);
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListItem ListingImage => global::UmbracoHeadlessBFF.Cms.Modules.Common.Umbraco.Models.ListingSettings.GetListingImage(this, _publishedValueFallback);
 
 		///<summary>
 		/// Title
