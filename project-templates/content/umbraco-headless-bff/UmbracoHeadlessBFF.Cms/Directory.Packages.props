@@ -18,7 +18,7 @@
     <PackageVersion Include="Umbraco.Cms.Web.Common" Version="17.0.2" />
     <PackageVersion Include="Umbraco.Cms.Web.Website" Version="17.0.2" />
     <PackageVersion Include="Umbraco.Community.Contentment" Version="6.0.2" />
-    <PackageVersion Include="Umbraco.Community.DataProtection" Version="17.0.0" />
+    <PackageVersion Include="Umbraco.Community.DataProtection" Version="17.0.1" />
     <PackageVersion Include="Umbraco.Community.DeliveryApiExtensions" Version="17.0.0" />
     <PackageVersion Include="Umbraco.StorageProviders.AzureBlob" Version="17.0.0" />
     <PackageVersion Include="Umbraco.StorageProviders.AzureBlob.ImageSharp" Version="17.0.0" />
