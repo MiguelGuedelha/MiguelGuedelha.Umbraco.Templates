@@ -49,7 +49,7 @@ internal sealed class SiteSettingsMapper : ISiteSettingsMapper
             .Select(x => _headingWithLinksMapper.Map(x.Content)).ToArray() ?? [];
         await Task.WhenAll(headingWithLinksTasks);
 
-        var socialLinksData = model.Properties.FooterSocialLinks?.Items.FirstOrDefault();
+        var socialLinksData = model.Properties.FooterSocialLinks;
         var socialLinks = await _headingWithSocialLinksMapper.Map(socialLinksData?.Content);
 
         var footnoteLinks = model.Properties.FooterFootnoteLinks?

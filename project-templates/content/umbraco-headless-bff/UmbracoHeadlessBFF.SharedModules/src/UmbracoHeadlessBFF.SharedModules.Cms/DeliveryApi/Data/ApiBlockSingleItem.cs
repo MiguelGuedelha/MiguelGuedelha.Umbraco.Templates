@@ -1,19 +1,19 @@
 namespace UmbracoHeadlessBFF.SharedModules.Cms.DeliveryApi.Data;
 
-public sealed record ApiBlockListItem : IApiBlockListItem
+public sealed record ApiBlockSingleItem : IApiBlockSingleItem
 {
     public required IApiElement Content { get; init; }
     public IApiElement? Settings { get; init; }
 }
 
-public sealed record ApiBlockListItem<T> : IApiBlockListItem<T>
+public sealed record ApiBlockSingleItem<T> : IApiBlockSingleItem<T>
     where T : class, IApiElement
 {
     public required T Content { get; init; }
     public IApiElement? Settings { get; init; }
 }
 
-public sealed record ApiBlockListItem<TContent, TSettings> : IApiBlock<TContent, TSettings>
+public sealed record ApiBlockSingleItem<TContent, TSettings> : IApiBlock<TContent, TSettings>
     where TContent : class, IApiElement
     where TSettings : class, IApiElement
 {
