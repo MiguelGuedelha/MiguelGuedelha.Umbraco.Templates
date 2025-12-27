@@ -48,7 +48,7 @@ internal sealed class RichTextMapper : IRichTextMapper
 
             if (string.IsNullOrWhiteSpace(entityType))
             {
-                link.Attributes.Remove("data-link-type");
+                CleanUpLinkAttributes(link);
                 continue;
             }
 
@@ -70,7 +70,6 @@ internal sealed class RichTextMapper : IRichTextMapper
                             link.SetAttributeValue("href", contentLink.Href);
                         }
                     }
-                    link.Attributes.Remove("data-content-id");
                     break;
 
                 case "Media":
@@ -97,8 +96,7 @@ internal sealed class RichTextMapper : IRichTextMapper
                     break;
             }
 
-            link.Attributes.Remove("data-anchor");
-            link.Attributes.Remove("data-link-type");
+            CleanUpLinkAttributes(link);
         }
     }
 
@@ -135,5 +133,16 @@ internal sealed class RichTextMapper : IRichTextMapper
                 image.SetAttributeValue("src", mediaLink.Href);
             }
         }
+    }
+
+    private static void CleanUpLinkAttributes(HtmlNode node)
+    {
+        node.Attributes.Remove("data-link-type");
+        node.Attributes.Remove("data-anchor");
+        node.Attributes.Remove("data-router-slot");
+        node.Attributes.Remove("data-destination-id");
+        node.Attributes.Remove("data-destination-type");
+        node.Attributes.Remove("data-start-item-path");
+        node.Attributes.Remove("data-start-item-id");
     }
 }
