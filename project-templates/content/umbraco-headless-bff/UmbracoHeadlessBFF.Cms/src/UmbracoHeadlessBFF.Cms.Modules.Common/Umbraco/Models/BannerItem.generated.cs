@@ -55,7 +55,7 @@ namespace UmbracoHeadlessBFF.Cms.Modules.Common.Umbraco.Models
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("backgroundMedia")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel BackgroundMedia => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "backgroundMedia");
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListItem BackgroundMedia => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListItem>(_publishedValueFallback, "backgroundMedia");
 
 		///<summary>
 		/// Heading

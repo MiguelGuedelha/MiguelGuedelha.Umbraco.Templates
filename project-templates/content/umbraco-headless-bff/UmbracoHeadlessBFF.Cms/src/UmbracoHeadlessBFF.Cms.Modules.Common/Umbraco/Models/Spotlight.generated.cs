@@ -63,7 +63,7 @@ namespace UmbracoHeadlessBFF.Cms.Modules.Common.Umbraco.Models
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("media")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel Media => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "media");
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListItem Media => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListItem>(_publishedValueFallback, "media");
 
 		///<summary>
 		/// Anchor Id: The Id used to navigate to the element in the page from the jump menu, must be unique on the page

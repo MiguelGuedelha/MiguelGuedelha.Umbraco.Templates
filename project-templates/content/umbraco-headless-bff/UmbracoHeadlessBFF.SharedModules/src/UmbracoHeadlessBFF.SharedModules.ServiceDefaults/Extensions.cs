@@ -112,7 +112,7 @@ public static class Extensions
 
     extension(WebApplication app)
     {
-        public WebApplication MapDefaultEndpoints()
+        public WebApplication MapDefaultEndpoints(string healthEndpoint = HealthEndpointPath, string alivenessEndpoint = AlivenessEndpointPath)
         {
             // Adding health checks endpoints to applications in non-development environments has security implications.
             // See https://aka.ms/dotnet/aspire/healthchecks for details before enabling these endpoints in non-development environments.
@@ -122,10 +122,10 @@ public static class Extensions
             }
 
             // All health checks must pass for app to be considered ready to accept traffic after starting
-            app.MapHealthChecks(HealthEndpointPath);
+            app.MapHealthChecks(healthEndpoint);
 
             // Only health checks tagged with the "live" tag must pass for app to be considered alive
-            app.MapHealthChecks(AlivenessEndpointPath, new()
+            app.MapHealthChecks(alivenessEndpoint, new()
             {
                 Predicate = r => r.Tags.Contains("live")
             });
