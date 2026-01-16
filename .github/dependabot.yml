@@ -15,4 +15,22 @@ updates:
         update-types:
           - "minor"
           - "patch"
-
+    ignore:
+      - dependency-name: "*"
+        update-types: 
+          - "version-update:semver-major"
+  
+  - package-ecosystem: "dotnet-sdk"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "wednesday"
+    groups:
+      minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      - dependency-name: "*"
+        update-types: 
+          - "version-update:semver-major"
