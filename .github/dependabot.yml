@@ -1,11 +1,10 @@
 version: 2
 updates:
-  # 1. Aspire Sub-solution (Assumed to allow all updates)
   - package-ecosystem: "nuget"
     directory: "/project-templates/content/umbraco-headless-bff"
     schedule:
       interval: "weekly"
-      day: "wednesday"
+      day: "friday"
     open-pull-requests-limit: 3
     ignore:
       - dependency-name: "*"
@@ -19,3 +18,10 @@ updates:
       dotnet-deps:
         patterns: ["*"]
         update-types: ["minor", "patch"]
+  
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      # Check for updates to GitHub Actions every week
+      interval: "weekly"
+      day: "friday"
