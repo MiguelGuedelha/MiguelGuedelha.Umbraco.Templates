@@ -4,6 +4,6 @@
     <PackageVersion Include="Aspire.Hosting.Azure.Storage" Version="13.1.0" />
     <PackageVersion Include="Aspire.Hosting.Redis" Version="13.1.0" />
     <PackageVersion Include="Aspire.Hosting.SqlServer" Version="13.1.0" />
-    <PackageVersion Include="CommunityToolkit.Aspire.Hosting.MailPit" Version="13.0.0" />
+    <PackageVersion Include="CommunityToolkit.Aspire.Hosting.MailPit" Version="13.1.1" />
   </ItemGroup>
 </Project>
