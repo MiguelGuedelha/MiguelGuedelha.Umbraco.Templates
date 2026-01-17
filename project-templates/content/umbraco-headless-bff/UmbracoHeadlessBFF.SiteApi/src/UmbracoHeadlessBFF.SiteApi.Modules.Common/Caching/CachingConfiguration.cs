@@ -22,8 +22,8 @@ public static class CachingConfiguration
                 .WithDefaultEntryOptions(o =>
                 {
                     o.IsFailSafeEnabled = true;
-                    o.Duration = TimeSpan.FromSeconds(15);
-                    o.DistributedCacheDuration = TimeSpan.FromSeconds(30);
+                    o.Duration = TimeSpan.FromSeconds(30);
+                    o.DistributedCacheDuration = TimeSpan.FromSeconds(60);
                     o.JitterMaxDuration = TimeSpan.FromSeconds(5);
                 })
                 .WithSerializer(new FusionCacheNeueccMessagePackSerializer())

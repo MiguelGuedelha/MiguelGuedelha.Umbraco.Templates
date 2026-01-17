@@ -6,7 +6,7 @@ using Umbraco.Cms.Core.Services.Changes;
 using UmbracoHeadlessBFF.SharedModules.Common.Caching;
 using ZiggyCreatures.Caching.Fusion;
 
-namespace UmbracoHeadlessBFF.Cms.Modules.Caching;
+namespace UmbracoHeadlessBFF.Cms.Modules.Common.Caching;
 
 internal sealed class CacheInvalidationNotificationsHandler :
     INotificationAsyncHandler<ContentCacheRefresherNotification>,

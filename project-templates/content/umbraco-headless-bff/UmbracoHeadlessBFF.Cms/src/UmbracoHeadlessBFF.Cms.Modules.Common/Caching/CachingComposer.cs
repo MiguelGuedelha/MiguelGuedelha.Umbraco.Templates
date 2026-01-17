@@ -2,7 +2,7 @@ using Umbraco.Cms.Core.Composing;
 using Umbraco.Cms.Core.DependencyInjection;
 using Umbraco.Cms.Core.Notifications;
 
-namespace UmbracoHeadlessBFF.Cms.Modules.Caching;
+namespace UmbracoHeadlessBFF.Cms.Modules.Common.Caching;
 
 internal sealed class CachingComposer : IComposer
 {
