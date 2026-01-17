@@ -5,7 +5,6 @@ updates:
     schedule:
       interval: "weekly"
       day: "friday"
-    open-pull-requests-limit: 3
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
@@ -25,3 +24,6 @@ updates:
       # Check for updates to GitHub Actions every week
       interval: "weekly"
       day: "friday"
+    groups:
+      all-deps:
+        patterns: ["*"]
