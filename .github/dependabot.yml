@@ -2,23 +2,11 @@ version: 2
 updates:
   # 1. Aspire Sub-solution (Assumed to allow all updates)
   - package-ecosystem: "nuget"
-    directory: "/project-templates/content/umbraco-headless-bff/UmbracoHeadlessBFF.Aspire"
+    directory: "/project-templates/content/umbraco-headless-bff"
     schedule:
       interval: "weekly"
       day: "wednesday"
     open-pull-requests-limit: 3
-    groups:
-      dotnet-deps:
-        patterns: ["*"]
-
-  # 2. CMS Sub-solution
-  - package-ecosystem: "nuget"
-    directory: "/project-templates/content/umbraco-headless-bff/UmbracoHeadlessBFF.Cms"
-    schedule:
-      interval: "weekly"
-      day: "wednesday"
-    open-pull-requests-limit: 3
-    # This prevents Major updates for non-Aspire packages from leaking out as individual PRs
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
@@ -31,47 +19,3 @@ updates:
       dotnet-deps:
         patterns: ["*"]
         update-types: ["minor", "patch"]
-
-  # 3. API Sub-solution
-  - package-ecosystem: "nuget"
-    directory: "/project-templates/content/umbraco-headless-bff/UmbracoHeadlessBFF.SiteApi"
-    schedule:
-      interval: "weekly"
-      day: "wednesday"
-    open-pull-requests-limit: 3
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-major"]
-    groups:
-      aspire-major-deps:
-        patterns: ["Aspire*"]
-        update-types: ["major"]
-      dotnet-deps:
-        patterns: ["*"]
-        update-types: ["minor", "patch"]
-
-  # 4. Shared Modules
-  - package-ecosystem: "nuget"
-    directory: "/project-templates/content/umbraco-headless-bff/UmbracoHeadlessBFF.SharedModules"
-    schedule:
-      interval: "weekly"
-      day: "wednesday"
-    open-pull-requests-limit: 3
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-major"]
-    groups:
-      aspire-major-deps:
-        patterns: ["Aspire*"]
-        update-types: ["major"]
-      dotnet-deps:
-        patterns: ["*"]
-        update-types: ["minor", "patch"]
-
-  # 5. Dotnet SDK
-  - package-ecosystem: "dotnet-sdk"
-    directory: "/project-templates/content/umbraco-headless-bff/"
-    schedule:
-      interval: "weekly"
-      day: "wednesday"
-    open-pull-requests-limit: 3
