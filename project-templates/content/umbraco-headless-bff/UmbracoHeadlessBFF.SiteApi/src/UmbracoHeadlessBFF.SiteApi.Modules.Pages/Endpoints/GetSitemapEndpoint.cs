@@ -55,6 +55,7 @@ internal static class GetSitemapEndpoint
 
         var homepageId = siteResolutionContext.Site.HomepageId;
         var culture = siteResolutionContext.Site.CultureInfo;
+        var siteSettingsId = siteResolutionContext.Site.SiteSettingsId;
 
         if (siteResolutionContext.IsPreview)
         {
@@ -70,7 +71,7 @@ internal static class GetSitemapEndpoint
         var fusionCache = fusionCacheProvider.GetCache(CachingConstants.SiteApi.CacheName);
 
         var data = await fusionCache.GetOrSetAsync<SitemapData?>(
-            $"Region:{CachingRegionConstants.Sitemap}:Site:{homepageId}-{culture}",
+            CacheKeyExtensions.GetSitemapKey(homepageId, culture),
             async (ctx, ct) =>
             {
                 var response = await GetSitemapFactory(homepageId, culture, true, ct);
@@ -82,7 +83,7 @@ internal static class GetSitemapEndpoint
 
                 return response.Content;
             },
-            tags: [CachingConstants.SiteApi.Tags.Sitemaps, homepageId.ToString(), culture, siteResolutionContext.Site.SiteSettingsId.ToString()]);
+            tags: [CachingConstants.SiteApi.Tags.Sitemaps, homepageId.ToString(), culture, siteSettingsId.ToString()]);
 
         return data switch
         {

@@ -36,7 +36,7 @@ public sealed class LinkService
         }
 
         var data = await _fusionCache.GetOrSetAsync<Link?>(
-            $"Region:{CachingRegionConstants.Links}:{id}-{culture}",
+            CacheKeyExtensions.GetLinkKey(id, culture),
             async (ctx, ct) =>
             {
                 var response = await _linksApi.GetLink(id, culture, false, ct);

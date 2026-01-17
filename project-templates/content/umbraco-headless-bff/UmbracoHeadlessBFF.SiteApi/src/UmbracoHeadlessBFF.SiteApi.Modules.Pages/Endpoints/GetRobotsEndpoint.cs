@@ -63,6 +63,7 @@ internal static class GetRobotsEndpoint
         var homepageId = siteResolutionContext.Site.HomepageId;
         var culture = siteResolutionContext.Site.CultureInfo;
         var isPreview = siteResolutionContext.IsPreview;
+        var siteSettingsId = siteResolutionContext.Site.SiteSettingsId;
 
         string? content;
 
@@ -77,7 +78,7 @@ internal static class GetRobotsEndpoint
             var fusionCache = fusionCacheProvider.GetCache(CachingConstants.SiteApi.CacheName);
 
             var data = await fusionCache.GetOrSetAsync<RobotsData?>(
-                $"Region:{CachingRegionConstants.Robots}:Site:{homepageId}-{culture}",
+                CacheKeyExtensions.GetRobotsKey(homepageId, culture),
                 async (ctx, ct) =>
                 {
                     var response = await GetRobotsTxtFactory(homepageId, culture, false, ct);
@@ -91,7 +92,7 @@ internal static class GetRobotsEndpoint
 
                     return null;
                 },
-                tags: [CachingConstants.SiteApi.Tags.Robots, homepageId.ToString(), culture, siteResolutionContext.Site.SiteSettingsId.ToString()]);
+                tags: [CachingConstants.SiteApi.Tags.Robots, homepageId.ToString(), culture, siteSettingsId.ToString()]);
 
             content = data?.RobotsContent;
         }

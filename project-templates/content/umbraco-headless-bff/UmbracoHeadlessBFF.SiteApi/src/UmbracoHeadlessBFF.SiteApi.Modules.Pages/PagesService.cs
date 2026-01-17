@@ -50,6 +50,10 @@ internal sealed class PagesService : IPagesService
     public async Task<IApiContent?> GetPage(Guid id, bool? isPreview = null, SiteDefinition? site = null)
     {
         var requestSite = site ?? _siteResolutionContext.Site;
+        var homepageId = requestSite.HomepageId;
+        var culture = requestSite.CultureInfo;
+        var siteSettingsId = requestSite.SiteSettingsId;
+        var dictionaryId = requestSite.DictionaryId;
 
         if (isPreview ?? _siteResolutionContext.IsPreview)
         {
@@ -57,7 +61,7 @@ internal sealed class PagesService : IPagesService
         }
 
         return await _fusionCache.GetOrSetAsync<IApiContent?>(
-            $"Region:{CachingRegionConstants.Pages}:Site:{requestSite.HomepageId}-{requestSite.CultureInfo}:Id:{id}",
+            CacheKeyExtensions.GetPageByIdKey(homepageId, culture, id),
             async (ctx, ct) =>
             {
                 var response = await GetPageByIdFactory(id, false, requestSite, ct);
@@ -69,7 +73,7 @@ internal sealed class PagesService : IPagesService
 
                 return response.Content;
             },
-            tags: [CachingConstants.SiteApi.Tags.Pages, id.ToString(), requestSite.HomepageId.ToString(), requestSite.CultureInfo, _siteResolutionContext.Site.SiteSettingsId.ToString(), _siteResolutionContext.Site.DictionaryId.ToString()]);
+            tags: [CachingConstants.SiteApi.Tags.Pages, id.ToString(), homepageId.ToString(), culture, siteSettingsId.ToString(), dictionaryId.ToString()]);
 
         async Task<IApiResponse<IApiContent>> GetPageByIdFactory(Guid factoryId, bool factoryPreview, SiteDefinition factorySite, CancellationToken cancellationToken = default)
         {
@@ -96,6 +100,8 @@ internal sealed class PagesService : IPagesService
 
         var requestSite = site ?? _siteResolutionContext.Site;
         var requestPreview = isPreview ?? _siteResolutionContext.IsPreview;
+        var homepageId = requestSite.HomepageId;
+        var culture = requestSite.CultureInfo;
 
         var matchingDomain = requestSite.Domains.FirstOrDefault(x => sanitizedPath.StartsWith(x.Path) && _siteResolutionContext.Domain == x.Domain);
 
@@ -117,10 +123,10 @@ internal sealed class PagesService : IPagesService
         var redirectPath = sanitizedPath.Replace(matchingDomain.Path, "/");
 
         var redirect = await _fusionCache.GetOrSetAsync<RedirectLink?>(
-            $"Region:{CachingRegionConstants.Redirects}:Site:{requestSite.HomepageId}-{requestSite.CultureInfo}:Path:{sanitizedPath}",
+            CacheKeyExtensions.GetRedirectKey(homepageId, culture, sanitizedPath),
             async (ctx, ct) =>
             {
-                var redirectResponse = await _linksApi.GetRedirect(redirectPath, requestSite.HomepageId, requestSite.CultureInfo, ct);
+                var redirectResponse = await _linksApi.GetRedirect(redirectPath, homepageId, culture, ct);
 
                 if (!redirectResponse.IsSuccessStatusCode && redirectResponse.StatusCode != HttpStatusCode.NotFound)
                 {
@@ -134,7 +140,7 @@ internal sealed class PagesService : IPagesService
 
                 return redirectResponse.Content;
             },
-            tags: [CachingConstants.SiteApi.Tags.Redirects, requestSite.HomepageId.ToString(), requestSite.CultureInfo]);
+            tags: [CachingConstants.SiteApi.Tags.Redirects, homepageId.ToString(), culture]);
 
         if (redirect is not null)
         {
@@ -142,7 +148,7 @@ internal sealed class PagesService : IPagesService
         }
 
         return await _fusionCache.GetOrSetAsync<IApiContent?>(
-            $"Region:{CachingRegionConstants.Pages}:Site:{requestSite.HomepageId}-{requestSite.CultureInfo}:Path:{sanitizedPath}",
+            CacheKeyExtensions.GetPageByPathKey(homepageId, culture, sanitizedPath),
             async (ctx, ct) =>
             {
                 var response = await GetPageByPathFactory(deliveryApiPath, requestSite, false, ct);
@@ -159,7 +165,7 @@ internal sealed class PagesService : IPagesService
 
                 return response.Content;
             },
-            tags: [CachingConstants.SiteApi.Tags.Pages, requestSite.HomepageId.ToString(), requestSite.CultureInfo]);
+            tags: [CachingConstants.SiteApi.Tags.Pages, homepageId.ToString(), culture]);
 
         async Task<IApiResponse<IApiContent>> GetPageByPathFactory(string factoryPath, SiteDefinition factorySite, bool factoryPreview, CancellationToken cancellationToken = default)
         {
@@ -190,6 +196,8 @@ internal sealed class PagesService : IPagesService
     {
         var site = _siteResolutionContext.Site;
         var isPreview = _siteResolutionContext.IsPreview;
+        var homepageId = _siteResolutionContext.Site.HomepageId;
+        var culture = _siteResolutionContext.Site.CultureInfo;
 
         if (isPreview)
         {
@@ -197,13 +205,7 @@ internal sealed class PagesService : IPagesService
             return response.Content;
         }
 
-        var startItemSegment = startItem ?? "none";
-        var fetchSegment = fetch is null ? "no-fetch" : fetch.ToString().Replace(':', '-');
-        var filterSegment = filter is null or { Count: 0 } ? "no-filter" : string.Join("-", filter.Select(x => x.ToString()).Order());
-        var sortSegment = sort is null ? "no-sort" : sort.ToString().Replace(':', '-');
-        var sizeSegment = $"{skip}-{take}";
-
-        var tags = new List<string> { CachingConstants.SiteApi.Tags.Pages, site.HomepageId.ToString(), site.CultureInfo };
+        var tags = new List<string> { CachingConstants.SiteApi.Tags.Pages, homepageId.ToString(), culture };
 
         if (fetch is not null)
         {
@@ -222,7 +224,7 @@ internal sealed class PagesService : IPagesService
         }
 
         var data = await _fusionCache.GetOrSetAsync<PagedApiContent?>(
-            $"Region:{CachingRegionConstants.Pages}:Site:{site.HomepageId}-{site.CultureInfo}:List:{startItemSegment}_{sizeSegment}_{fetchSegment}_{filterSegment}_{sortSegment}",
+            CacheKeyExtensions.GetPageListKey(homepageId, culture, skip, take, startItem, fetch, filter, sort),
             async (ctx, ct) =>
             {
                 var response = await GetPagesFactory(ct);

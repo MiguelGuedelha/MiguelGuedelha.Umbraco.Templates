@@ -94,7 +94,7 @@ public sealed class SiteResolutionService
         }
 
         return await _fusionCache.GetOrSetAsync<Dictionary<string, SiteDefinition>>(
-            $"Region:{CachingRegionConstants.Sites}:List",
+            CacheKeyExtensions.GetSitesListKey(),
             async (_, ct) => await GetSitesFactory(false, ct),
             tags: [CachingConstants.SiteApi.Tags.Sites]);
 

@@ -1,10 +1,8 @@
 using System.Text.Json.Serialization;
 using Asp.Versioning;
 using Asp.Versioning.Conventions;
-using Microsoft.Extensions.Options;
 using Scalar.AspNetCore;
 using Serilog;
-using Swashbuckle.AspNetCore.SwaggerGen;
 using UmbracoHeadlessBFF.SharedModules.Cms;
 using UmbracoHeadlessBFF.SharedModules.Common.Caching;
 using UmbracoHeadlessBFF.SharedModules.Common.Correlation;

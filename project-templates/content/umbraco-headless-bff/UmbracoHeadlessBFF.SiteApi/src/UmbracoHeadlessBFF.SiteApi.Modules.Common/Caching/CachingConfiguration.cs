@@ -7,7 +7,6 @@ using UmbracoHeadlessBFF.SharedModules.Common.Versioning;
 using UmbracoHeadlessBFF.SiteApi.Modules.Common.Caching.Policies;
 using ZiggyCreatures.Caching.Fusion;
 using ZiggyCreatures.Caching.Fusion.Serialization.NeueccMessagePack;
-using ZiggyCreatures.Caching.Fusion.Serialization.SystemTextJson;
 
 namespace UmbracoHeadlessBFF.SiteApi.Modules.Common.Caching;
 
