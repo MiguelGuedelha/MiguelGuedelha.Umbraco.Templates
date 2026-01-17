@@ -7,6 +7,7 @@ using Umbraco.Cms.Core.Webhooks;
 using Umbraco.Cms.Infrastructure.Runtime.RuntimeModeValidators;
 using Umbraco.Community.DataProtection.Composing;
 using UmbracoHeadlessBFF.Cms.Modules.Common.Authentication;
+using UmbracoHeadlessBFF.Cms.Modules.Common.Caching;
 using UmbracoHeadlessBFF.Cms.Modules.Common.Links;
 using UmbracoHeadlessBFF.Cms.Modules.Common.LoadBalancing;
 using UmbracoHeadlessBFF.Cms.Modules.Common.Preview;
@@ -17,6 +18,9 @@ using UmbracoHeadlessBFF.SharedModules.Common.Environment;
 using UmbracoHeadlessBFF.SharedModules.Common.Versioning;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//needs to be configured before Umbraco adds output cache
+builder.AddCachingCommonModule();
 
 var umbracoBuilder = builder.CreateUmbracoBuilder();
 

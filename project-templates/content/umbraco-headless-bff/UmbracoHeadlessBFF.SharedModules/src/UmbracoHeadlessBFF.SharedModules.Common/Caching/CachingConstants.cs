@@ -28,4 +28,9 @@ public static class CachingConstants
             ];
         }
     }
+
+    public static class Cms
+    {
+        public const string OutputCacheName = "Cms:OutputCache";
+    }
 }

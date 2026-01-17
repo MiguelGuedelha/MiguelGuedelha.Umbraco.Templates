@@ -1616,6 +1616,14 @@
         "resolved": "2.5.0",
         "contentHash": "lJJAxhhMstUhGTm+Lxp2y3oF4LCqFewV42thxevfiPUc3UKT+gJBMhMFXUDS1IC3lxUAwrjSZZwVkUDWh4HO5Q=="
       },
+      "ZiggyCreatures.FusionCache.AspNetCore.OutputCaching": {
+        "type": "Transitive",
+        "resolved": "2.5.0",
+        "contentHash": "P2hDe6u18n1x7lXDcaKRcIcxMM/lYeq+Awqqkv5f4dA3112r/Bp63eroDT+wRfXT4MLcoESoPwwiYm+WXoF0Ew==",
+        "dependencies": {
+          "ZiggyCreatures.FusionCache": "2.5.0"
+        }
+      },
       "ZiggyCreatures.FusionCache.Backplane.StackExchangeRedis": {
         "type": "Transitive",
         "resolved": "2.5.0",
@@ -1652,13 +1660,6 @@
           "ZiggyCreatures.FusionCache": "2.5.0"
         }
       },
-      "umbracoheadlessbff.cms.modules.caching": {
-        "type": "Project",
-        "dependencies": {
-          "UmbracoHeadlessBFF.Cms.Modules.Common": "[1.0.0, )",
-          "UmbracoHeadlessBFF.SharedModules.Common": "[1.0.0, )"
-        }
-      },
       "umbracoheadlessbff.cms.modules.common": {
         "type": "Project",
         "dependencies": {
@@ -1673,7 +1674,9 @@
           "Umbraco.Cms.Web.Website": "[17.1.0, )",
           "Umbraco.Community.Contentment": "[6.0.2, )",
           "UmbracoHeadlessBFF.SharedModules.Cms": "[1.0.0, )",
-          "UmbracoHeadlessBFF.SharedModules.Common": "[1.0.0, )"
+          "UmbracoHeadlessBFF.SharedModules.Common": "[1.0.0, )",
+          "ZiggyCreatures.FusionCache.AspNetCore.OutputCaching": "[2.5.0, )",
+          "ZiggyCreatures.FusionCache.Serialization.NeueccMessagePack": "[2.5.0, )"
         }
       },
       "umbracoheadlessbff.cms.modules.pages": {
@@ -1844,6 +1847,16 @@
           "Umbraco.Cms.Api.Management": "17.0.0",
           "Umbraco.Cms.Core": "17.0.0",
           "Umbraco.Cms.Web.Website": "17.0.0"
+        }
+      },
+      "ZiggyCreatures.FusionCache.Serialization.NeueccMessagePack": {
+        "type": "CentralTransitive",
+        "requested": "[2.5.0, )",
+        "resolved": "2.5.0",
+        "contentHash": "ilNClmNk/qzz4xV3X6wGoCJ+d7bvhP83WRqJWJrtZZD5xBUt5P2CrrVjD3jFIZOv6TvIO0eai4Sq85aTdT0Row==",
+        "dependencies": {
+          "MessagePack": "3.1.4",
+          "ZiggyCreatures.FusionCache": "2.5.0"
         }
       }
     }

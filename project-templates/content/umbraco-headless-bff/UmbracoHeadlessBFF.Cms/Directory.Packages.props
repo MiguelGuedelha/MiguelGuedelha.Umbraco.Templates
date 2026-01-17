@@ -23,5 +23,7 @@
     <PackageVersion Include="Umbraco.StorageProviders.AzureBlob" Version="17.0.0" />
     <PackageVersion Include="Umbraco.StorageProviders.AzureBlob.ImageSharp" Version="17.0.0" />
     <PackageVersion Include="uSync" Version="17.0.2" />
+    <PackageVersion Include="ZiggyCreatures.FusionCache.AspNetCore.OutputCaching" Version="2.5.0" />
+    <PackageVersion Include="ZiggyCreatures.FusionCache.Serialization.NeueccMessagePack" Version="2.5.0" />
   </ItemGroup>
 </Project>

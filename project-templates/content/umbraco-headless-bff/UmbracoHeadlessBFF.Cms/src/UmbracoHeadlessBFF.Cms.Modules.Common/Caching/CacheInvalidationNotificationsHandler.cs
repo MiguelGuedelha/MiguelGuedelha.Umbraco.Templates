@@ -16,15 +16,19 @@ internal sealed class CacheInvalidationNotificationsHandler :
     private readonly IContentService _contentService;
     private readonly IMediaService _mediaService;
     private readonly IFusionCache _siteApiFusionCache;
+    private readonly IFusionCache _cmsOutputCache;
 
     public CacheInvalidationNotificationsHandler(
         IContentService contentService,
         IMediaService mediaService,
-        IFusionCacheProvider fusionCacheProvider)
+        IFusionCacheProvider fusionCacheProvider,
+        IFusionCache cmsOutputCache)
     {
         _contentService = contentService;
         _mediaService = mediaService;
+        _cmsOutputCache = cmsOutputCache;
         _siteApiFusionCache = fusionCacheProvider.GetCache(CachingConstants.SiteApi.CacheName);
+        _cmsOutputCache = fusionCacheProvider.GetCache(CachingConstants.Cms.OutputCacheName);
     }
 
     public async Task HandleAsync(ContentCacheRefresherNotification notification, CancellationToken cancellationToken)
@@ -67,6 +71,8 @@ internal sealed class CacheInvalidationNotificationsHandler :
             items.AddRange(descendants);
         }
 
+        await _cmsOutputCache.ClearAsync(token: cancellationToken);
+
         if (items is null)
         {
             await _siteApiFusionCache.ClearAsync(token: cancellationToken);
@@ -74,8 +80,9 @@ internal sealed class CacheInvalidationNotificationsHandler :
         else
         {
             await _siteApiFusionCache.RemoveByTagAsync(items, token: cancellationToken);
-            await _siteApiFusionCache.RemoveByTagAsync(CachingConstants.SiteApi.Tags.GlobalTags, token: cancellationToken);
         }
+
+        await _siteApiFusionCache.RemoveByTagAsync(CachingConstants.SiteApi.Tags.GlobalTags, token: cancellationToken);
     }
 
     public async Task HandleAsync(DomainCacheRefresherNotification notification, CancellationToken cancellationToken)
@@ -90,6 +97,7 @@ internal sealed class CacheInvalidationNotificationsHandler :
             return;
         }
 
+        await _cmsOutputCache.ClearAsync(token: cancellationToken);
         await _siteApiFusionCache.ClearAsync(token: cancellationToken);
     }
 
@@ -132,6 +140,8 @@ internal sealed class CacheInvalidationNotificationsHandler :
 
             items.AddRange(descendants);
         }
+
+        await _cmsOutputCache.ClearAsync(token: cancellationToken);
 
         if (items is null)
         {
