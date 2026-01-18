@@ -48,6 +48,12 @@ internal static class GetRobotsEndpoint
         SiteResolutionService siteResolutionService)
     {
         var path = siteResolutionContext.Path;
+
+        if (!path.TrimStart('/').Equals(RobotsTxtSegment))
+        {
+            return TypedResults.NotFound();
+        }
+
         var domain = siteResolutionContext.Domain;
 
         var domainEntry = siteResolutionContext.Site.Domains
