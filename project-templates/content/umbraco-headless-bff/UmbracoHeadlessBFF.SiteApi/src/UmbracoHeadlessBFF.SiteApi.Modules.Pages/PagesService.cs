@@ -128,11 +128,6 @@ internal sealed class PagesService : IPagesService
             {
                 var redirectResponse = await _linksApi.GetRedirect(redirectPath, homepageId, culture, ct);
 
-                if (!redirectResponse.IsSuccessStatusCode && redirectResponse.StatusCode != HttpStatusCode.NotFound)
-                {
-                    throw new SiteApiException((int)redirectResponse.StatusCode, redirectResponse.ReasonPhrase);
-                }
-
                 if (redirectResponse.Content is null)
                 {
                     ctx.Options.SetAllDurations(TimeSpan.FromSeconds(_siteApiCachingOptions.Default.NullDuration));
