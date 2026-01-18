@@ -12,7 +12,7 @@ public static class HttpContextExtensions
             context.Items[key] = value;
         }
 
-        public bool TryGetContextItem<T>(string key, [NotNullWhen(true)]out T? item)
+        public bool TryGetContextItem<T>(string key, [NotNullWhen(true)] out T? item)
         {
             var found = context.Items.TryGetValue(key, out var value);
             item = default;
