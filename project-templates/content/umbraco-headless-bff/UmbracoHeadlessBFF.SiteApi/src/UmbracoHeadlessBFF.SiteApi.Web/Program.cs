@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
 using Asp.Versioning;
 using Asp.Versioning.Conventions;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Scalar.AspNetCore;
 using Serilog;
 using UmbracoHeadlessBFF.SharedModules.Cms;
@@ -83,6 +84,11 @@ try
     builder.AddCachingCommonModule();
     builder.AddCmsCommonModule();
     builder.AddPagesModule();
+
+    builder.Services.Configure<KestrelServerOptions>(o =>
+    {
+        o.AddServerHeader = false;
+    });
 
     var app = builder.Build();
 
