@@ -9,7 +9,7 @@
     <Title>Miguel Guedelha Umbraco Templates</Title>
     <Authors>Miguel Guedelha</Authors>
     <Description>Umbraco project templates create by me for quicker bootstrap of certain types of project</Description>
-    <PackageTags>dotnet-new;templates</PackageTags>
+    <PackageTags>dotnet-new;templates;umbraco;headless;umbraco-marketplace</PackageTags>
     <PackageProjectUrl>https://github.com/MiguelGuedelha/umbraco-templates</PackageProjectUrl>
 
     <!-- Keep package type as 'Template' to show the package as a template package on nuget.org and make your template
