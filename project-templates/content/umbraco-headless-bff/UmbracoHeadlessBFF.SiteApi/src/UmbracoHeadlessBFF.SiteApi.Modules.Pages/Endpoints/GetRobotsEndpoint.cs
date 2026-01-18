@@ -24,7 +24,7 @@ namespace UmbracoHeadlessBFF.SiteApi.Modules.Pages.Endpoints;
 
 internal static class GetRobotsEndpoint
 {
-    private const string RobotsTxtSegment = "robots.txt";
+    private const string RobotsTxtPath = "/robots.txt";
 
     extension(RouteGroupBuilder builder)
     {
@@ -49,19 +49,7 @@ internal static class GetRobotsEndpoint
     {
         var path = siteResolutionContext.Path;
 
-        if (!path.TrimStart('/').Equals(RobotsTxtSegment))
-        {
-            return TypedResults.NotFound();
-        }
-
-        var domain = siteResolutionContext.Domain;
-
-        var domainEntry = siteResolutionContext.Site.Domains
-            .First(x => x.Domain.Equals(domain, StringComparison.OrdinalIgnoreCase));
-
-        var robotsPath = path.Replace(domainEntry.Path, string.Empty);
-
-        if (!robotsPath.Equals(RobotsTxtSegment, StringComparison.OrdinalIgnoreCase))
+        if (!path.Equals(RobotsTxtPath))
         {
             return TypedResults.NotFound();
         }
