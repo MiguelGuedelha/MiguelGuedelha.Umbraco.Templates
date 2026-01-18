@@ -21,12 +21,10 @@ internal sealed class CacheInvalidationNotificationsHandler :
     public CacheInvalidationNotificationsHandler(
         IContentService contentService,
         IMediaService mediaService,
-        IFusionCacheProvider fusionCacheProvider,
-        IFusionCache cmsOutputCache)
+        IFusionCacheProvider fusionCacheProvider)
     {
         _contentService = contentService;
         _mediaService = mediaService;
-        _cmsOutputCache = cmsOutputCache;
         _siteApiFusionCache = fusionCacheProvider.GetCache(CachingConstants.SiteApi.CacheName);
         _cmsOutputCache = fusionCacheProvider.GetCache(CachingConstants.Cms.OutputCacheName);
     }

@@ -42,7 +42,7 @@ public static class CachingConfiguration
 
             builder.Services.AddFusionOutputCache(o =>
             {
-                o.CacheName = CachingConstants.SiteApi.OutputCacheName;
+                o.CacheName = CachingConstants.Cms.OutputCacheName;
             });
         }
     }

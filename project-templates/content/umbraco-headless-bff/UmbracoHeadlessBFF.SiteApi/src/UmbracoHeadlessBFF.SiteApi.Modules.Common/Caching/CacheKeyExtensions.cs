@@ -40,5 +40,5 @@ public static class CacheKeyExtensions
     }
 
     public static string GetRedirectKey(Guid homeId, string culture, string path) =>
-        $"Region:{CachingRegionConstants.Pages}:Site:{homeId}-{culture}:Path:{path}";
+        $"Region:{CachingRegionConstants.Redirects}:Site:{homeId}-{culture}:Path:{path}";
 }
