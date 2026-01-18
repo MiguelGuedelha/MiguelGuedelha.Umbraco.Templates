@@ -1,0 +1,47 @@
+<Solution>
+  <Folder Name="/001 Global Configuration/">
+    <File Path=".editorconfig" />
+    <File Path=".gitattributes" />
+    <File Path=".gitignore" />
+    <File Path="Directory.Build.props" />
+    <File Path="NuGet.config" />
+  </Folder>
+  <Folder Name="/002 Aspire/">
+    <Project Path="UmbracoHeadlessBFF.Aspire/src/UmbracoHeadlessBFF.Aspire.AppHost/UmbracoHeadlessBFF.Aspire.AppHost.csproj" />
+  </Folder>
+  <Folder Name="/002 Aspire/Local Configuration/">
+    <File Path="UmbracoHeadlessBFF.Aspire/Directory.Build.props" />
+    <File Path="UmbracoHeadlessBFF.Aspire/Directory.Packages.props" />
+  </Folder>
+  <Folder Name="/003 Shared Modules/">
+    <Project Path="UmbracoHeadlessBFF.SharedModules/src/UmbracoHeadlessBFF.SharedModules.Cms/UmbracoHeadlessBFF.SharedModules.Cms.csproj" />
+    <Project Path="UmbracoHeadlessBFF.SharedModules/src/UmbracoHeadlessBFF.SharedModules.Common/UmbracoHeadlessBFF.SharedModules.Common.csproj" />
+    <Project Path="UmbracoHeadlessBFF.SharedModules/src/UmbracoHeadlessBFF.SharedModules.ServiceDefaults/UmbracoHeadlessBFF.SharedModules.ServiceDefaults.csproj" />
+  </Folder>
+  <Folder Name="/003 Shared Modules/Local Configuration/">
+    <File Path="UmbracoHeadlessBFF.SharedModules/Directory.Build.props" />
+    <File Path="UmbracoHeadlessBFF.SharedModules/Directory.Packages.props" />
+  </Folder>
+  <Folder Name="/004 Cms/">
+    <Project Path="UmbracoHeadlessBFF.Cms/src/UmbracoHeadlessBFF.Cms.Web/UmbracoHeadlessBFF.Cms.Web.csproj" />
+  </Folder>
+  <Folder Name="/004 Cms/001 Local Configuration/">
+    <File Path="UmbracoHeadlessBFF.Cms/Directory.Build.props" />
+    <File Path="UmbracoHeadlessBFF.Cms/Directory.Packages.props" />
+  </Folder>
+  <Folder Name="/004 Cms/002 Modules/">
+    <Project Path="UmbracoHeadlessBFF.Cms/src/UmbracoHeadlessBFF.Cms.Modules.Common/UmbracoHeadlessBFF.Cms.Modules.Common.csproj" />
+    <Project Path="UmbracoHeadlessBFF.Cms/src/UmbracoHeadlessBFF.Cms.Modules.Pages/UmbracoHeadlessBFF.Cms.Modules.Pages.csproj" />
+  </Folder>
+  <Folder Name="/005 SiteApi/">
+    <Project Path="UmbracoHeadlessBFF.SiteApi/src/UmbracoHeadlessBFF.SiteApi.Web/UmbracoHeadlessBFF.SiteApi.Web.csproj" />
+  </Folder>
+  <Folder Name="/005 SiteApi/001 Local Configuration/">
+    <File Path="UmbracoHeadlessBFF.SiteApi/Directory.Build.props" />
+    <File Path="UmbracoHeadlessBFF.SiteApi/Directory.Packages.props" />
+  </Folder>
+  <Folder Name="/005 SiteApi/002 Modules/">
+    <Project Path="UmbracoHeadlessBFF.SiteApi/src/UmbracoHeadlessBFF.SiteApi.Modules.Common/UmbracoHeadlessBFF.SiteApi.Modules.Common.csproj" />
+    <Project Path="UmbracoHeadlessBFF.SiteApi/src/UmbracoHeadlessBFF.SiteApi.Modules.Pages/UmbracoHeadlessBFF.SiteApi.Modules.Pages.csproj" />
+  </Folder>
+</Solution>
