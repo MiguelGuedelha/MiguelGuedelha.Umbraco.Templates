@@ -22,7 +22,7 @@ def main():
         # Skips uSync folder as well
         dirs[:] = [
             d for d in dirs
-            if not d.startswith('.') and d.lower() not in {"bin", "obj", "packages", 'usync'}
+            if not d.startswith('.') and d.lower() not in {"bin", "obj", "packages", 'usync', 'local-data'}
         ]
 
         for name in files:
