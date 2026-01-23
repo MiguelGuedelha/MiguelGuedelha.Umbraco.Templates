@@ -18,5 +18,5 @@ public sealed record ApiSpotlightProperties : IApiJumpMenuConfiguration, IApiHea
     public string HeadingSize { get; init; } = "h2";
     public ApiRichTextItem? Description { get; init; }
     public IReadOnlyCollection<ApiLink>? Cta { get; init; }
-    public ApiBlockList? Media { get; init; }
+    public ApiBlockSingleItem? Media { get; init; }
 }

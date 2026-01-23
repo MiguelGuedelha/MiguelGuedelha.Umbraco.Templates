@@ -28,9 +28,7 @@ internal sealed class SpotlightMapper : IComponentMapper
             return null;
         }
 
-        var media = apiModel.Properties.Media?.Items
-            .Select(x => x.Content)
-            .FirstOrDefault();
+        var media = apiModel.Properties.Media?.Content;
 
         var cta = apiModel.Properties.Cta?.FirstOrDefault();
         var description = apiModel.Properties.Description;

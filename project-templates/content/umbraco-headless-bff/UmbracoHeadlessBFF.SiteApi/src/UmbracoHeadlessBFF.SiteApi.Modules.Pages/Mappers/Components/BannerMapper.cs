@@ -38,7 +38,7 @@ internal sealed class BannerMapper : IComponentMapper
     {
         var mapTasks = bannerItems.Select(async x =>
         {
-            var media = x.Properties.BackgroundMedia?.Items.FirstOrDefault()?.Content;
+            var media = x.Properties.BackgroundMedia?.Content;
             var description = x.Properties.Description;
 
             return new BannerItem
