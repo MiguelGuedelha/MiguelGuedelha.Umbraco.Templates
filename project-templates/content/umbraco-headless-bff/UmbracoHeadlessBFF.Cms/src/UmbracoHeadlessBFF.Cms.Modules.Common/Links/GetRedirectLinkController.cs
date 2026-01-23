@@ -4,8 +4,6 @@ using Asp.Versioning;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Core.PublishedCache;
 using Umbraco.Cms.Core.Routing;
@@ -13,7 +11,6 @@ using Umbraco.Cms.Core.Services;
 using Umbraco.Extensions;
 using UmbracoHeadlessBFF.Cms.Modules.Common.Authentication;
 using UmbracoHeadlessBFF.Cms.Modules.Common.Umbraco.Models;
-using UmbracoHeadlessBFF.Cms.Modules.Common.Urls;
 using UmbracoHeadlessBFF.SharedModules.Cms.DeliveryApi.Data;
 using UmbracoHeadlessBFF.SharedModules.Cms.Links;
 using NotFound = Microsoft.AspNetCore.Http.HttpResults.NotFound;
@@ -30,7 +27,6 @@ public sealed class GetRedirectLinkController : ControllerBase
     private readonly IVariationContextAccessor _variationContextAccessor;
     private readonly IRedirectUrlService _redirectUrlService;
     private readonly IPublishedUrlProvider _publishedUrlProvider;
-    private readonly ApplicationUrlOptions _applicationUrlOptions;
     private readonly IPublishedContentCache _publishedContentCache;
     private readonly IDocumentUrlService _documentUrlService;
 
@@ -45,7 +41,6 @@ public sealed class GetRedirectLinkController : ControllerBase
         IVariationContextAccessor variationContextAccessor,
         IRedirectUrlService redirectUrlService,
         IPublishedUrlProvider publishedUrlProvider,
-        IOptionsSnapshot<ApplicationUrlOptions> applicationUrlOptions,
         IPublishedContentCache publishedContentCache,
         IDocumentUrlService documentUrlService)
     {
@@ -54,7 +49,6 @@ public sealed class GetRedirectLinkController : ControllerBase
         _publishedUrlProvider = publishedUrlProvider;
         _publishedContentCache = publishedContentCache;
         _documentUrlService = documentUrlService;
-        _applicationUrlOptions = applicationUrlOptions.Value;
     }
 
     [HttpGet("redirects/{**path}")]
@@ -110,14 +104,16 @@ public sealed class GetRedirectLinkController : ControllerBase
 
         if (item is not IRedirectSettings redirectSettings)
         {
-            return TypedResults.NotFound();
+            return TypedResults.Ok(new RedirectLink
+            {
+                Location = null,
+                StatusCode = null
+            });
         }
 
-        var url = redirectSettings.RedirectLinkOverride switch
+        var url = redirectSettings.RedirectLinkOverride?.Url switch
         {
-            { Type: LinkType.Content } => redirectSettings.RedirectLinkOverride.Url,
-            { Type: LinkType.Media } => new Uri(new(_applicationUrlOptions.Media), redirectSettings.RedirectLinkOverride.Url).ToString(),
-            { Type: LinkType.External } => redirectSettings.RedirectLinkOverride.Url!,
+            var x when !string.IsNullOrWhiteSpace(x) => x,
             _ => GenerateFallbackUrl(item, redirectSettings.RedirectDirection, culture)
         };
 
@@ -144,7 +140,8 @@ public sealed class GetRedirectLinkController : ControllerBase
         };
 
         var destination = possibleItems
-            ?.FirstOrDefault(x => !s_nonValidDestinationPageTypes.Contains(x.ContentType.Alias) && x is not IRedirectSettings);
+            ?.FirstOrDefault(x => !s_nonValidDestinationPageTypes.Contains(x.ContentType.Alias)
+                                  && x is not IRedirectSettings);
 
         return destination?.Url(_publishedUrlProvider, culture, UrlMode.Absolute);
     }

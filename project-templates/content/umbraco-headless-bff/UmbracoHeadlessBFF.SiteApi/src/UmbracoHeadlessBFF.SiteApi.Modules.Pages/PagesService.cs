@@ -31,7 +31,7 @@ internal sealed class PagesService : IPagesService
     private readonly SiteApiCachingOptions _siteApiCachingOptions;
 
     private static readonly string s_levelOneExpandFieldsLevel = new FieldsExpandProperties(1).ToString();
-    private static readonly string s_defaultExpandFieldsLevel = new FieldsExpandProperties(5).ToString();
+    private static readonly string s_defaultExpandFieldsLevel = new FieldsExpandProperties(11).ToString();
 
     public PagesService(
         IUmbracoDeliveryApi umbracoDeliveryApi,
@@ -137,9 +137,9 @@ internal sealed class PagesService : IPagesService
             },
             tags: [CachingConstants.SiteApi.Tags.Redirects, homepageId.ToString(), culture]);
 
-        if (redirect is not null)
+        if (redirect is { StatusCode: not null, Location: not null })
         {
-            throw new SiteApiRedirectException(redirect.StatusCode, redirect.Location);
+            throw new SiteApiRedirectException(redirect.StatusCode.Value, redirect.Location);
         }
 
         return await _fusionCache.GetOrSetAsync<IApiContent?>(

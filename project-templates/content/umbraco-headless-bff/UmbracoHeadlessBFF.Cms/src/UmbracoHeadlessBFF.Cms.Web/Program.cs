@@ -11,7 +11,6 @@ using UmbracoHeadlessBFF.Cms.Modules.Common.Caching;
 using UmbracoHeadlessBFF.Cms.Modules.Common.Links;
 using UmbracoHeadlessBFF.Cms.Modules.Common.LoadBalancing;
 using UmbracoHeadlessBFF.Cms.Modules.Common.Preview;
-using UmbracoHeadlessBFF.Cms.Modules.Common.Urls;
 using UmbracoHeadlessBFF.SharedModules.Common.Caching;
 using UmbracoHeadlessBFF.SharedModules.Common.Correlation;
 using UmbracoHeadlessBFF.SharedModules.Common.Environment;
@@ -30,7 +29,8 @@ umbracoBuilder
     .AddDeliveryApi()
     .AddComposers()
     .AddAzureBlobMediaFileSystem()
-    .AddAzureBlobImageSharpCache();
+    .AddAzureBlobImageSharpCache()
+    .AddCdnMediaUrlProvider();
 
 umbracoBuilder.AddUmbracoDataProtection();
 
@@ -59,7 +59,6 @@ builder.AddCachingSharedModule(CachingConstants.SiteApi.CacheName, true);
 builder.AddCorrelationCommonSharedModule();
 builder.AddPreviewModule();
 builder.AddLinksModule();
-builder.AddUrlsModule();
 
 builder.Services.Configure<KestrelServerOptions>(o =>
 {

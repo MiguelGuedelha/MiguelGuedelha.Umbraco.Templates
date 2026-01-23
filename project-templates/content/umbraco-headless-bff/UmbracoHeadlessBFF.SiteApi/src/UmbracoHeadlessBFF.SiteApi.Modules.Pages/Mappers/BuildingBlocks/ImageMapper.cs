@@ -1,7 +1,6 @@
+using System.Text.Json;
 using Microsoft.AspNetCore.Http.Extensions;
-using Microsoft.Extensions.Options;
 using UmbracoHeadlessBFF.SharedModules.Cms.DeliveryApi.Data;
-using UmbracoHeadlessBFF.SiteApi.Modules.Common.Configuration;
 using UmbracoHeadlessBFF.SiteApi.Modules.Pages.Models.BuildingBlocks;
 
 namespace UmbracoHeadlessBFF.SiteApi.Modules.Pages.Mappers.BuildingBlocks;
@@ -12,14 +11,7 @@ internal interface IImageMapper : IMapper<ApiMediaWithCrops, Image>
 
 internal sealed class ImageMapper : IImageMapper
 {
-    private static readonly HashSet<string> s_imageTypes = ["png", "webp", "jpg", "jpeg", "avif", "pjepg", "pjp"];
-
-    private readonly ApplicationUrlOptions _applicationUrlOptions;
-
-    public ImageMapper(IOptionsSnapshot<ApplicationUrlOptions> applicationUrlOptions)
-    {
-        _applicationUrlOptions = applicationUrlOptions.Value;
-    }
+    private static readonly HashSet<string> s_processableImageTypes = ["png", "webp", "jpg", "jpeg", "avif", "gif"];
 
     public Task<Image?> Map(ApiMediaWithCrops? model)
     {
@@ -31,11 +23,15 @@ internal sealed class ImageMapper : IImageMapper
         object? altText = null;
         model.Properties?.TryGetValue("altText", out altText);
 
-        if (!s_imageTypes.Contains(model.Extension))
+        altText = altText is not JsonElement { ValueKind: JsonValueKind.String } altTextElement
+            ? null
+            : altTextElement.GetString();
+
+        if (!s_processableImageTypes.Contains(model.Extension))
         {
             return Task.FromResult<Image?>(new()
             {
-                Src = new UriBuilder(_applicationUrlOptions.Media) { Path = model.Url.TrimStart('/') }.Uri.AbsoluteUri,
+                Src = model.Url,
                 AltText = altText as string
             });
         }
@@ -53,7 +49,10 @@ internal sealed class ImageMapper : IImageMapper
             query.Add("format", "webp");
         }
 
-        var url = new UriBuilder(_applicationUrlOptions.Media) { Path = model.Url, Query = query.ToString() };
+        var url = new UriBuilder(model.Url)
+        {
+            Query = query.ToString()
+        };
 
         return Task.FromResult<Image?>(new()
         {

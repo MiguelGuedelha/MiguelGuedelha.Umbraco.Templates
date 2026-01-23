@@ -11,7 +11,6 @@ using UmbracoHeadlessBFF.SharedModules.Common.Environment;
 using UmbracoHeadlessBFF.SharedModules.Common.Versioning;
 using UmbracoHeadlessBFF.SiteApi.Modules.Common.Caching;
 using UmbracoHeadlessBFF.SiteApi.Modules.Common.Cms;
-using UmbracoHeadlessBFF.SiteApi.Modules.Common.Configuration;
 using UmbracoHeadlessBFF.SiteApi.Modules.Common.Errors;
 using UmbracoHeadlessBFF.SiteApi.Modules.Pages;
 using UmbracoHeadlessBFF.SiteApi.Web.Swagger;
@@ -80,7 +79,6 @@ try
     builder.AddCorrelationCommonSharedModule();
     builder.AddCmsCommonSharedModule();
     builder.AddErrorsCommonModule();
-    builder.AddConfigurationCommonModule();
     builder.AddCachingCommonModule();
     builder.AddCmsCommonModule();
     builder.AddPagesModule();

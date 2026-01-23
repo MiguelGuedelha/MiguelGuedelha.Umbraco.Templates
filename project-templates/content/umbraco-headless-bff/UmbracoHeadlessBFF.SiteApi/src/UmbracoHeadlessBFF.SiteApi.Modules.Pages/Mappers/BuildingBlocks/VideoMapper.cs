@@ -1,6 +1,4 @@
-using Microsoft.Extensions.Options;
 using UmbracoHeadlessBFF.SharedModules.Cms.DeliveryApi.Data;
-using UmbracoHeadlessBFF.SiteApi.Modules.Common.Configuration;
 using UmbracoHeadlessBFF.SiteApi.Modules.Pages.Models.BuildingBlocks;
 
 namespace UmbracoHeadlessBFF.SiteApi.Modules.Pages.Mappers.BuildingBlocks;
@@ -11,13 +9,6 @@ internal interface IVideoMapper : IMapper<ApiMediaWithCrops, Video>
 
 internal sealed class VideoMapper : IVideoMapper
 {
-    private readonly ApplicationUrlOptions _applicationUrlOptions;
-
-    public VideoMapper(IOptionsSnapshot<ApplicationUrlOptions> applicationUrlOptions)
-    {
-        _applicationUrlOptions = applicationUrlOptions.Value;
-    }
-
     public Task<Video?> Map(ApiMediaWithCrops? model)
     {
         if (model is null)
@@ -27,7 +18,7 @@ internal sealed class VideoMapper : IVideoMapper
 
         return Task.FromResult<Video?>(new()
         {
-            Src = new UriBuilder(_applicationUrlOptions.Media) { Path = model.Url }.Uri.AbsoluteUri,
+            Src = model.Url,
             Type = $"video/{model.Extension}",
         });
     }
