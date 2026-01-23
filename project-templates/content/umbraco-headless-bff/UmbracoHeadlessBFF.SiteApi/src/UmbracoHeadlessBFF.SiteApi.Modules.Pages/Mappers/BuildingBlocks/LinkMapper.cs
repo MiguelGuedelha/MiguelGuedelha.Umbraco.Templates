@@ -120,9 +120,9 @@ internal sealed class LinkMapper : ILinkMapper
         {
             (0, -1) => model.QueryString,
             (0, > 0) => model.QueryString[..anchorStart],
-            (> 0, -1) => model.QueryString[queryStart..],
-            (> 0, > 0) when queryStart > anchorStart => model.QueryString[queryStart..],
-            (> 0, > 0) when queryStart < anchorStart => model.QueryString[queryStart..anchorStart],
+            ( > 0, -1) => model.QueryString[queryStart..],
+            ( > 0, > 0) when queryStart > anchorStart => model.QueryString[queryStart..],
+            ( > 0, > 0) when queryStart < anchorStart => model.QueryString[queryStart..anchorStart],
             _ => null
         };
 
@@ -135,9 +135,9 @@ internal sealed class LinkMapper : ILinkMapper
         {
             (0, -1) => model.QueryString,
             (0, > 0) => model.QueryString[..queryStart],
-            (> 0, -1) => model.QueryString[anchorStart..],
-            (> 0, > 0) when anchorStart > queryStart => model.QueryString[anchorStart..],
-            (> 0, > 0) when anchorStart < queryStart => model.QueryString[anchorStart..queryStart],
+            ( > 0, -1) => model.QueryString[anchorStart..],
+            ( > 0, > 0) when anchorStart > queryStart => model.QueryString[anchorStart..],
+            ( > 0, > 0) when anchorStart < queryStart => model.QueryString[anchorStart..queryStart],
             _ => null
         };
 
