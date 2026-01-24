@@ -26,8 +26,10 @@ internal sealed class RichTextMapper : IRichTextMapper
         var doc = new HtmlDocument();
         doc.LoadHtml(model.Markup);
 
-        await ProcessLinks(doc);
-        await ProcessImages(doc);
+        var linksTask = ProcessLinks(doc);
+        ProcessMedia(doc);
+
+        await linksTask;
 
         return doc.DocumentNode.InnerHtml;
     }
@@ -56,7 +58,7 @@ internal sealed class RichTextMapper : IRichTextMapper
             {
                 case "Content":
                     var contentId = link.GetAttributeValue("data-destination-id", string.Empty);
-                    if (!string.IsNullOrWhiteSpace(contentId) && Guid.TryParse(contentId, out var contentGuid))
+                    if (Guid.TryParse(contentId, out var contentGuid))
                     {
                         var contentLink = await _linkMapper.Map(new()
                         {
@@ -76,22 +78,7 @@ internal sealed class RichTextMapper : IRichTextMapper
                     var href = link.GetAttributeValue("href", string.Empty);
                     if (!string.IsNullOrWhiteSpace(href))
                     {
-                        var pathAndQuery = href.Split('?');
-                        var cleanAnchor = anchor.Replace("?", "");
-
-                        var hasAnchor = string.IsNullOrWhiteSpace(cleanAnchor);
-
-                        var mediaLink = await _linkMapper.Map(new()
-                        {
-                            Url = pathAndQuery[0],
-                            LinkType = ApiLinkType.Media,
-                            QueryString = pathAndQuery.Length == 2 ? $"{pathAndQuery[1]}{(hasAnchor ? $"&{cleanAnchor}" : "")}" : cleanAnchor
-                        });
-
-                        if (mediaLink is not null)
-                        {
-                            link.SetAttributeValue("href", mediaLink.Href);
-                        }
+                        link.SetAttributeValue("href", $"{href}{anchor}");
                     }
                     break;
             }
@@ -100,7 +87,7 @@ internal sealed class RichTextMapper : IRichTextMapper
         }
     }
 
-    private async Task ProcessImages(HtmlDocument doc)
+    private void ProcessMedia(HtmlDocument doc)
     {
         var images = doc.DocumentNode.SelectNodes("//img");
 
@@ -116,21 +103,6 @@ internal sealed class RichTextMapper : IRichTextMapper
             if (string.IsNullOrWhiteSpace(url))
             {
                 image.Attributes.Remove("src");
-                continue;
-            }
-
-            var pathAndQuery = url.Split('?');
-
-            var mediaLink = await _linkMapper.Map(new()
-            {
-                Url = pathAndQuery[0],
-                LinkType = ApiLinkType.Media,
-                QueryString = pathAndQuery.Length == 2 ? pathAndQuery[1] : null
-            });
-
-            if (mediaLink is not null)
-            {
-                image.SetAttributeValue("src", mediaLink.Href);
             }
         }
     }

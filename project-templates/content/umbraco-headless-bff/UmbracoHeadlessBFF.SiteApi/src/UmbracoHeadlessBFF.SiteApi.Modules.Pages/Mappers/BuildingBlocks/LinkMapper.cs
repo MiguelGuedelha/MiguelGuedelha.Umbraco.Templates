@@ -29,6 +29,8 @@ internal sealed class LinkMapper : ILinkMapper
 
         UriBuilder uriBuilder;
 
+        var query = string.IsNullOrWhiteSpace(model.QueryString) ? string.Empty : model.QueryString;
+
         switch (model.LinkType)
         {
             case ApiLinkType.Content:
@@ -43,7 +45,7 @@ internal sealed class LinkMapper : ILinkMapper
                 {
                     return new()
                     {
-                        Href = link.Path,
+                        Href = $"{link.Path}{query}",
                         Title = model.Title,
                         Target = model.Target
                     };
@@ -88,7 +90,7 @@ internal sealed class LinkMapper : ILinkMapper
                     return new()
                     {
                         Target = model.Target,
-                        Href = model.Url,
+                        Href = $"{model.Url}{query}",
                         Title = model.Title,
                     };
                 }
@@ -102,54 +104,10 @@ internal sealed class LinkMapper : ILinkMapper
                 break;
         }
 
-        if (string.IsNullOrWhiteSpace(model.QueryString))
-        {
-            return new()
-            {
-                Target = model.Target,
-                Href = uriBuilder.Uri.ToString(),
-                Title = model.Title,
-                IsFile = model.LinkType == ApiLinkType.Media
-            };
-        }
-
-        var queryStart = model.QueryString.IndexOf("?", StringComparison.OrdinalIgnoreCase);
-        var anchorStart = model.QueryString.IndexOf("#", StringComparison.OrdinalIgnoreCase);
-
-        var querySegment = (queryStart, anchorStart) switch
-        {
-            (0, -1) => model.QueryString,
-            (0, > 0) => model.QueryString[..anchorStart],
-            ( > 0, -1) => model.QueryString[queryStart..],
-            ( > 0, > 0) when queryStart > anchorStart => model.QueryString[queryStart..],
-            ( > 0, > 0) when queryStart < anchorStart => model.QueryString[queryStart..anchorStart],
-            _ => null
-        };
-
-        if (querySegment is not null)
-        {
-            uriBuilder.Query = querySegment;
-        }
-
-        var anchorSegment = (anchorStart, queryStart) switch
-        {
-            (0, -1) => model.QueryString,
-            (0, > 0) => model.QueryString[..queryStart],
-            ( > 0, -1) => model.QueryString[anchorStart..],
-            ( > 0, > 0) when anchorStart > queryStart => model.QueryString[anchorStart..],
-            ( > 0, > 0) when anchorStart < queryStart => model.QueryString[anchorStart..queryStart],
-            _ => null
-        };
-
-        if (anchorSegment is not null)
-        {
-            uriBuilder.Fragment = anchorSegment;
-        }
-
         return new()
         {
             Target = model.Target,
-            Href = uriBuilder.Uri.ToString(),
+            Href = $"{uriBuilder.Uri.ToString()}{query}",
             Title = model.Title,
             IsFile = model.LinkType == ApiLinkType.Media
         };
