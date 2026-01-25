@@ -107,7 +107,7 @@ internal sealed class LinkMapper : ILinkMapper
         return new()
         {
             Target = model.Target,
-            Href = $"{uriBuilder.Uri.ToString()}{query}",
+            Href = $"{uriBuilder.Uri}{query}",
             Title = model.Title,
             IsFile = model.LinkType == ApiLinkType.Media
         };

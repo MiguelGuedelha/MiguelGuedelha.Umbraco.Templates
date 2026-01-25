@@ -87,7 +87,7 @@ internal sealed class RichTextMapper : IRichTextMapper
         }
     }
 
-    private void ProcessMedia(HtmlDocument doc)
+    private static void ProcessMedia(HtmlDocument doc)
     {
         var images = doc.DocumentNode.SelectNodes("//img");
 
