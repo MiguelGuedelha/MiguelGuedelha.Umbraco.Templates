@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Server.Kestrel.Core;
-using Microsoft.Extensions.Azure;
+using Mole.StorageProviders.AzureBlob.TemporaryFile.DependencyInjection;
 using Scalar.AspNetCore;
 using Umbraco.Cms.Api.Common.DependencyInjection;
 using Umbraco.Cms.Core;
@@ -30,7 +30,8 @@ umbracoBuilder
     .AddComposers()
     .AddAzureBlobMediaFileSystem()
     .AddAzureBlobImageSharpCache()
-    .AddCdnMediaUrlProvider();
+    .AddCdnMediaUrlProvider()
+    .AddBlobTemporaryFile();
 
 umbracoBuilder.AddUmbracoDataProtection();
 
@@ -75,18 +76,6 @@ if (builder.Environment.IsLocal())
     builder.Configuration.AddUserSecrets<Program>();
 }
 
-builder.Services.AddAzureClients(clientBuilder =>
-{
-    var blobConnectionString = builder.Configuration["Umbraco:Storage:AzureBlob:Media:ConnectionString"];
-
-    if (string.IsNullOrWhiteSpace(blobConnectionString))
-    {
-        throw new ArgumentException("No blob container connection string");
-    }
-
-    clientBuilder.AddBlobServiceClient(blobConnectionString);
-});
-
 var app = builder.Build();
 
 app.Use(async (context, next) =>
@@ -121,9 +110,5 @@ app.UseUmbraco()
         u.UseBackOfficeEndpoints();
         u.UseWebsiteEndpoints();
     });
-
-var version = AssemblyVersionExtensions.GetVersion();
-app.MapGet("/version", () => new { version })
-    .WithTags("Version");
 
 await app.RunAsync();

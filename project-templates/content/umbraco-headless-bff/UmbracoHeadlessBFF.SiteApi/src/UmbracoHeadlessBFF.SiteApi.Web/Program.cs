@@ -145,9 +145,7 @@ try
     }
 
     var version = AssemblyVersionExtensions.GetVersion();
-    app
-        .MapGet("/version", () => new { version })
-        .WithTags("Version");
+    app.MapGet("/version", () => new { version }).WithTags("Version");
 
     await app.RunAsync();
 }

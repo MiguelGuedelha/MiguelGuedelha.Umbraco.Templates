@@ -21,13 +21,13 @@ public sealed class AuthenticationSwaggerParameters : IOperationFilter
 
         var apiKeyParameter = operation.Parameters.FirstOrDefault(x => x.Name == DeliveryApiConstants.ApiKeyHeaderName);
 
-        if (apiKeyParameter is not null
-            && _deliveryApiSettings.CurrentValue is { PublicAccess: false, ApiKey: not null })
+        if (apiKeyParameter is null || _deliveryApiSettings.CurrentValue is { PublicAccess: true })
         {
-            var param = apiKeyParameter as OpenApiParameter;
-            param?.Required = true;
             return;
         }
+
+        var param = apiKeyParameter as OpenApiParameter;
+        param?.Required = true;
 
         operation.Parameters.Add(new OpenApiParameter
         {
@@ -36,5 +36,7 @@ public sealed class AuthenticationSwaggerParameters : IOperationFilter
             In = ParameterLocation.Header,
             Required = true,
         });
+
+        return;
     }
 }

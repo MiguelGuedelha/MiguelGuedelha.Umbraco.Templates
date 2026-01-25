@@ -7,6 +7,7 @@ using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
 using UmbracoHeadlessBFF.SharedModules.Common.Environment;
 
+// ReSharper disable once CheckNamespace
 #pragma warning disable IDE0130 // Namespace does not match folder structure
 namespace Microsoft.Extensions.Hosting;
 #pragma warning restore IDE0130
@@ -65,9 +66,9 @@ public static class Extensions
                 .WithTracing(tracing =>
                 {
                     tracing.AddSource(builder.Environment.ApplicationName)
-                        .AddAspNetCoreInstrumentation(tracing =>
+                        .AddAspNetCoreInstrumentation(tracingBuilder =>
                             // Exclude health check requests from tracing
-                            tracing.Filter = context =>
+                            tracingBuilder.Filter = context =>
                                 !context.Request.Path.StartsWithSegments(HealthEndpointPath)
                                 && !context.Request.Path.StartsWithSegments(AlivenessEndpointPath)
                         )
@@ -91,7 +92,7 @@ public static class Extensions
             }
 
             // Uncomment the following lines to enable the Azure Monitor exporter (requires the Azure.Monitor.OpenTelemetry.AspNetCore package)
-            //if (!string.IsNullOrEmpty(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]))
+            //if (!string.IsNullOrWhiteSpace(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]))
             //{
             //    builder.Services.AddOpenTelemetry()
             //       .UseAzureMonitor();

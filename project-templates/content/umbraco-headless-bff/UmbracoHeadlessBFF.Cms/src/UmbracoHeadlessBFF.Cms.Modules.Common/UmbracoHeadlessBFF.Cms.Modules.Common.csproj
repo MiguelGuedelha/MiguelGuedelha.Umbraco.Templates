@@ -4,7 +4,6 @@
     </ItemGroup>
     <ItemGroup>
       <PackageReference Include="Asp.Versioning.Mvc" />
-      <PackageReference Include="Azure.Storage.Blobs" />
       <PackageReference Include="IntelliTect.AspNetCore.SignalR.SqlServer" />
       <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
       <PackageReference Include="Serilog.AspNetCore" />
