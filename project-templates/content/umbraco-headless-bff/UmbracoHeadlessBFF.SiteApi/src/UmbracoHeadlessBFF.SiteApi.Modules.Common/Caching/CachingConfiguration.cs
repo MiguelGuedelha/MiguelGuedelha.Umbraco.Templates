@@ -6,7 +6,7 @@ using UmbracoHeadlessBFF.SharedModules.Common.Caching;
 using UmbracoHeadlessBFF.SharedModules.Common.Versioning;
 using UmbracoHeadlessBFF.SiteApi.Modules.Common.Caching.Policies;
 using ZiggyCreatures.Caching.Fusion;
-using ZiggyCreatures.Caching.Fusion.Serialization.NeueccMessagePack;
+using ZiggyCreatures.Caching.Fusion.Serialization.CysharpMemoryPack;
 
 namespace UmbracoHeadlessBFF.SiteApi.Modules.Common.Caching;
 
@@ -23,10 +23,11 @@ public static class CachingConfiguration
                 {
                     o.IsFailSafeEnabled = true;
                     o.Duration = TimeSpan.FromSeconds(30);
-                    o.DistributedCacheDuration = TimeSpan.FromSeconds(60);
-                    o.JitterMaxDuration = TimeSpan.FromSeconds(5);
+                    o.DistributedCacheDuration = TimeSpan.FromMinutes(1);
+                    o.JitterMaxDuration = TimeSpan.FromSeconds(15);
+                    o.FailSafeMaxDuration = TimeSpan.FromMinutes(5);
                 })
-                .WithSerializer(new FusionCacheNeueccMessagePackSerializer())
+                .WithSerializer(new FusionCacheCysharpMemoryPackSerializer())
                 .WithDistributedCache(new RedisCache(new RedisCacheOptions
                 {
                     Configuration = builder.Configuration.GetConnectionString(CachingConstants.ConnectionStringName)

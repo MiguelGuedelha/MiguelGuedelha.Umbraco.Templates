@@ -4,12 +4,14 @@ using Asp.Versioning;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Core.PublishedCache;
 using Umbraco.Cms.Core.Routing;
 using Umbraco.Cms.Core.Services;
 using Umbraco.Extensions;
 using UmbracoHeadlessBFF.Cms.Modules.Common.Authentication;
+using UmbracoHeadlessBFF.Cms.Modules.Common.Caching;
 using UmbracoHeadlessBFF.Cms.Modules.Common.Umbraco.Models;
 using UmbracoHeadlessBFF.SharedModules.Cms.DeliveryApi.Data;
 using UmbracoHeadlessBFF.SharedModules.Cms.Links;
@@ -22,6 +24,7 @@ namespace UmbracoHeadlessBFF.Cms.Modules.Common.Links;
 [Route($"api/v{{version:apiVersion}}/{LinksConstants.Endpoints.Group}")]
 [Tags(LinksConstants.Endpoints.Tag)]
 [ApiVersion(1)]
+[OutputCache(PolicyName = DefaultOutputCachePolicy.PolicyName)]
 public sealed class GetRedirectLinkController : ControllerBase
 {
     private readonly IVariationContextAccessor _variationContextAccessor;

@@ -2,12 +2,14 @@ using Asp.Versioning;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Core.PublishedCache;
 using Umbraco.Cms.Core.Services;
 using Umbraco.Cms.Core.Services.Navigation;
 using Umbraco.Extensions;
 using UmbracoHeadlessBFF.Cms.Modules.Common.Authentication;
+using UmbracoHeadlessBFF.Cms.Modules.Common.Caching;
 using UmbracoHeadlessBFF.Cms.Modules.Common.Umbraco.Models;
 using UmbracoHeadlessBFF.SharedModules.Cms.SiteResolution;
 using UmbracoHeadlessBFF.SharedModules.Common.Strings;
@@ -20,6 +22,7 @@ namespace UmbracoHeadlessBFF.Cms.Modules.Common.SiteResolution;
 [Route($"api/v{{version:apiVersion}}/{SiteResolutionConstants.Endpoints.Group}")]
 [Tags(SiteResolutionConstants.Endpoints.Tag)]
 [ApiVersion(1)]
+[OutputCache(PolicyName = DefaultOutputCachePolicy.PolicyName)]
 public sealed class GetSitesController : ControllerBase
 {
     private readonly IDomainService _domainService;

@@ -3,10 +3,12 @@ using Asp.Versioning;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Core.Web;
 using Umbraco.Extensions;
 using UmbracoHeadlessBFF.Cms.Modules.Common.Authentication;
+using UmbracoHeadlessBFF.Cms.Modules.Common.Caching;
 using UmbracoHeadlessBFF.Cms.Modules.Common.Links;
 using UmbracoHeadlessBFF.Cms.Modules.Common.Umbraco.Models;
 using UmbracoHeadlessBFF.SharedModules.Cms.Sitemap;
@@ -19,6 +21,7 @@ namespace UmbracoHeadlessBFF.Cms.Modules.Pages.Sitemap;
 [Route($"api/v{{version:apiVersion}}/{PagesConstants.Endpoints.Group}")]
 [Tags(PagesConstants.Endpoints.Tag)]
 [ApiVersion(1)]
+[OutputCache(PolicyName = DefaultOutputCachePolicy.PolicyName)]
 public sealed class GetSitemapController : ControllerBase
 {
     private readonly IUmbracoContextFactory _umbracoContextFactory;

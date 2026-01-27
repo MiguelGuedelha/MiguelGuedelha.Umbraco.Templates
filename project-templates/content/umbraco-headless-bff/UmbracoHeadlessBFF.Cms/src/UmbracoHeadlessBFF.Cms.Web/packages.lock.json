@@ -420,6 +420,25 @@
         "resolved": "2.2.1",
         "contentHash": "A6veXuFP1n50RbmFNtTgfHxnHmwMsgFLSCgS1xWbg5L8n5N6HFEksTlXocZ0LsmGW4leBzeLJd+BY7+g83zFJA=="
       },
+      "MemoryPack": {
+        "type": "Transitive",
+        "resolved": "1.21.4",
+        "contentHash": "wy3JTBNBsO8LfQcBvvYsWr3lm2Oakolrfu0UQ3oSJSEiD+7ye0GUhYTaXuYYBowqsXBXWD9gf2218ae0JRiYVQ==",
+        "dependencies": {
+          "MemoryPack.Core": "1.21.4",
+          "MemoryPack.Generator": "1.21.4"
+        }
+      },
+      "MemoryPack.Core": {
+        "type": "Transitive",
+        "resolved": "1.21.4",
+        "contentHash": "6RszGorZ0ejNmp37ZcboPBMvvPCuNW2jlrdQfcs/lMzE5b3pmPF6hsm/laDc34hRlbAST1ZxaX/DvYu2DF5sBQ=="
+      },
+      "MemoryPack.Generator": {
+        "type": "Transitive",
+        "resolved": "1.21.4",
+        "contentHash": "g14EsSS85yn0lHTi0J9ivqlZMf09A2iI51fmI+0KkzIzyCbWOBWPi5mdaY7YWmXprk12aYh9u/qfWHQUYthlwg=="
+      },
       "MessagePack": {
         "type": "Transitive",
         "resolved": "3.1.4",
@@ -1676,7 +1695,7 @@
           "UmbracoHeadlessBFF.SharedModules.Cms": "[1.0.0, )",
           "UmbracoHeadlessBFF.SharedModules.Common": "[1.0.0, )",
           "ZiggyCreatures.FusionCache.AspNetCore.OutputCaching": "[2.5.0, )",
-          "ZiggyCreatures.FusionCache.Serialization.NeueccMessagePack": "[2.5.0, )"
+          "ZiggyCreatures.FusionCache.Serialization.CysharpMemoryPack": "[2.5.0, )"
         }
       },
       "umbracoheadlessbff.cms.modules.pages": {
@@ -1848,13 +1867,13 @@
           "ZiggyCreatures.FusionCache": "2.5.0"
         }
       },
-      "ZiggyCreatures.FusionCache.Serialization.NeueccMessagePack": {
+      "ZiggyCreatures.FusionCache.Serialization.CysharpMemoryPack": {
         "type": "CentralTransitive",
         "requested": "[2.5.0, )",
         "resolved": "2.5.0",
-        "contentHash": "ilNClmNk/qzz4xV3X6wGoCJ+d7bvhP83WRqJWJrtZZD5xBUt5P2CrrVjD3jFIZOv6TvIO0eai4Sq85aTdT0Row==",
+        "contentHash": "6JndRIdeyzaI/lltBJqWFkScjG/AQlPJeYVerYDUQl2onxw7yCKbaWsGURdZ3LfszDwwBFLrz4I1z3bvLJTdEA==",
         "dependencies": {
-          "MessagePack": "3.1.4",
+          "MemoryPack": "1.21.4",
           "ZiggyCreatures.FusionCache": "2.5.0"
         }
       }

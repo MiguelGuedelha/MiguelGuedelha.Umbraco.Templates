@@ -13,7 +13,7 @@
       <PackageReference Include="Umbraco.Cms.Web.Website" />
       <PackageReference Include="Umbraco.Community.Contentment" />
       <PackageReference Include="ZiggyCreatures.FusionCache.AspNetCore.OutputCaching" />
-      <PackageReference Include="ZiggyCreatures.FusionCache.Serialization.NeueccMessagePack" />
+      <PackageReference Include="ZiggyCreatures.FusionCache.Serialization.CysharpMemoryPack" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\..\..\UmbracoHeadlessBFF.SharedModules\src\UmbracoHeadlessBFF.SharedModules.Cms\UmbracoHeadlessBFF.SharedModules.Cms.csproj" />

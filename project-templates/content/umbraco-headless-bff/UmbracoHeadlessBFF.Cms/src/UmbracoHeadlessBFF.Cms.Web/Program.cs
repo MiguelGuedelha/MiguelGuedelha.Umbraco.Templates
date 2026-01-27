@@ -14,7 +14,6 @@ using UmbracoHeadlessBFF.Cms.Modules.Common.Preview;
 using UmbracoHeadlessBFF.SharedModules.Common.Caching;
 using UmbracoHeadlessBFF.SharedModules.Common.Correlation;
 using UmbracoHeadlessBFF.SharedModules.Common.Environment;
-using UmbracoHeadlessBFF.SharedModules.Common.Versioning;
 
 var builder = WebApplication.CreateBuilder(args);
 

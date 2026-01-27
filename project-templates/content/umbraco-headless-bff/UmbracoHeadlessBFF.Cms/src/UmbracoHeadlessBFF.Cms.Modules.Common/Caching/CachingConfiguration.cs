@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using UmbracoHeadlessBFF.SharedModules.Common.Caching;
 using UmbracoHeadlessBFF.SharedModules.Common.Versioning;
 using ZiggyCreatures.Caching.Fusion;
-using ZiggyCreatures.Caching.Fusion.Serialization.NeueccMessagePack;
+using ZiggyCreatures.Caching.Fusion.Serialization.CysharpMemoryPack;
 
 namespace UmbracoHeadlessBFF.Cms.Modules.Common.Caching;
 
@@ -20,8 +20,11 @@ public static class CachingConfiguration
                 {
                     o.IsFailSafeEnabled = false;
                     o.AllowBackgroundBackplaneOperations = false;
+                    o.Duration = TimeSpan.FromMinutes(15);
+                    o.DistributedCacheDuration = TimeSpan.FromHours(1);
+                    o.JitterMaxDuration = TimeSpan.FromMinutes(10);
                 })
-                .WithSerializer(new FusionCacheNeueccMessagePackSerializer())
+                .WithSerializer(new FusionCacheCysharpMemoryPackSerializer())
                 .WithDistributedCache(new RedisCache(new RedisCacheOptions
                 {
                     Configuration = builder.Configuration.GetConnectionString(CachingConstants.ConnectionStringName)
@@ -43,6 +46,11 @@ public static class CachingConfiguration
             builder.Services.AddFusionOutputCache(o =>
             {
                 o.CacheName = CachingConstants.Cms.OutputCacheName;
+            });
+
+            builder.Services.AddOutputCache(options =>
+            {
+                options.AddPolicy(DefaultOutputCachePolicy.PolicyName, DefaultOutputCachePolicy.Instance);
             });
         }
     }
