@@ -82,7 +82,7 @@ internal static class GetRobotsEndpoint
                         return response.Content;
                     }
 
-                    ctx.Options.SetAllDurations(TimeSpan.FromSeconds(siteApiCachingOptions.Value.Default.NullDuration));
+                    ctx.Options.SetAllDurations(siteApiCachingOptions.Value.Default.NullDuration);
 
                     return null;
                 },

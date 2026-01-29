@@ -71,7 +71,7 @@ public static class CachingConfiguration
                     if (defaultCachingOptions.Default is not null)
                     {
                         //Backs off the Distributed Cache if having issues
-                        o.DistributedCacheCircuitBreakerDuration = TimeSpan.FromSeconds(defaultCachingOptions.Default.DistributedCacheCircuitBreakerDuration);
+                        o.DistributedCacheCircuitBreakerDuration = defaultCachingOptions.Default.DistributedCacheCircuitBreakerDuration;
                     }
 
                     configureOptions?.Invoke(o);
@@ -87,23 +87,23 @@ public static class CachingConfiguration
                 {
                     if (defaultCachingOptions.Default is not null)
                     {
-                        o.Duration = TimeSpan.FromSeconds(defaultCachingOptions.Default.Duration);
-                        o.DistributedCacheDuration = TimeSpan.FromSeconds(defaultCachingOptions.Default.DurationDistributed);
+                        o.Duration = defaultCachingOptions.Default.Duration;
+                        o.DistributedCacheDuration = defaultCachingOptions.Default.DurationDistributed;
 
                         o.IsFailSafeEnabled = defaultCachingOptions.Default.FailSafeIsEnabled;
-                        o.FailSafeMaxDuration = TimeSpan.FromSeconds(defaultCachingOptions.Default.FailSafeMaxDuration);
-                        o.DistributedCacheFailSafeMaxDuration = TimeSpan.FromSeconds(defaultCachingOptions.Default.DistributedCacheFailSafeMaxDuration);
-                        o.FailSafeThrottleDuration = TimeSpan.FromSeconds(defaultCachingOptions.Default.FailSafeThrottleDuration);
+                        o.FailSafeMaxDuration = defaultCachingOptions.Default.FailSafeMaxDuration;
+                        o.DistributedCacheFailSafeMaxDuration = defaultCachingOptions.Default.DistributedCacheFailSafeMaxDuration;
+                        o.FailSafeThrottleDuration = defaultCachingOptions.Default.FailSafeThrottleDuration;
 
-                        o.FactorySoftTimeout = TimeSpan.FromMilliseconds(defaultCachingOptions.Default.FactorySoftTimeoutMs);
-                        o.FactoryHardTimeout = TimeSpan.FromSeconds(defaultCachingOptions.Default.FactoryHardTimeout);
+                        o.FactorySoftTimeout = defaultCachingOptions.Default.FactorySoftTimeout;
+                        o.FactoryHardTimeout = defaultCachingOptions.Default.FactoryHardTimeout;
 
-                        o.DistributedCacheSoftTimeout = TimeSpan.FromMilliseconds(defaultCachingOptions.Default.DistributedCacheSoftTimeoutMs);
-                        o.DistributedCacheHardTimeout = TimeSpan.FromSeconds(defaultCachingOptions.Default.DistributedCacheHardTimeout);
+                        o.DistributedCacheSoftTimeout = defaultCachingOptions.Default.DistributedCacheSoftTimeout;
+                        o.DistributedCacheHardTimeout = defaultCachingOptions.Default.DistributedCacheHardTimeout;
                         o.AllowBackgroundDistributedCacheOperations = defaultCachingOptions.Default.AllowBackgroundDistributedCacheOperations;
                         o.AllowBackgroundBackplaneOperations = defaultCachingOptions.Default.AllowBackgroundBackplaneOperations;
 
-                        o.JitterMaxDuration = TimeSpan.FromSeconds(defaultCachingOptions.Default.JitterMaxDuration);
+                        o.JitterMaxDuration = defaultCachingOptions.Default.JitterMaxDuration;
                         o.EagerRefreshThreshold = defaultCachingOptions.Default.EagerRefreshThreshold;
                         o.SkipDistributedLocker = !defaultCachingOptions.Default.DistributedLocking;
                     }

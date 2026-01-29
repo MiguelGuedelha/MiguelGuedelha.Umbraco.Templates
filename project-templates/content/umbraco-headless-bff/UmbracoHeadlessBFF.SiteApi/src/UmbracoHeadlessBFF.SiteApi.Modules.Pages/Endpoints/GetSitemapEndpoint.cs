@@ -78,7 +78,7 @@ internal static class GetSitemapEndpoint
 
                 if (response.StatusCode == HttpStatusCode.NotFound)
                 {
-                    ctx.Options.SetAllDurations(TimeSpan.FromSeconds(siteApiCachingOptions.Value.Default.NullDuration));
+                    ctx.Options.SetAllDurations(siteApiCachingOptions.Value.Default.NullDuration);
                 }
 
                 return response.Content;

@@ -10,22 +10,22 @@ public record DefaultCachingOptions
 
     public sealed record DefaultRegion
     {
-        public int Duration { get; init; }
-        public int DurationDistributed { get; init; }
-        public int NullDuration { get; init; }
-        public int DistributedCacheCircuitBreakerDuration { get; init; }
+        public TimeSpan Duration { get; init; }
+        public TimeSpan DurationDistributed { get; init; }
+        public TimeSpan NullDuration { get; init; }
+        public TimeSpan DistributedCacheCircuitBreakerDuration { get; init; }
         public bool FailSafeIsEnabled { get; init; }
-        public int FailSafeMaxDuration { get; init; }
-        public int DistributedCacheFailSafeMaxDuration { get; set; }
+        public TimeSpan FailSafeMaxDuration { get; init; }
+        public TimeSpan DistributedCacheFailSafeMaxDuration { get; set; }
         public bool DistributedLocking { get; set; }
-        public int FailSafeThrottleDuration { get; init; }
-        public int FactorySoftTimeoutMs { get; init; }
-        public int FactoryHardTimeout { get; init; }
-        public int DistributedCacheSoftTimeoutMs { get; init; }
-        public int DistributedCacheHardTimeout { get; init; }
+        public TimeSpan FailSafeThrottleDuration { get; init; }
+        public TimeSpan FactorySoftTimeout { get; init; }
+        public TimeSpan FactoryHardTimeout { get; init; }
+        public TimeSpan DistributedCacheSoftTimeout { get; init; }
+        public TimeSpan DistributedCacheHardTimeout { get; init; }
         public bool AllowBackgroundDistributedCacheOperations { get; init; }
         public bool AllowBackgroundBackplaneOperations { get; init; }
-        public int JitterMaxDuration { get; init; }
+        public TimeSpan JitterMaxDuration { get; init; }
         public float EagerRefreshThreshold { get; init; }
     }
 }

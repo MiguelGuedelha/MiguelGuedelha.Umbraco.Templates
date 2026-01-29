@@ -46,7 +46,7 @@ public sealed class LinkService
                     return response.Content;
                 }
 
-                ctx.Options.SetAllDurations(TimeSpan.FromSeconds(_siteApiCachingOptions.Default.NullDuration));
+                ctx.Options.SetAllDurations(_siteApiCachingOptions.Default.NullDuration);
 
                 return null;
             },

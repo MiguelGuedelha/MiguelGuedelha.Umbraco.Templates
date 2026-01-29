@@ -68,7 +68,7 @@ internal sealed class PagesService : IPagesService
 
                 if (response.Content is null)
                 {
-                    ctx.Options.SetAllDurations(TimeSpan.FromSeconds(_siteApiCachingOptions.Default.NullDuration));
+                    ctx.Options.SetAllDurations(_siteApiCachingOptions.Default.NullDuration);
                 }
 
                 return response.Content;
@@ -130,7 +130,7 @@ internal sealed class PagesService : IPagesService
 
                 if (redirectResponse.Content is null)
                 {
-                    ctx.Options.SetAllDurations(TimeSpan.FromSeconds(_siteApiCachingOptions.Default.NullDuration));
+                    ctx.Options.SetAllDurations(_siteApiCachingOptions.Default.NullDuration);
                 }
 
                 return redirectResponse.Content;
@@ -150,7 +150,7 @@ internal sealed class PagesService : IPagesService
 
                 if (response.Content is null)
                 {
-                    ctx.Options.SetAllDurations(TimeSpan.FromSeconds(_siteApiCachingOptions.Default.NullDuration));
+                    ctx.Options.SetAllDurations(_siteApiCachingOptions.Default.NullDuration);
                 }
 
                 if (response.Content is { } page)
@@ -226,7 +226,7 @@ internal sealed class PagesService : IPagesService
 
                 if (response.Content is null)
                 {
-                    ctx.Options.SetAllDurations(TimeSpan.FromSeconds(_siteApiCachingOptions.Default.NullDuration));
+                    ctx.Options.SetAllDurations(_siteApiCachingOptions.Default.NullDuration);
                 }
 
                 return response.Content;
