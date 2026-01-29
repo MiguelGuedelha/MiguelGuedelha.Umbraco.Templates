@@ -71,9 +71,7 @@ var azureStorage = builder
 
 var cmsUmbracoBlobContainerNameParameter = builder.AddParameter("CmsUmbracoBlobContainer");
 var blobContainerValue = await cmsUmbracoBlobContainerNameParameter.Resource.GetValueAsync(CancellationToken.None);
-
 var umbracoMediaBlob = azureStorage.AddBlobContainer(blobContainerValue!);
-
 cmsUmbracoBlobContainerNameParameter.WithParentRelationship(umbracoMediaBlob);
 
 var cms = builder.AddProject<Projects.Cms>(Services.Cms)

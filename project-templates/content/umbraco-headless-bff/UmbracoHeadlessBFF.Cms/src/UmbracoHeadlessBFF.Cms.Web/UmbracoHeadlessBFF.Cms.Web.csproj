@@ -3,8 +3,15 @@
     <PackageReference Include="Microsoft.Extensions.Azure" />
     <PackageReference Include="Mole.StorageProviders.AzureBlob.TemporaryFile" />
     <PackageReference Include="Scalar.AspNetCore" />
+    <PackageReference Include="Serilog.AspNetCore" />
     <PackageReference Include="Serilog.Enrichers.ClientInfo" />
+    <PackageReference Include="Serilog.Enrichers.Process" />
+    <PackageReference Include="Serilog.Enrichers.Thread" />
     <PackageReference Include="Serilog.Exceptions" />
+    <PackageReference Include="Serilog.Settings.Configuration" />
+    <PackageReference Include="Serilog.Sinks.Async" />
+    <PackageReference Include="Serilog.Sinks.Console" />
+    <PackageReference Include="Serilog.Sinks.OpenTelemetry" />
     <PackageReference Include="Umbraco.Cms" />
     <PackageReference Include="Umbraco.Community.DataProtection" />
     <PackageReference Include="Umbraco.Community.DeliveryApiExtensions" />

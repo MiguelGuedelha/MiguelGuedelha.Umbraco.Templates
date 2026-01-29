@@ -6,7 +6,6 @@
       <PackageReference Include="Asp.Versioning.Mvc" />
       <PackageReference Include="IntelliTect.AspNetCore.SignalR.SqlServer" />
       <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
-      <PackageReference Include="Serilog.AspNetCore" />
       <PackageReference Include="Umbraco.Cms.Core" />
       <PackageReference Include="Umbraco.Cms.Infrastructure" />
       <PackageReference Include="Umbraco.Cms.Web.Common" />
