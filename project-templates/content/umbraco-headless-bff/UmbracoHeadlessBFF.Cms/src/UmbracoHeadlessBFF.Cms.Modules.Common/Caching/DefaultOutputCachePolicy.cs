@@ -26,8 +26,6 @@ public class DefaultOutputCachePolicy : IOutputCachePolicy
 
         context.CacheVaryByRules.QueryKeys = "*";
 
-        // context.ResponseExpirationTimeSpan = s_duration;
-
         return ValueTask.CompletedTask;
     }
 
@@ -61,8 +59,7 @@ public class DefaultOutputCachePolicy : IOutputCachePolicy
         var request = context.HttpContext.Request;
 
         if (!HttpMethods.IsGet(request.Method) &&
-            !HttpMethods.IsHead(request.Method) &&
-            !HttpMethods.IsPost(request.Method))
+            !HttpMethods.IsHead(request.Method))
         {
             return false;
         }
