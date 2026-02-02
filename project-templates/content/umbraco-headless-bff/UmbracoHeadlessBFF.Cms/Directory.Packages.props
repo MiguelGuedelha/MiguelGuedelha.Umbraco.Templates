@@ -6,7 +6,7 @@
     <PackageVersion Include="Microsoft.Extensions.Azure" Version="1.13.1" />
     <PackageVersion Include="Microsoft.ICU.ICU4C.Runtime" Version="72.1.0.3" />
     <PackageVersion Include="Mole.StorageProviders.AzureBlob.TemporaryFile" Version="17.1.0" />
-    <PackageVersion Include="Scalar.AspNetCore" Version="2.12.18" />
+    <PackageVersion Include="Scalar.AspNetCore" Version="2.12.25" />
     <PackageVersion Include="Serilog.AspNetCore" Version="10.0.0" />
     <PackageVersion Include="Serilog.Enrichers.Process" Version="3.0.0" />
     <PackageVersion Include="Serilog.Enrichers.Thread" Version="4.0.0" />
@@ -22,7 +22,7 @@
     <PackageVersion Include="Umbraco.Cms.Infrastructure" Version="17.1.0" />
     <PackageVersion Include="Umbraco.Cms.Web.Common" Version="17.1.0" />
     <PackageVersion Include="Umbraco.Cms.Web.Website" Version="17.1.0" />
-    <PackageVersion Include="Umbraco.Community.Contentment" Version="6.1.0" />
+    <PackageVersion Include="Umbraco.Community.Contentment" Version="6.1.1" />
     <PackageVersion Include="Umbraco.Community.DataProtection" Version="17.0.1" />
     <PackageVersion Include="Umbraco.Community.DeliveryApiExtensions" Version="17.0.0" />
     <PackageVersion Include="Umbraco.StorageProviders.AzureBlob" Version="17.0.0" />
