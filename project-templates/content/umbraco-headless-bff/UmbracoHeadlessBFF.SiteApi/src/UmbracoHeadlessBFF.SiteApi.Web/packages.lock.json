@@ -411,6 +411,23 @@
           "OpenTelemetry.Api": "[1.15.0, 2.0.0)"
         }
       },
+      "OpenTelemetry.Instrumentation.SqlClient": {
+        "type": "Transitive",
+        "resolved": "1.15.0",
+        "contentHash": "J0lI7lCngS4TJD4T7KNsAerOIjJHNV0T2MK0iuS2tK8wF7iqL1dp4MKW05FiyfvrIXkwsvFc1okKchxS8B0+SQ==",
+        "dependencies": {
+          "OpenTelemetry.Api.ProviderBuilderExtensions": "[1.15.0, 2.0.0)"
+        }
+      },
+      "OpenTelemetry.Instrumentation.StackExchangeRedis": {
+        "type": "Transitive",
+        "resolved": "1.15.0-beta.1",
+        "contentHash": "Igg/3MlBZZ9lZCTzMcvoFKav263+zOcKx9s4LVIdq96YmBHCuPmDiyygAIPdeIVzwN08VwD3RG1nXHDuRF1Ssg==",
+        "dependencies": {
+          "OpenTelemetry.Api.ProviderBuilderExtensions": "[1.15.0, 2.0.0)",
+          "StackExchange.Redis": "2.6.122"
+        }
+      },
       "Pipelines.Sockets.Unofficial": {
         "type": "Transitive",
         "resolved": "2.2.8",
@@ -592,7 +609,6 @@
           "Aspire.StackExchange.Redis.DistributedCaching": "[13.1.0, )",
           "HtmlAgilityPack": "[1.12.4, )",
           "Microsoft.AspNetCore.HeaderPropagation": "[10.0.2, )",
-          "OpenTelemetry.Extensions.Hosting": "[1.15.0, )",
           "Refit.HttpClientFactory": "[9.0.2, )",
           "Swashbuckle.AspNetCore.SwaggerGen": "[10.1.1, )",
           "ZiggyCreatures.FusionCache": "[2.5.0, )",
@@ -612,6 +628,8 @@
           "OpenTelemetry.Instrumentation.AspNetCore": "[1.15.0, )",
           "OpenTelemetry.Instrumentation.Http": "[1.15.0, )",
           "OpenTelemetry.Instrumentation.Runtime": "[1.15.0, )",
+          "OpenTelemetry.Instrumentation.SqlClient": "[1.15.0, )",
+          "OpenTelemetry.Instrumentation.StackExchangeRedis": "[1.15.0-beta.1, )",
           "UmbracoHeadlessBFF.SharedModules.Common": "[1.0.0, )"
         }
       },
