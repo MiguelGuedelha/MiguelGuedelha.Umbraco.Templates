@@ -42,12 +42,12 @@
       },
       "Refit.HttpClientFactory": {
         "type": "Direct",
-        "requested": "[9.0.2, )",
-        "resolved": "9.0.2",
-        "contentHash": "lv9vBbPaOZ6PARmWLkB3v+wBqoBDiI5ROS5KTbJEAAXMVaPG5V+AdjNmU+8NFkztZzJRqujREqmY69w7afRhJA==",
+        "requested": "[10.0.1, )",
+        "resolved": "10.0.1",
+        "contentHash": "l8+mhfcBm0lSuNF9g1VTEwEHYQKtdqouOybpQkuxSWafSswRmit9COjmw6vd2Odj5k/qWjzzo8EbjYbyoV2dmQ==",
         "dependencies": {
           "Microsoft.Extensions.Http": "9.0.3",
-          "Refit": "9.0.2"
+          "Refit": "10.0.1"
         }
       },
       "Swashbuckle.AspNetCore.SwaggerGen": {
@@ -429,9 +429,9 @@
       },
       "Refit": {
         "type": "CentralTransitive",
-        "requested": "[9.0.2, )",
-        "resolved": "9.0.2",
-        "contentHash": "zLAfOh1iYE1bXFdnPjX5V6Nq8d4vBwxXaCovNNcAt9Fz3mfxAqHS3fckbBX4wetVgN1A6tIOzrDtPTN2c4FNrQ=="
+        "requested": "[10.0.1, )",
+        "resolved": "10.0.1",
+        "contentHash": "AprsDMXFRU2k+sXZYfiFLYueP7ovEvoGzC2ylAV9i6xh6rcGJOgLiZdugxnEpIrH6WNbiR8OnOrAr06/pZMQaQ=="
       }
     }
   }
