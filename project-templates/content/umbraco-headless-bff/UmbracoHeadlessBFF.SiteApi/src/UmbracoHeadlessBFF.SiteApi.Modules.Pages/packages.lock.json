@@ -385,18 +385,18 @@
       },
       "Swashbuckle.AspNetCore.Swagger": {
         "type": "Transitive",
-        "resolved": "10.1.1",
-        "contentHash": "uboevzqi/byrbQr/lpPYQQC8aeHs7YqJCbpYs/b/nWnF++6Lc33BqLkjaHnACYTVylio1zMqUuND3fg8vv0+MA==",
+        "resolved": "10.1.2",
+        "contentHash": "CvIeWbEJ+pogj601pptQYzz3poZhS8/mk/vFozRQ74JckT3WWLGX1mFjNwNVdJOERf4Lk/clbFqfRG4WEvDGcw==",
         "dependencies": {
           "Microsoft.OpenApi": "2.4.1"
         }
       },
       "Swashbuckle.AspNetCore.SwaggerGen": {
         "type": "Transitive",
-        "resolved": "10.1.1",
-        "contentHash": "mIy+YMXn3e3uwgHJMAFC7WVq5U4oQag/nrO/TSAGdjbiMn/JPfBMNV+F05X9yoJee/N+AJi7Pc8zy+jr56GsZw==",
+        "resolved": "10.1.2",
+        "contentHash": "/gcOooF1cfmdvYU6wFiPB9On5CMUp2P/jrt2EFEoSG0p0xSALBdWoWy3eNHVmzXUlVHaGAg5PHFC6e8C+tVpWw==",
         "dependencies": {
-          "Swashbuckle.AspNetCore.Swagger": "10.1.1"
+          "Swashbuckle.AspNetCore.Swagger": "10.1.2"
         }
       },
       "System.IO.Hashing": {
@@ -464,7 +464,7 @@
           "HtmlAgilityPack": "[1.12.4, )",
           "Microsoft.AspNetCore.HeaderPropagation": "[10.0.2, )",
           "Refit.HttpClientFactory": "[9.0.2, )",
-          "Swashbuckle.AspNetCore.SwaggerGen": "[10.1.1, )",
+          "Swashbuckle.AspNetCore.SwaggerGen": "[10.1.2, )",
           "ZiggyCreatures.FusionCache": "[2.5.0, )",
           "ZiggyCreatures.FusionCache.Backplane.StackExchangeRedis": "[2.5.0, )",
           "ZiggyCreatures.FusionCache.Locking.Distributed.Redis": "[2.5.0, )",
