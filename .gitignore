@@ -495,3 +495,7 @@ pnpm-lock.yaml
 
 # Docker bind mounts
 local-data/
+
+#app setting schemas
+appsettings*.schema.json
+umbraco-package-schema.json
