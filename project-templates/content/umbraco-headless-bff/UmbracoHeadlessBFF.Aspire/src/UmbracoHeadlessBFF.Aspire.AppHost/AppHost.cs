@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Configuration;
+using UmbracoHeadlessBFF.Aspire.AppHost;
 using UmbracoHeadlessBFF.SharedModules.Common.Caching;
 using UmbracoHeadlessBFF.SharedModules.Common.Environment;
 using UmbracoHeadlessBFF.SharedModules.Common.ServiceDiscovery;
@@ -141,7 +142,7 @@ var siteApi = builder.AddProject<Projects.SiteApi>(Services.SiteApi)
     .WithExternalHttpEndpoints()
     .WithReference(cache)
     .WithReference(cms)
-    .WithEnvironment("services__Cms__Parameters__DeliveryApiKey", cmsDeliveryApiKey)
+    .WithServiceParameter(cms, "DeliveryApiKey", cmsDeliveryApiKey)
     .WaitFor(cache)
     .WaitFor(cms);
 

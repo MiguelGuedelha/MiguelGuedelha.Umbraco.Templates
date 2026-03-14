@@ -3,7 +3,6 @@ namespace UmbracoHeadlessBFF.SharedModules.Cms.Options;
 public sealed record CmsServiceOptions
 {
     public const string SectionName = "services:Cms";
-    public required string[] Https { get; init; }
     public required CmsServiceParameters Parameters { get; init; }
 }
 
