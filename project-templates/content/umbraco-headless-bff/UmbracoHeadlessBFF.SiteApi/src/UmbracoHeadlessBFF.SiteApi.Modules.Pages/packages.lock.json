@@ -385,18 +385,18 @@
       },
       "Swashbuckle.AspNetCore.Swagger": {
         "type": "Transitive",
-        "resolved": "10.1.4",
-        "contentHash": "4ac45rVXsgustOXx6abChvIXtWjc1gUgwEpExz8pkQTTXjVTuRtfyMCN0srgxwpIAw/UoH/LYcbgqrjRcYwhfg==",
+        "resolved": "10.1.5",
+        "contentHash": "s4Mct6+Ob0LK9vYVaZcYi/RFFCOEJNjf6nJ5ZPoxtpdFSlzR6i9AHI7Vl44obX8cynRxJW7prA1IUabkiXolFg==",
         "dependencies": {
           "Microsoft.OpenApi": "2.4.1"
         }
       },
       "Swashbuckle.AspNetCore.SwaggerGen": {
         "type": "Transitive",
-        "resolved": "10.1.4",
-        "contentHash": "gbh8gJ97lMw0ScCdbEhAzwlHSWKiTzYtHfS6/e7u4e4c0ms6mOccLFgRsWF0ekgpDh+AlA0yWc5X5ec+6cxCXQ==",
+        "resolved": "10.1.5",
+        "contentHash": "ysQIRgqnx4Vb/9+r3xnEAiaxYmiBHO8jTg7ACaCh+R3Sn+ZKCWKD6nyu0ph3okP91wFSh/6LgccjeLUaQHV+ZA==",
         "dependencies": {
-          "Swashbuckle.AspNetCore.Swagger": "10.1.4"
+          "Swashbuckle.AspNetCore.Swagger": "10.1.5"
         }
       },
       "System.IO.Hashing": {
@@ -464,7 +464,7 @@
           "HtmlAgilityPack": "[1.12.4, )",
           "Microsoft.AspNetCore.HeaderPropagation": "[10.0.5, )",
           "Refit.HttpClientFactory": "[10.0.1, )",
-          "Swashbuckle.AspNetCore.SwaggerGen": "[10.1.4, )",
+          "Swashbuckle.AspNetCore.SwaggerGen": "[10.1.5, )",
           "ZiggyCreatures.FusionCache": "[2.5.0, )",
           "ZiggyCreatures.FusionCache.Backplane.StackExchangeRedis": "[2.5.0, )",
           "ZiggyCreatures.FusionCache.Locking.Distributed.Redis": "[2.5.0, )",
