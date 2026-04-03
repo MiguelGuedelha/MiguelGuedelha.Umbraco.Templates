@@ -614,7 +614,7 @@
           "OpenTelemetry.Extensions.Hosting": "[1.15.1, )",
           "Refit": "[10.1.6, )",
           "Refit.HttpClientFactory": "[10.1.6, )",
-          "Swashbuckle.AspNetCore.SwaggerGen": "[10.1.5, )",
+          "Swashbuckle.AspNetCore.SwaggerGen": "[10.1.7, )",
           "ZiggyCreatures.FusionCache": "[2.6.0, )",
           "ZiggyCreatures.FusionCache.Backplane.StackExchangeRedis": "[2.6.0, )",
           "ZiggyCreatures.FusionCache.Locking.Distributed.Redis": "[2.6.0, )",
