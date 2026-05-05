@@ -4,10 +4,10 @@
     "net10.0": {
       "Asp.Versioning.Abstractions": {
         "type": "Transitive",
-        "resolved": "8.1.0",
-        "contentHash": "mpeNZyMdvrHztJwR1sXIUQ+3iioEU97YMBnFA9WLbsPOYhGwDJnqJMmEd8ny7kcmS9OjTHoEuX/bSXXY3brIFA==",
+        "resolved": "10.0.0",
+        "contentHash": "cMRE5nvNMfBgfkb0XFWst/7UtyXCjoAXnV0L4Scx4P9fcf0idgrj1Z0c+3ylsy01K4cOib7dKhCBfpg5z3r0Kg==",
         "dependencies": {
-          "Microsoft.Extensions.Primitives": "8.0.0"
+          "Microsoft.Extensions.Primitives": "10.0.0"
         }
       },
       "Aspire.StackExchange.Redis": {
@@ -481,7 +481,7 @@
       "umbracoheadlessbff.siteapi.modules.common": {
         "type": "Project",
         "dependencies": {
-          "Asp.Versioning.Http": "[8.1.1, )",
+          "Asp.Versioning.Http": "[10.0.0, )",
           "UmbracoHeadlessBFF.SharedModules.Cms": "[1.0.0, )",
           "UmbracoHeadlessBFF.SharedModules.Common": "[1.0.0, )",
           "ZiggyCreatures.FusionCache.AspNetCore.OutputCaching": "[2.6.0, )",
@@ -490,11 +490,11 @@
       },
       "Asp.Versioning.Http": {
         "type": "CentralTransitive",
-        "requested": "[8.1.1, )",
-        "resolved": "8.1.1",
-        "contentHash": "1D/Mzq1MSUSQe1eCY6GeEsu+tIlpzoWZxZkhlcw/uvtVoTrwO+BMl0fSj/XX8oZN1DutWTZqHDHgyDRq+IeSdQ==",
+        "requested": "[10.0.0, )",
+        "resolved": "10.0.0",
+        "contentHash": "xmNm9FM2d20NKy7i1osEQysf7pJ4iJjWnM6e8CoeIhUREqG8nugsfC82pGpmzlatjAJL5T52ieSpyW+GFdSsSQ==",
         "dependencies": {
-          "Asp.Versioning.Abstractions": "8.1.0"
+          "Asp.Versioning.Abstractions": "10.0.0"
         }
       },
       "ZiggyCreatures.FusionCache.AspNetCore.OutputCaching": {

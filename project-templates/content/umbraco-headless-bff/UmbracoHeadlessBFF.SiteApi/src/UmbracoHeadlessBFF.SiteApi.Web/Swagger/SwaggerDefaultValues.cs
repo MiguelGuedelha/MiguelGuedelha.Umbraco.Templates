@@ -18,7 +18,7 @@ internal sealed class SwaggerDefaultValues : IOperationFilter
     {
         var apiDescription = context.ApiDescription;
 
-        operation.Deprecated |= apiDescription.IsDeprecated();
+        operation.Deprecated |= apiDescription.IsDeprecated;
 
         // REF: https://github.com/domaindrivendev/Swashbuckle.AspNetCore/issues/1752#issue-663991077
         foreach (var responseType in context.ApiDescription.SupportedResponseTypes)
