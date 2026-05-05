@@ -2156,10 +2156,10 @@
           "Asp.Versioning.Mvc": "[8.1.1, )",
           "IntelliTect.AspNetCore.SignalR.SqlServer": "[1.4.0, )",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "[10.0.7, )",
-          "Umbraco.Cms.Core": "[17.3.4, )",
-          "Umbraco.Cms.Infrastructure": "[17.3.4, )",
-          "Umbraco.Cms.Web.Common": "[17.3.4, )",
-          "Umbraco.Cms.Web.Website": "[17.3.4, )",
+          "Umbraco.Cms.Core": "[17.3.5, )",
+          "Umbraco.Cms.Infrastructure": "[17.3.5, )",
+          "Umbraco.Cms.Web.Common": "[17.3.5, )",
+          "Umbraco.Cms.Web.Website": "[17.3.5, )",
           "Umbraco.Community.Contentment": "[6.1.2, )",
           "UmbracoHeadlessBFF.SharedModules.Cms": "[1.0.0, )",
           "UmbracoHeadlessBFF.SharedModules.Common": "[1.0.0, )",
@@ -2244,7 +2244,7 @@
       },
       "Umbraco.Cms.Core": {
         "type": "CentralTransitive",
-        "requested": "[17.3.4, )",
+        "requested": "[17.3.5, )",
         "resolved": "17.3.5",
         "contentHash": "I0OywYMNWEdHy3rCLFOigAHyH11326JEmRbbJDgRSzKn95Qpv/X4w2av9Tsr5/Tbd10w5l8+EELFOvYBm2tmRQ==",
         "dependencies": {
@@ -2253,7 +2253,7 @@
       },
       "Umbraco.Cms.Infrastructure": {
         "type": "CentralTransitive",
-        "requested": "[17.3.4, )",
+        "requested": "[17.3.5, )",
         "resolved": "17.3.5",
         "contentHash": "rAUe2BGCWkJJGLl08B3+O55A340XlW8Ga8s2oI/n0GjJdIso4c4vvkOnOuWJSTca25GuV6diTmMtXOm+8szxig==",
         "dependencies": {
@@ -2284,7 +2284,7 @@
       },
       "Umbraco.Cms.Web.Common": {
         "type": "CentralTransitive",
-        "requested": "[17.3.4, )",
+        "requested": "[17.3.5, )",
         "resolved": "17.3.5",
         "contentHash": "URfwNHzt55SYq/Nsqo27crOFyUDMxaFaiF/EuH3W7xcR+xECJo/DnZxwEnZwBqf2pZPq26T0yOWABmh1wAcoPw==",
         "dependencies": {
@@ -2325,7 +2325,7 @@
       },
       "Umbraco.Cms.Web.Website": {
         "type": "CentralTransitive",
-        "requested": "[17.3.4, )",
+        "requested": "[17.3.5, )",
         "resolved": "17.3.5",
         "contentHash": "+chyRo1ZvFXTYiCLRV1963HSgzVfKTN6O7fmpu2q4zNaioYjQG76hn5TH8K57X5v0iDjKQkmvHbjJy+UDGyJfQ==",
         "dependencies": {
