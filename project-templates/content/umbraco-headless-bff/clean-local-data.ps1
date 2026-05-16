@@ -1,0 +1,1 @@
+Remove-Item -Recurse -Force ".\UmbracoHeadlessBFF.Aspire\src\UmbracoHeadlessBFF.Aspire.AppHost\local-data"

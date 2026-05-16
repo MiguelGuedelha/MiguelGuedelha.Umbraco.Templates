@@ -1,0 +1,5 @@
+{
+  "appHost": {
+    "path": "UmbracoHeadlessBFF.Aspire/src/UmbracoHeadlessBFF.Aspire.AppHost/UmbracoHeadlessBFF.Aspire.AppHost.csproj"
+  }
+}
