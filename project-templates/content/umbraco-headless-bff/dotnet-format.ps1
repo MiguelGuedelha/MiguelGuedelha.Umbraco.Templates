@@ -1,10 +1,10 @@
 # Define excluded paths
 $EXCLUDED_PATHS_ARRAY = @(
-    './UmbracoHeadlessBFF.Cms/src/UmbracoHeadlessBFF.Cms.Web/umbraco/'
-    './UmbracoHeadlessBFF.Cms/src/UmbracoHeadlessBFF.Cms.Web/Views/'
-    './UmbracoHeadlessBFF.Cms/src/UmbracoHeadlessBFF.Cms.Web/wwwroot/'
-    './UmbracoHeadlessBFF.Cms/src/UmbracoHeadlessBFF.Cms.Web/uSync/'
-    './UmbracoHeadlessBFF.Cms/src/UmbracoHeadlessBFF.Cms.Modules.Common/Umbraco/'
+    '.\UmbracoHeadlessBFF.Cms\src\UmbracoHeadlessBFF.Cms.Web\umbraco\'
+    '.\UmbracoHeadlessBFF.Cms\src\UmbracoHeadlessBFF.Cms.Web\Views\'
+    '.\UmbracoHeadlessBFF.Cms\src\UmbracoHeadlessBFF.Cms.Web\wwwroot\'
+    '.\UmbracoHeadlessBFF.Cms\src\UmbracoHeadlessBFF.Cms.Web\uSync\'
+    '.\UmbracoHeadlessBFF.Cms\src\UmbracoHeadlessBFF.Cms.Modules.Common\Umbraco\'
 )
 
 # Convert to proper arguments

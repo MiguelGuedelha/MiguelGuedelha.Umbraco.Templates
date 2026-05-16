@@ -17,7 +17,7 @@ var smtpPort = builder.AddParameter("SmtpPort");
 
 var smtpPortString = await smtpPort.Resource.GetValueAsync(CancellationToken.None);
 
-const string baseBindPath = "../../../local-data/v17/";
+const string baseBindPath = "local-data/v17/";
 
 var mailServer = builder
     .AddMailPit(Services.SmtpServer, 35000, int.Parse(smtpPortString!))
@@ -92,8 +92,9 @@ cms.WithReference(umbracoDb, connectionName: "umbracoDbDSN")
     .WithEnvironment("Umbraco__Storage__AzureBlob__Media__ContainerName", cmsUmbracoBlobContainerNameParameter)
     .WithEnvironment("Umbraco__Storage__AzureBlob__TemporaryFile__ConnectionString", azureBlobStorageResource)
     .WithEnvironment("Umbraco__Storage__AzureBlob__TemporaryFile__ContainerName", cmsUmbracoBlobContainerNameParameter)
-    .WithEnvironment("Umbraco__CMS__DeliveryApi__ApiKey", cmsDeliveryApiKey)
     .WithEnvironment("Umbraco__Storage__Cdn__Url", () => cms.Resource.GetEndpoint("https").Url)
+    .WithEnvironment("Umbraco__CMS__DeliveryApi__ApiKey", cmsDeliveryApiKey)
+    .WithEnvironment("Umbraco__CMS__WebRouting__UmbracoApplicationUrl", () => cms.Resource.GetEndpoint("https").Url)
     .WaitFor(mailServer)
     .WaitFor(umbracoDb)
     .WaitFor(cache)

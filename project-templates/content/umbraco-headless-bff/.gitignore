@@ -485,6 +485,3 @@ $RECYCLE.BIN/
 
 # Docker bind mounts
 local-data/
-
-# Aspire
-.aspire/
