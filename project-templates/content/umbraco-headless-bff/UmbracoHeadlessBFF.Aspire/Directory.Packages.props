@@ -1,6 +1,5 @@
 <Project>
   <ItemGroup>
-    <PackageVersion Include="Aspire.Hosting.AppHost" Version="13.3.3" />
     <PackageVersion Include="Aspire.Hosting.Azure.Storage" Version="13.3.3" />
     <PackageVersion Include="Aspire.Hosting.Redis" Version="13.3.3" />
     <PackageVersion Include="Aspire.Hosting.SqlServer" Version="13.3.3" />
