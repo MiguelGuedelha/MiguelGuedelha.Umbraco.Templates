@@ -423,10 +423,10 @@
       },
       "OpenTelemetry.Instrumentation.StackExchangeRedis": {
         "type": "Transitive",
-        "resolved": "1.15.0-beta.1",
-        "contentHash": "Igg/3MlBZZ9lZCTzMcvoFKav263+zOcKx9s4LVIdq96YmBHCuPmDiyygAIPdeIVzwN08VwD3RG1nXHDuRF1Ssg==",
+        "resolved": "1.15.1-beta.1",
+        "contentHash": "Fd/67wMh/eQ8HRpZ5BjB/y3r8roYyLT0KTqTHHI0ZN6/Pnb0rvNaxJjls0fuTuF8otVUThTk/4xC1MLNf6qS+A==",
         "dependencies": {
-          "OpenTelemetry.Api.ProviderBuilderExtensions": "[1.15.0, 2.0.0)",
+          "OpenTelemetry.Api.ProviderBuilderExtensions": "[1.15.3, 2.0.0)",
           "StackExchange.Redis": "2.6.122"
         }
       },
@@ -633,7 +633,7 @@
           "OpenTelemetry.Instrumentation.Http": "[1.15.1, )",
           "OpenTelemetry.Instrumentation.Runtime": "[1.15.1, )",
           "OpenTelemetry.Instrumentation.SqlClient": "[1.15.2, )",
-          "OpenTelemetry.Instrumentation.StackExchangeRedis": "[1.15.0-beta.1, )",
+          "OpenTelemetry.Instrumentation.StackExchangeRedis": "[1.15.1-beta.1, )",
           "UmbracoHeadlessBFF.SharedModules.Common": "[1.0.0, )"
         }
       },
