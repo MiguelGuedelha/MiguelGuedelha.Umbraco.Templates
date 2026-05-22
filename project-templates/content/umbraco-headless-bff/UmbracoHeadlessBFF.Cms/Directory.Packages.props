@@ -14,15 +14,15 @@
     <PackageVersion Include="Serilog.Sinks.Async" Version="2.1.0" />
     <PackageVersion Include="Serilog.Sinks.Console" Version="6.1.1" />
     <PackageVersion Include="Serilog.Sinks.OpenTelemetry" Version="4.2.0" />
-    <PackageVersion Include="Umbraco.Cms" Version="17.4.0" />
+    <PackageVersion Include="Umbraco.Cms" Version="17.4.2" />
     <PackageVersion Include="Serilog.Enrichers.ClientInfo" Version="2.9.0" />
     <PackageVersion Include="Serilog.Exceptions" Version="8.4.0" />
     <PackageVersion Include="System.Text.Json" Version="9.0.10" />
-    <PackageVersion Include="Umbraco.Cms.Core" Version="17.4.0" />
-    <PackageVersion Include="Umbraco.Cms.Infrastructure" Version="17.4.0" />
-    <PackageVersion Include="Umbraco.Cms.Web.Common" Version="17.4.0" />
-    <PackageVersion Include="Umbraco.Cms.Web.Website" Version="17.4.0" />
-    <PackageVersion Include="Umbraco.Community.Contentment" Version="6.1.3" />
+    <PackageVersion Include="Umbraco.Cms.Core" Version="17.4.2" />
+    <PackageVersion Include="Umbraco.Cms.Infrastructure" Version="17.4.2" />
+    <PackageVersion Include="Umbraco.Cms.Web.Common" Version="17.4.2" />
+    <PackageVersion Include="Umbraco.Cms.Web.Website" Version="17.4.2" />
+    <PackageVersion Include="Umbraco.Community.Contentment" Version="6.1.4" />
     <PackageVersion Include="Umbraco.Community.DataProtection" Version="17.0.1" />
     <PackageVersion Include="Umbraco.Community.DeliveryApiExtensions" Version="17.0.0" />
     <PackageVersion Include="Umbraco.StorageProviders.AzureBlob" Version="17.0.0" />
