@@ -12,8 +12,8 @@
       },
       "Aspire.StackExchange.Redis": {
         "type": "Transitive",
-        "resolved": "13.3.3",
-        "contentHash": "0iTC3uUeCt5lm4k32NmXqsFO/Zu5U3WqSFpyhHmf4oWjyOQATdwpLowhQVlL0VIslop4znR4YLUGaLwAJf7zhQ==",
+        "resolved": "13.3.5",
+        "contentHash": "VdyKKxxSekfakcjKJjgUiuNaIFBV4gR5R0/HRLLgQWsss7jkShZ7oX+4E4X6qwjOfFykxNZKiApHJQtG/YNc1A==",
         "dependencies": {
           "AspNetCore.HealthChecks.Redis": "9.0.0",
           "Microsoft.Extensions.Configuration.Abstractions": "10.0.7",
@@ -33,11 +33,11 @@
       },
       "Aspire.StackExchange.Redis.DistributedCaching": {
         "type": "Transitive",
-        "resolved": "13.3.3",
-        "contentHash": "xkfV//U/AbcOEB7Tmt/jVeHJ+w3OYWUsyBxQiVHxmDBFvW2Qd7+cjvK9b982aiJsNO+0rFYjhxPGRxGcitLbPQ==",
+        "resolved": "13.3.5",
+        "contentHash": "rbe6PUUgbrH1fDZBqE7q/MuIYan3LMYD6/FBNqEdVYgEIrrH6FnYGGD6ksV9Ly5lo03fHfeq10L7XzsvpMLLZw==",
         "dependencies": {
           "AspNetCore.HealthChecks.Redis": "9.0.0",
-          "Aspire.StackExchange.Redis": "13.3.3",
+          "Aspire.StackExchange.Redis": "13.3.5",
           "Microsoft.Extensions.Caching.StackExchangeRedis": "10.0.7",
           "Microsoft.Extensions.Configuration.Abstractions": "10.0.7",
           "Microsoft.Extensions.Configuration.Binder": "10.0.7",
@@ -464,7 +464,7 @@
       "umbracoheadlessbff.sharedmodules.common": {
         "type": "Project",
         "dependencies": {
-          "Aspire.StackExchange.Redis.DistributedCaching": "[13.3.3, )",
+          "Aspire.StackExchange.Redis.DistributedCaching": "[13.3.5, )",
           "HtmlAgilityPack": "[1.12.4, )",
           "Microsoft.AspNetCore.HeaderPropagation": "[10.0.8, )",
           "OpenTelemetry.Extensions.Hosting": "[1.15.3, )",
