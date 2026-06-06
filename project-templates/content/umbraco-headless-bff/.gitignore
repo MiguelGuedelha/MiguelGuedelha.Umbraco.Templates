@@ -408,7 +408,6 @@ FodyWeavers.xsd
 ## Visual studio for Mac
 ##
 
-
 # globs
 Makefile.in
 *.userprefs
@@ -434,7 +433,6 @@ test-results/
 
 # Icon must end with two \r
 Icon
-
 
 # Thumbnails
 ._*
@@ -485,3 +483,7 @@ $RECYCLE.BIN/
 
 # Docker bind mounts
 local-data/
+
+#if (false)
+packages.lock.json
+#endif

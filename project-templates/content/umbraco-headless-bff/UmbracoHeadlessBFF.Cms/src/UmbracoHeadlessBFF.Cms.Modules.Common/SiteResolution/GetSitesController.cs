@@ -109,7 +109,6 @@ public sealed class GetSitesController : ControllerBase
                     continue;
                 }
 
-
                 if (await _publishedContentCache.GetByIdAsync(dictionaryKeys.FirstOrDefault(), preview) is not SiteDictionary dictionary)
                 {
                     continue;

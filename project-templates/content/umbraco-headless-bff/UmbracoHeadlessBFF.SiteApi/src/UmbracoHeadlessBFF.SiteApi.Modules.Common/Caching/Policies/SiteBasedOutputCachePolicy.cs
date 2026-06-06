@@ -34,7 +34,6 @@ public sealed class SiteBasedOutputCachePolicy : SiteApiOutputCachePolicyBase, I
         context.AllowCacheLookup = canCache;
         context.AllowCacheStorage = canCache;
 
-
         if (canCache)
         {
             context.CacheVaryByRules.VaryByValues["siteId"] = siteId!;

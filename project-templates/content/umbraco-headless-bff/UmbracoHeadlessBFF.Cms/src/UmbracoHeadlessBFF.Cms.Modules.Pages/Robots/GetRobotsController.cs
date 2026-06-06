@@ -33,7 +33,6 @@ public sealed class GetRobotsController : ControllerBase
         _variationContextAccessor = variationContextAccessor;
     }
 
-
     [HttpGet("robots")]
     public Results<Ok<RobotsData>, NotFound> GetRobotsTxt(Guid siteId, string culture, bool preview)
     {

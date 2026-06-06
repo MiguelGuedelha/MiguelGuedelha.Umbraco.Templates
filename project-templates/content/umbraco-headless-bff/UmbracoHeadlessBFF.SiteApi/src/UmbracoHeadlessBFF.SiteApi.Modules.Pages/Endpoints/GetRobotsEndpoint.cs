@@ -19,7 +19,6 @@ using ZiggyCreatures.Caching.Fusion;
 using NotFound = Microsoft.AspNetCore.Http.HttpResults.NotFound;
 
 
-
 namespace UmbracoHeadlessBFF.SiteApi.Modules.Pages.Endpoints;
 
 internal static class GetRobotsEndpoint

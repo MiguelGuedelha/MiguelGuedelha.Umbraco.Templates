@@ -57,7 +57,6 @@ public static class PagesConfiguration
 
             services.AddTransient<ILayoutMapper, FallbackLayoutMapper>();
 
-
             // Page related mappers
             services
                 .AddTransient<BasePageMapper>()

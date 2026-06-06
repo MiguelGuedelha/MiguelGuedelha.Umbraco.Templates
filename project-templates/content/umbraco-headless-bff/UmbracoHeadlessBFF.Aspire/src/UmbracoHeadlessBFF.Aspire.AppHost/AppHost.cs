@@ -69,7 +69,6 @@ var azureStorage = builder
     .WithUrlForEndpoint("queue", x => { x.DisplayLocation = UrlDisplayLocation.DetailsOnly; })
     .WithUrlForEndpoint("table", x => { x.DisplayLocation = UrlDisplayLocation.DetailsOnly; });
 
-
 var cmsUmbracoBlobContainerNameParameter = builder.AddParameter("CmsUmbracoBlobContainer");
 var blobContainerValue = await cmsUmbracoBlobContainerNameParameter.Resource.GetValueAsync(CancellationToken.None);
 var umbracoMediaBlob = azureStorage.AddBlobContainer(blobContainerValue!);

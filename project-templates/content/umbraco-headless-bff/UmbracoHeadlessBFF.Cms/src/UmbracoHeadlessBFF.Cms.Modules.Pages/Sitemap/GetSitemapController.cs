@@ -82,7 +82,6 @@ public sealed class GetSitemapController : ControllerBase
                     .ToArray()
             });
 
-
         return TypedResults.Ok(new SitemapData
         {
             Items = sitemapPages.ToArray()

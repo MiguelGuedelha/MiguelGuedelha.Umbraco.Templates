@@ -93,7 +93,6 @@ public sealed class GetRedirectLinkController : ControllerBase
         // such as Skybrud here, as a fallback after umbraco ones,
         // or replace the above with said custom redirects
 
-
         // Handles all the pages which have the Redirect Settings composition and are not meant to be displayed on the site
         var itemKey = _documentUrlService.GetDocumentKeyByRoute(itemRoute, culture, null, false);
 
@@ -103,7 +102,6 @@ public sealed class GetRedirectLinkController : ControllerBase
         }
 
         var item = await _publishedContentCache.GetByIdAsync(itemKey.Value);
-
 
         if (item is not IRedirectSettings redirectSettings)
         {
