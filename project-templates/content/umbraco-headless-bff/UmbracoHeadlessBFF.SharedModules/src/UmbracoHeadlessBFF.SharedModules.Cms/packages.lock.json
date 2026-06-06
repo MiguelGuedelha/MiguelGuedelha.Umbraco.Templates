@@ -10,29 +10,29 @@
       },
       "Refit": {
         "type": "Direct",
-        "requested": "[10.1.6, )",
-        "resolved": "10.1.6",
-        "contentHash": "j82mHFcXJpiJiaLqQgiikmLAu+oYKcIM8ZafipX2s2b2soOS0OGN+Oc+BXkhsG8x6j2M1J23Eac3068yOKLPFA=="
+        "requested": "[10.2.0, )",
+        "resolved": "10.2.0",
+        "contentHash": "zwPmA4p0ZDCeg0/z0hRUXj4aS0y0mlJ8TSri4pz4e0MWmRXAtjSVeQdnkyRah2f6+I0JlP14UqMQW4N8u/hVeg=="
       },
       "Refit.HttpClientFactory": {
         "type": "Direct",
-        "requested": "[10.1.6, )",
-        "resolved": "10.1.6",
-        "contentHash": "brVgMXHX2pp6pMji7tJijygbMwxccIy2vSsPurPmOZ7jSChBjYpiT9bBbJkBDc0hhnNyzvLkkbx0uiHhJuTTEQ==",
+        "requested": "[10.2.0, )",
+        "resolved": "10.2.0",
+        "contentHash": "pDd73YQWLFxqwP01H4vpXqu6BJAPKJrci7+Nmlhx+Xg5asklGhmoAUVAeGeEKAqyOMQeN7wl5tCKcihus+Gzmw==",
         "dependencies": {
-          "Refit": "10.1.6"
+          "Refit": "10.2.0"
         }
       },
       "Aspire.StackExchange.Redis": {
         "type": "Transitive",
-        "resolved": "13.3.5",
-        "contentHash": "VdyKKxxSekfakcjKJjgUiuNaIFBV4gR5R0/HRLLgQWsss7jkShZ7oX+4E4X6qwjOfFykxNZKiApHJQtG/YNc1A==",
+        "resolved": "13.4.2",
+        "contentHash": "yjYre7VGrTfnmoO8Q6hIZ1XkOms1SGt+jXWpQffcHCNgVXi0CcxhTkHGpjVYBjeRyzr7tdXXkgcKPye1H2aDTw==",
         "dependencies": {
           "AspNetCore.HealthChecks.Redis": "9.0.0",
-          "Microsoft.Extensions.DependencyInjection.AutoActivation": "10.5.0",
+          "Microsoft.Extensions.DependencyInjection.AutoActivation": "10.6.0",
           "OpenTelemetry.Extensions.Hosting": "1.15.3",
-          "StackExchange.Redis": "2.11.0",
-          "System.IO.Hashing": "10.0.3"
+          "StackExchange.Redis": "2.13.1",
+          "System.IO.Hashing": "10.0.8"
         }
       },
       "AspNetCore.HealthChecks.Redis": {
@@ -64,21 +64,21 @@
       },
       "Microsoft.Extensions.Caching.StackExchangeRedis": {
         "type": "Transitive",
-        "resolved": "10.0.7",
-        "contentHash": "TvD0totA8qeyrZ2YeY/qRNgYBy4BvO6dG59ziJDLVnLH4s2jeLUFEFcgA3xzqPhCMMbuz9bJTRwHxkZ/7c87jQ==",
+        "resolved": "10.0.8",
+        "contentHash": "fle9ns3q2kk63vt/wHFtLw1U9kiEbM42vTk2Sar8VBjiGJFkXAgm0QEKFx15YMHkJIPRVdknWaovpvgGEgn10g==",
         "dependencies": {
           "StackExchange.Redis": "2.7.27"
         }
       },
       "Microsoft.Extensions.DependencyInjection.AutoActivation": {
         "type": "Transitive",
-        "resolved": "10.5.0",
-        "contentHash": "vby/PzPScy9pX3r3f5UuHutxSr4Q8SXqyIiH6+JEK7SVpTCL6f8R9mp04OUVsZLlsME2rBjA9PHXf9L9aG7wbg=="
+        "resolved": "10.6.0",
+        "contentHash": "FoX/prFoqjogPV1DleOnakFM9yzu8m4dK8Z0d9f8pPTf00PkEvd2Vulncijd/rykUX3aXERMMxsX6c/9QSAOaA=="
       },
       "Microsoft.OpenApi": {
         "type": "Transitive",
-        "resolved": "2.4.1",
-        "contentHash": "u7QhXCISMQuab3flasb1hoaiERmUqyWsW7tmQODyILoQ7mJV5IRGM+2KKZYo0QUfC13evEOcHAb6TPWgqEQtrw=="
+        "resolved": "2.7.5",
+        "contentHash": "0FA67RSnRM4tcBKqiqVu/HPdZ9+QOKbmeRjxRUGTCjPU4C0bmUhd97Dso7Yild5P7nOV6GxJ2xrK0Kv/O9xp0w=="
       },
       "OpenTelemetry": {
         "type": "Transitive",
@@ -103,41 +103,41 @@
       },
       "Pipelines.Sockets.Unofficial": {
         "type": "Transitive",
-        "resolved": "2.2.8",
-        "contentHash": "zG2FApP5zxSx6OcdJQLbZDk2AVlN2BNQD6MorwIfV6gVj0RRxWPEp2LXAxqDGZqeNV1Zp0BNPcNaey/GXmTdvQ=="
+        "resolved": "2.2.16",
+        "contentHash": "nonu9l0YrZH6krVYbskBjE7uG0VMAnvOQ9PU+RmzUsy+++vHkqzzCkHRoP877OiA3iRTxJyNDLfpcU8hrJ3/YQ=="
       },
       "StackExchange.Redis": {
         "type": "Transitive",
-        "resolved": "2.11.0",
-        "contentHash": "tCYDmkaCpEc48MZHh/FgQKavX/kqjpBAIyEFxeO9LTuHRV0flJndXcKpfbgUKahKuk/OI6TEXM6NwKu0gi6xjQ==",
+        "resolved": "2.13.1",
+        "contentHash": "jC5wkRe8K6HPoDENUws+fl2d7+GKz+ky8SWEDzYzPx6hHt2EwxWm01gmYPWLzlT49jfYYap0guB5bExtyX9aIQ==",
         "dependencies": {
-          "Pipelines.Sockets.Unofficial": "2.2.8",
+          "Pipelines.Sockets.Unofficial": "2.2.16",
           "System.IO.Hashing": "10.0.2"
         }
       },
       "Swashbuckle.AspNetCore.Swagger": {
         "type": "Transitive",
-        "resolved": "10.1.7",
-        "contentHash": "EjLibt/d/QuRv170GoihTbcPUpgzSFm2WKHhnGJFZQ03JYzfuitsM79azaAR8NBwRunU7yScSX6HRE5JUlrEMQ==",
+        "resolved": "10.2.1",
+        "contentHash": "ej4inPhiWCq+0utG8yaKhIhE8M3k3R/qRaGhpgDZB+O/s+o62/zRMO1Cn2CtQccsrqPE9PYnzCp6hQGYGpJOyQ==",
         "dependencies": {
-          "Microsoft.OpenApi": "2.4.1"
+          "Microsoft.OpenApi": "2.7.5"
         }
       },
       "System.IO.Hashing": {
         "type": "Transitive",
-        "resolved": "10.0.3",
-        "contentHash": "La6ICwsdTKhVX+LKN+pvFjQRR3LhLwq3uKdi2knjLzRyPYBSydF4cjXidYxIiTcDD6XVYdsBWQEI8ZxiZ/OdIg=="
+        "resolved": "10.0.8",
+        "contentHash": "+dJsbPJ3FyUbTZNplFj0RCKePFizmv6ewDV46JE9q/IVH4c3xTCftHfHelLsAKf0jryIPqgMb5GpS0x7TAY3mg=="
       },
       "umbracoheadlessbff.sharedmodules.common": {
         "type": "Project",
         "dependencies": {
-          "Aspire.StackExchange.Redis.DistributedCaching": "[13.3.5, )",
+          "Aspire.StackExchange.Redis.DistributedCaching": "[13.4.2, )",
           "HtmlAgilityPack": "[1.12.4, )",
           "Microsoft.AspNetCore.HeaderPropagation": "[10.0.8, )",
           "OpenTelemetry.Extensions.Hosting": "[1.15.3, )",
-          "Refit": "[10.1.6, )",
-          "Refit.HttpClientFactory": "[10.1.6, )",
-          "Swashbuckle.AspNetCore.SwaggerGen": "[10.1.7, )",
+          "Refit": "[10.2.0, )",
+          "Refit.HttpClientFactory": "[10.2.0, )",
+          "Swashbuckle.AspNetCore.SwaggerGen": "[10.2.1, )",
           "ZiggyCreatures.FusionCache": "[2.6.0, )",
           "ZiggyCreatures.FusionCache.Backplane.StackExchangeRedis": "[2.6.0, )",
           "ZiggyCreatures.FusionCache.Locking.Distributed.Redis": "[2.6.0, )",
@@ -147,17 +147,17 @@
       },
       "Aspire.StackExchange.Redis.DistributedCaching": {
         "type": "CentralTransitive",
-        "requested": "[13.3.5, )",
-        "resolved": "13.3.5",
-        "contentHash": "rbe6PUUgbrH1fDZBqE7q/MuIYan3LMYD6/FBNqEdVYgEIrrH6FnYGGD6ksV9Ly5lo03fHfeq10L7XzsvpMLLZw==",
+        "requested": "[13.4.2, )",
+        "resolved": "13.4.2",
+        "contentHash": "HSSVw4VFbqcV3/Gf8A+2cFqzd0Don9SShSM+i8eo//TClSiLGoNbe6PGy+9rOAQtIG0u2G5gbl0iQQVRDf2e7g==",
         "dependencies": {
           "AspNetCore.HealthChecks.Redis": "9.0.0",
-          "Aspire.StackExchange.Redis": "13.3.5",
-          "Microsoft.Extensions.Caching.StackExchangeRedis": "10.0.7",
-          "Microsoft.Extensions.DependencyInjection.AutoActivation": "10.5.0",
+          "Aspire.StackExchange.Redis": "13.4.2",
+          "Microsoft.Extensions.Caching.StackExchangeRedis": "10.0.8",
+          "Microsoft.Extensions.DependencyInjection.AutoActivation": "10.6.0",
           "OpenTelemetry.Extensions.Hosting": "1.15.3",
-          "StackExchange.Redis": "2.11.0",
-          "System.IO.Hashing": "10.0.3"
+          "StackExchange.Redis": "2.13.1",
+          "System.IO.Hashing": "10.0.8"
         }
       },
       "HtmlAgilityPack": {
@@ -177,11 +177,11 @@
       },
       "Swashbuckle.AspNetCore.SwaggerGen": {
         "type": "CentralTransitive",
-        "requested": "[10.1.7, )",
-        "resolved": "10.1.7",
-        "contentHash": "PuubO9BjvNn6U3D9kLpuWKY1JtziWw7SsGBq0age1E50uQjQ8Fzl8s0EwzrLfANqYJNgDnJi9l7N1QxcGVB2Zw==",
+        "requested": "[10.2.1, )",
+        "resolved": "10.2.1",
+        "contentHash": "JYX6i/y0xEtQWH/hZyfcage1/ldwww83ueD/gBc34uSnMwyvRLUsOpYcxlliFFxFbZMrY6t+R9ENqolE7zTEOg==",
         "dependencies": {
-          "Swashbuckle.AspNetCore.Swagger": "10.1.7"
+          "Swashbuckle.AspNetCore.Swagger": "10.2.1"
         }
       },
       "ZiggyCreatures.FusionCache": {
