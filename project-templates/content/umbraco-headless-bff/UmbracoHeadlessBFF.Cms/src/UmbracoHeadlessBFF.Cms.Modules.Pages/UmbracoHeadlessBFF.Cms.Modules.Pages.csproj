@@ -1,5 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
+    <PackageReference Include="Serilog.Settings.Configuration" VersionOverride="10.0.1" />
     <ProjectReference Include="..\UmbracoHeadlessBFF.Cms.Modules.Common\UmbracoHeadlessBFF.Cms.Modules.Common.csproj" />
   </ItemGroup>
 </Project>
