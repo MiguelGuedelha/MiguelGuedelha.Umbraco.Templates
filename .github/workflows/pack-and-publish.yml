@@ -7,6 +7,9 @@ on:
     tags:
       - "*"
 
+permissions:
+  contents: read
+
 env:
   VERSION: ${{ github.event_name != 'workflow_dispatch' && github.ref_name || '0.0.0-debug' }}
 
