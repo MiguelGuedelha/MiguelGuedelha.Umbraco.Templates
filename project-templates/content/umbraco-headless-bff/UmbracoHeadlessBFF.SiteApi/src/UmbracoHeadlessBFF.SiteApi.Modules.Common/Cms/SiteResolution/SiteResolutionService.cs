@@ -104,7 +104,7 @@ public sealed class SiteResolutionService
 
             return response is { IsSuccessful: true, Content: not null }
                 ? response.Content
-                : throw new SiteApiException((int)response.StatusCode, "Couldn't get sites", response.Error);
+                : throw new SiteApiException((int?)response.StatusCode, "Couldn't get sites", response.Error);
         }
     }
 }

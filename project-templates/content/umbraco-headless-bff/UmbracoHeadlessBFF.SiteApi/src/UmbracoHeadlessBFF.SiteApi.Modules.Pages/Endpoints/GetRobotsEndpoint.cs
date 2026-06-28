@@ -134,7 +134,7 @@ internal static class GetRobotsEndpoint
             var response = await robotsApi.GetRobots(factoryHome, factoryCulture, factoryPreview, cancellationToken);
 
             return response is { IsSuccessful: false, StatusCode: not HttpStatusCode.NotFound }
-                ? throw new SiteApiException((int)response.StatusCode, response.ReasonPhrase)
+                ? throw new SiteApiException((int?)response.StatusCode, response.ReasonPhrase)
                 : response;
         }
     }

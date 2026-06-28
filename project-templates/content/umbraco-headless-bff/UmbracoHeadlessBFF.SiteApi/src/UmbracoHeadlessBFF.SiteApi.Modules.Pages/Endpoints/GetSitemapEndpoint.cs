@@ -96,7 +96,7 @@ internal static class GetSitemapEndpoint
             var response = await sitemapsApi.GetSitemap(factoryHome, factoryCulture, factoryPreview, cancellationToken);
 
             return response is { IsSuccessful: false, StatusCode: not HttpStatusCode.NotFound }
-                ? throw new SiteApiException((int)response.StatusCode, response.ReasonPhrase)
+                ? throw new SiteApiException((int?)response.StatusCode, response.ReasonPhrase)
                 : response;
         }
     }

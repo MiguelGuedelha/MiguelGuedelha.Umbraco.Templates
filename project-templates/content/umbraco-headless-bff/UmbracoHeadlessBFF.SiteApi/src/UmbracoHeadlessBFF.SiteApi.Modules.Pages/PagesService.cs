@@ -90,7 +90,7 @@ internal sealed class PagesService : IPagesService
                 return response;
             }
 
-            throw new SiteApiException((int)response.StatusCode, response.ReasonPhrase);
+            throw new SiteApiException((int?)response.StatusCode, response.ReasonPhrase);
         }
     }
 
@@ -177,7 +177,7 @@ internal sealed class PagesService : IPagesService
                 return response;
             }
 
-            throw new SiteApiException((int)response.StatusCode, response.ReasonPhrase);
+            throw new SiteApiException((int?)response.StatusCode, response.ReasonPhrase);
         }
     }
 
@@ -254,7 +254,7 @@ internal sealed class PagesService : IPagesService
                 return response;
             }
 
-            throw new SiteApiException((int)response.StatusCode, response.ReasonPhrase);
+            throw new SiteApiException((int?)response.StatusCode, response.ReasonPhrase);
         }
     }
 }

@@ -11,9 +11,9 @@ public sealed class SiteApiException : Exception
         StatusCode = StatusCodes.Status500InternalServerError;
     }
 
-    public SiteApiException(int statusCode)
+    public SiteApiException(int? statusCode)
     {
-        StatusCode = statusCode;
+        StatusCode = statusCode ?? StatusCodes.Status500InternalServerError;
     }
 
     public SiteApiException(string? message) : base(message)
@@ -21,9 +21,9 @@ public sealed class SiteApiException : Exception
         StatusCode = StatusCodes.Status500InternalServerError;
     }
 
-    public SiteApiException(int statusCode, string? message) : base(message)
+    public SiteApiException(int? statusCode, string? message) : base(message)
     {
-        StatusCode = statusCode;
+        StatusCode = statusCode ?? StatusCodes.Status500InternalServerError;
     }
 
     public SiteApiException(string? message, Exception? inner) : base(message, inner)
@@ -31,8 +31,8 @@ public sealed class SiteApiException : Exception
         StatusCode = StatusCodes.Status500InternalServerError;
     }
 
-    public SiteApiException(int statusCode, string? message, Exception? inner) : base(message, inner)
+    public SiteApiException(int? statusCode, string? message, Exception? inner) : base(message, inner)
     {
-        StatusCode = statusCode;
+        StatusCode = statusCode ?? StatusCodes.Status500InternalServerError;
     }
 }

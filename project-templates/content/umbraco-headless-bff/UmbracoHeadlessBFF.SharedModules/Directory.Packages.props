@@ -11,9 +11,9 @@
     <PackageVersion Include="Microsoft.AspNetCore.HeaderPropagation" Version="10.0.9" />
     <PackageVersion Include="Aspire.StackExchange.Redis.DistributedCaching" Version="13.4.6" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.SqlClient" Version="1.16.0" />
-    <PackageVersion Include="OpenTelemetry.Instrumentation.StackExchangeRedis" Version="1.15.1-beta.2" />
-    <PackageVersion Include="Refit" Version="10.2.0" />
-    <PackageVersion Include="Refit.HttpClientFactory" Version="10.2.0" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.StackExchangeRedis" Version="1.16.0-beta.1" />
+    <PackageVersion Include="Refit" Version="12.0.0" />
+    <PackageVersion Include="Refit.HttpClientFactory" Version="12.0.0" />
     <PackageVersion Include="Swashbuckle.AspNetCore.SwaggerGen" Version="10.2.3" />
     <PackageVersion Include="ZiggyCreatures.FusionCache" Version="2.6.0" />
     <PackageVersion Include="ZiggyCreatures.FusionCache.Backplane.StackExchangeRedis" Version="2.6.0" />
