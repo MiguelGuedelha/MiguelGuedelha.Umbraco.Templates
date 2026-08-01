@@ -5,16 +5,11 @@ updates:
     schedule:
       interval: "weekly"
       day: "friday"
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-major"]
     groups:
-      # This group catches ONLY Aspire Major moves
       aspire-major-deps:
         patterns: ["Aspire*"]
         update-types: ["major"]
-      # This group catches everything else (including Aspire minor/patch)
-      dotnet-deps:
+      dotnet-minor-patch-deps:
         patterns: ["*"]
         update-types: ["minor", "patch"]
   
