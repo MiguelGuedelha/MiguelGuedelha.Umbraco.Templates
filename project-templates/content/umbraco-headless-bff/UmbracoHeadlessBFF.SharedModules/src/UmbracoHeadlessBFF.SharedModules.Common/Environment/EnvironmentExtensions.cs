@@ -14,7 +14,7 @@ public static class EnvironmentExtensions
 
         public bool IsUat() => environment.IsEnvironment("uat");
 
-        public bool IsStaging() => environment.IsEnvironment("stg") || environment.IsStaging();
+        public bool IsStage() => environment.IsEnvironment("stg") || environment.IsStaging();
 
         public bool IsProd() => environment.IsEnvironment("prod") || environment.IsProduction();
     }
