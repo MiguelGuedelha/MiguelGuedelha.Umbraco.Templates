@@ -5,6 +5,10 @@ updates:
     schedule:
       interval: "weekly"
       day: "friday"
+    # ignore prevents other major upgrades outside of Aspire
+    ignore:
+    - dependency-name: "*"
+      update-types: ["version-update:semver-major"]
     groups:
       aspire-major-deps:
         patterns: ["Aspire*"]
