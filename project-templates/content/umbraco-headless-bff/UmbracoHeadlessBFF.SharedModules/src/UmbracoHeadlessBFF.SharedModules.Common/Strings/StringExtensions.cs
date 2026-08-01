@@ -15,7 +15,7 @@ public static class StringExtensions
 
         public string SanitisePathSlashes()
         {
-            return value.Equals("/") ? value : $"/{value.Trim('/')}/";
+            return value.Equals("/") ? value : $"/{value.Trim(s_uriTrimChars)}/";
         }
     }
 }
