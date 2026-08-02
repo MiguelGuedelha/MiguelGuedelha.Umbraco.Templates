@@ -10,5 +10,6 @@ internal sealed class CachingComposer : IComposer
     {
         builder.AddNotificationAsyncHandler<ContentCacheRefresherNotification, CacheInvalidationNotificationsHandler>();
         builder.AddNotificationAsyncHandler<DomainCacheRefresherNotification, CacheInvalidationNotificationsHandler>();
+        builder.AddNotificationAsyncHandler<MediaCacheRefresherNotification, CacheInvalidationNotificationsHandler>();
     }
 }
