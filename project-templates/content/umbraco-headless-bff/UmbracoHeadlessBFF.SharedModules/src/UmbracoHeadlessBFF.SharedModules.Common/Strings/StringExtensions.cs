@@ -1,3 +1,5 @@
+using System.Net;
+
 namespace UmbracoHeadlessBFF.SharedModules.Common.Strings;
 
 public static class StringExtensions
@@ -13,8 +15,13 @@ public static class StringExtensions
                 : parts.Aggregate(value, (current, t) => $"{current.TrimEnd(s_uriTrimChars)}/{t.TrimStart(s_uriTrimChars)}");
         }
 
-        public string SanitisePathSlashes()
+        public string SanitisePath()
         {
+            if (value.Contains("%2F", StringComparison.OrdinalIgnoreCase))
+            {
+                value = WebUtility.UrlDecode(value);
+            }
+
             return value.Equals("/") ? value : $"/{value.Trim(s_uriTrimChars)}/";
         }
     }
