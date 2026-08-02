@@ -135,12 +135,12 @@ public sealed class GetSitesController : ControllerBase
                     DictionaryId = dictionary.Key,
                     HomepageId = homepage.Key,
                     CultureInfo = domainGroup.Key,
-                    BasePath = $"/{homePageSegment}/"
+                    BasePath = homePageSegment.SanitisePath()
                 };
 
                 var siteDomains = domainGroup
-                    .Select(domain => new Uri(domain.DomainName.StartsWith("http") ? domain.DomainName : $"https://{domain.DomainName}"))
-                    .Select(siteUri => new SiteDefinitionDomain { Scheme = siteUri.Scheme, Domain = siteUri.Authority, Path = siteUri.AbsolutePath.SanitisePathSlashes() })
+                    .Select(domain => new Uri(domain.DomainName.EnsureHttpScheme()))
+                    .Select(siteUri => new SiteDefinitionDomain { Scheme = siteUri.Scheme, Domain = siteUri.Authority, Path = siteUri.AbsolutePath.SanitisePath() })
                     .ToArray();
 
                 siteDefinition = siteDefinition with { Domains = siteDomains };

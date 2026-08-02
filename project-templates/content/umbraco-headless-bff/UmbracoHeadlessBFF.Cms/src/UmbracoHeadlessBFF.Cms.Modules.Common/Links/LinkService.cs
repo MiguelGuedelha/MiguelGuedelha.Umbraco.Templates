@@ -90,11 +90,7 @@ public sealed class LinkService
                 return null;
             }
 
-            domainValue = domain.Name.Contains("http")
-                ? domain.Name
-                : $"https://{domain.Name}";
-
-            parsedDomain = Uri.TryCreate(domainValue, UriKind.Absolute, out uri);
+            parsedDomain = Uri.TryCreate(domain.Name.EnsureHttpScheme(), UriKind.Absolute, out uri);
 
             return parsedDomain ? uri : null;
         }
@@ -129,10 +125,6 @@ public sealed class LinkService
             return null;
         }
 
-        domainValue = domain.Name.Contains("http")
-            ? domain.Name
-            : $"https://{domain.Name}";
-
         var nodesExcHome = ancestors
             .Where(x => x.ContentType.Alias != Home.ModelTypeAlias)
             .Select(x => x.UrlSegment)
@@ -140,7 +132,7 @@ public sealed class LinkService
             .WhereNotNull()
             .ToArray();
 
-        domainValue = domainValue.CombineUri(nodesExcHome);
+        domainValue = domain.Name.CombineUri(nodesExcHome);
 
         parsedDomain = Uri.TryCreate(domainValue, UriKind.Absolute, out uri);
 

@@ -15,6 +15,7 @@ using UmbracoHeadlessBFF.Cms.Modules.Common.Caching;
 using UmbracoHeadlessBFF.Cms.Modules.Common.Umbraco.Models;
 using UmbracoHeadlessBFF.SharedModules.Cms.DeliveryApi.Data;
 using UmbracoHeadlessBFF.SharedModules.Cms.Links;
+using UmbracoHeadlessBFF.SharedModules.Common.Strings;
 using NotFound = Microsoft.AspNetCore.Http.HttpResults.NotFound;
 
 namespace UmbracoHeadlessBFF.Cms.Modules.Common.Links;
@@ -37,7 +38,7 @@ public sealed class GetRedirectLinkController : ControllerBase
         SiteSettings.ModelTypeAlias,
         SiteDictionary.ModelTypeAlias,
         SiteGrouping.ModelTypeAlias,
-        Umbraco.Models.NotFound.ModelTypeAlias,
+        Umbraco.Models.NotFound.ModelTypeAlias
     ];
 
     public GetRedirectLinkController(
@@ -59,11 +60,6 @@ public sealed class GetRedirectLinkController : ControllerBase
     {
         _variationContextAccessor.VariationContext = new(culture);
 
-        if (path.Contains("%2F", StringComparison.OrdinalIgnoreCase))
-        {
-            path = WebUtility.UrlDecode(path);
-        }
-
         var siteRoot = _publishedContentCache.GetById(siteId);
 
         if (siteRoot is null)
@@ -71,7 +67,9 @@ public sealed class GetRedirectLinkController : ControllerBase
             return TypedResults.NotFound();
         }
 
-        var itemRoute = $"{siteRoot.Id}/{path.Trim('/')}";
+        path = path.SanitisePath();
+
+        var itemRoute = siteRoot.Id.ToString().CombineUri(path);
 
         var latestRedirect = await _redirectUrlService.GetMostRecentRedirectUrlAsync(itemRoute, culture);
 

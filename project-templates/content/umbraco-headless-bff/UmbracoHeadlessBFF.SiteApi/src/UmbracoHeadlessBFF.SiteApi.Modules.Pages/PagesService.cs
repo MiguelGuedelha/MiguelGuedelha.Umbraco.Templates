@@ -96,7 +96,7 @@ internal sealed class PagesService : IPagesService
 
     public async Task<IApiContent?> GetPage(string path, bool? isPreview = null, SiteDefinition? site = null)
     {
-        var sanitizedPath = path.SanitisePathSlashes();
+        var sanitizedPath = path.SanitisePath();
 
         var requestSite = site ?? _siteResolutionContext.Site;
         var requestPreview = isPreview ?? _siteResolutionContext.IsPreview;
@@ -111,8 +111,8 @@ internal sealed class PagesService : IPagesService
         }
 
         var deliveryApiPath = requestSite.RootId == requestSite.HomepageId
-            ? sanitizedPath.Replace(matchingDomain.Path, "/").SanitisePathSlashes()
-            : sanitizedPath.Replace(matchingDomain.Path, requestSite.BasePath).SanitisePathSlashes();
+            ? sanitizedPath.Replace(matchingDomain.Path, "/").SanitisePath()
+            : sanitizedPath.Replace(matchingDomain.Path, requestSite.BasePath).SanitisePath();
 
         if (requestPreview)
         {

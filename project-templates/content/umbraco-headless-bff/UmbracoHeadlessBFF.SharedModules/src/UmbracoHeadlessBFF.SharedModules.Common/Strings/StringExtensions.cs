@@ -24,5 +24,15 @@ public static class StringExtensions
 
             return value.Equals("/") ? value : $"/{value.Trim(s_uriTrimChars)}/";
         }
+
+        public string EnsureHttpScheme(bool forceHttps = false)
+        {
+            if (!forceHttps)
+            {
+                return value.StartsWith("http") ? value : $"https://{value}";
+            }
+
+            return value.StartsWith("http") ? value.Replace("http:", "https:") : $"https://{value}";
+        }
     }
 }

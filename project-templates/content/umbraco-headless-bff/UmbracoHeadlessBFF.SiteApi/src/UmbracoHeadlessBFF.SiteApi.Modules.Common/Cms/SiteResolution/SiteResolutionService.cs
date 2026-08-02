@@ -42,7 +42,7 @@ public sealed class SiteResolutionService
 
         var sites = await GetSitesInternal();
 
-        var path = sitePath.ToString().SanitisePathSlashes();
+        var path = sitePath.ToString().SanitisePath();
 
         if (hasSiteId)
         {
