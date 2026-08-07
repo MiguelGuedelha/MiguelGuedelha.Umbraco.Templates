@@ -4,7 +4,7 @@ namespace UmbracoHeadlessBFF.SiteApi.Modules.Common.Caching;
 
 public static class CacheKeyExtensions
 {
-    public static string GetLinkKey(Guid id, string culture) => $"Region:{CachingRegionConstants.Links}:{id}-{culture}";
+    public static string GetLinkKey(Guid id, string culture, string domain) => $"Region:{CachingRegionConstants.Links}:{domain}:{id}-{culture}";
 
     public static string GetSitesListKey() => $"Region:{CachingRegionConstants.Sites}:List";
 

@@ -14,6 +14,8 @@ internal sealed class LinkMapper : ILinkMapper
     private readonly SiteResolutionContext _siteResolutionContext;
     private readonly LinkService _linkService;
 
+    private const string PlaceholderDomain = "https://example.com/";
+
     public LinkMapper(SiteResolutionContext siteResolutionContext, LinkService linkService)
     {
         _siteResolutionContext = siteResolutionContext;
@@ -27,39 +29,30 @@ internal sealed class LinkMapper : ILinkMapper
             return null;
         }
 
-        UriBuilder uriBuilder;
-
-        var query = string.IsNullOrWhiteSpace(model.QueryString) ? string.Empty : model.QueryString;
+        var placeholderUrl = new Uri($"{PlaceholderDomain}{model.QueryString}");
 
         switch (model.LinkType)
         {
             case ApiLinkType.Content:
-                var link = await _linkService.ResolveLink(model.DestinationId!.Value);
+                var link = await _linkService.ResolveLink(model.DestinationId!.Value, model.Culture);
 
                 if (link is null)
                 {
                     return null;
                 }
 
-                if (_siteResolutionContext.Site.Domains.First().Domain == link.Authority)
+                var contentBuilder = new UriBuilder(link.Url)
                 {
-                    return new()
-                    {
-                        Href = $"{link.Path}{query}",
-                        Title = model.Title,
-                        Target = model.Target
-                    };
-                }
-
-                var hostPortSplit = link.Authority.Split(":");
-
-                uriBuilder = new(hostPortSplit[0])
-                {
-                    Path = link.Path,
-                    Port = hostPortSplit.Length > 1 ? int.Parse(hostPortSplit[1]) : -1
+                    Query = GetJoinedQuery(placeholderUrl, link.Url.Query),
+                    Fragment = GetPriorityFragment(placeholderUrl, link.Url.Fragment)
                 };
 
-                break;
+                return new()
+                {
+                    Href = contentBuilder.Uri.ToString(),
+                    Target = model.Target,
+                    Title = model.Title
+                };
 
             case ApiLinkType.Media:
 
@@ -68,9 +61,20 @@ internal sealed class LinkMapper : ILinkMapper
                     return null;
                 }
 
-                uriBuilder = new(model.Url);
+                var mediaBuilder = new UriBuilder(model.Url)
+                {
+                    Query = placeholderUrl.Query,
+                    Fragment = placeholderUrl.Fragment
+                };
 
-                break;
+                return new()
+                {
+                    Href = mediaBuilder.Uri.ToString(),
+                    Target = model.Target,
+                    Title = model.Title,
+                    IsFile = true
+                };
+
             case ApiLinkType.External:
             default:
                 if (model.Url?.StartsWith("tel:") is true
@@ -81,35 +85,58 @@ internal sealed class LinkMapper : ILinkMapper
                     {
                         Target = null,
                         Href = model.Url,
-                        Title = model.Title,
+                        Title = model.Title
                     };
                 }
 
-                if (model.Url?.StartsWith('/') is true)
+                if (string.IsNullOrWhiteSpace(model.Url) && model.QueryString?.StartsWith('#') is true)
+                {
+                    return new()
+                    {
+                        Target = null,
+                        Href = model.QueryString,
+                        Title = model.Title
+                    };
+                }
+
+                if (!string.IsNullOrWhiteSpace(model.Url))
                 {
                     return new()
                     {
                         Target = model.Target,
-                        Href = $"{model.Url}{query}",
+                        Href = $"{model.Url}{model.QueryString}",
                         Title = model.Title,
                     };
                 }
 
-                if (string.IsNullOrWhiteSpace(model.Url))
-                {
-                    return null;
-                }
-
-                uriBuilder = new(model.Url);
                 break;
         }
 
-        return new()
+        return null;
+    }
+
+    private static string GetJoinedQuery(Uri placeholderUri, string query)
+    {
+        var linkQuery = query.Replace("?", string.Empty);
+        var modelQuery = placeholderUri.Query.Replace("?", string.Empty);
+
+        var hasQuery = !string.IsNullOrWhiteSpace(linkQuery) || !string.IsNullOrWhiteSpace(modelQuery);
+        var hasBothQueries = !string.IsNullOrWhiteSpace(linkQuery) && string.IsNullOrWhiteSpace(modelQuery);
+
+        return $"{(hasQuery ? "?" : string.Empty)}{linkQuery}{(hasBothQueries ? "&" : string.Empty)}{modelQuery}";
+    }
+
+    private static string GetPriorityFragment(Uri placeholderUrl, string fragment)
+    {
+        var modelFragment = placeholderUrl.Fragment.Replace("#", string.Empty);
+
+        if (modelFragment.Length > 0)
         {
-            Target = model.Target,
-            Href = $"{uriBuilder.Uri}{query}",
-            Title = model.Title,
-            IsFile = model.LinkType == ApiLinkType.Media
-        };
+            return placeholderUrl.Fragment;
+        }
+
+        var linkFragment = fragment.Replace("#", string.Empty);
+
+        return linkFragment.Length > 0 ? linkFragment : string.Empty;
     }
 }

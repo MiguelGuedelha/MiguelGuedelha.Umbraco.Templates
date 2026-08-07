@@ -62,7 +62,7 @@ public sealed class GetSitemapController : ControllerBase
             .Where(x => x.SitemapShow)
             .Select(x => new SitemapItem
             {
-                Loc = _linkService.GetUriByContentId(x.Key, culture, preview)?.AbsoluteUri ?? string.Empty,
+                Loc = _linkService.GetUriByContentId(x.Key, culture, null, preview)?.AbsoluteUri ?? string.Empty,
                 LastMod = x.SitemapLastModifiedOverwrite ?? DateOnly.FromDateTime(x.UpdateDate),
                 ChangeFrequency = x.SitemapChangeFrequency,
                 Priority = x.SitemapPriority,
@@ -75,7 +75,7 @@ public sealed class GetSitemapController : ControllerBase
                         return new SitemapItemAlternateLanguage
                         {
                             HrefLang = nodeCulture.Value.Culture,
-                            Href = _linkService.GetUriByContentId(x.Key, cultureInfo.Name, preview)
+                            Href = _linkService.GetUriByContentId(x.Key, cultureInfo.Name, null, preview)
                                 ?.AbsoluteUri ?? string.Empty
                         };
                     })

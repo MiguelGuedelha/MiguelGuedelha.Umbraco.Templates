@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using System.Net;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;

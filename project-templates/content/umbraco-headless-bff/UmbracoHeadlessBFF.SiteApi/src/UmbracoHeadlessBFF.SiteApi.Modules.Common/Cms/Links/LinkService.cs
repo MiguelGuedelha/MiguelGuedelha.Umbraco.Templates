@@ -25,21 +25,22 @@ public sealed class LinkService
         _siteApiCachingOptions = siteApiCachingOptions.Value;
     }
 
-    public async Task<Link?> ResolveLink(Guid id)
+    public async Task<Link?> ResolveLink(Guid id, string? culture)
     {
-        var culture = _siteResolutionContext.Site.CultureInfo;
+        var linkCulture = culture ?? _siteResolutionContext.Site.CultureInfo;
+        var domain = _siteResolutionContext.Domain;
 
         if (_siteResolutionContext.IsPreview)
         {
-            var response = await _linksApi.GetLink(id, culture, true);
+            var response = await _linksApi.GetLink(id, linkCulture, domain, true);
             return response.Content;
         }
 
         var data = await _fusionCache.GetOrSetAsync<Link?>(
-            CacheKeyExtensions.GetLinkKey(id, culture),
+            CacheKeyExtensions.GetLinkKey(id, linkCulture, domain),
             async (ctx, ct) =>
             {
-                var response = await _linksApi.GetLink(id, culture, false, ct);
+                var response = await _linksApi.GetLink(id, linkCulture, domain, false, ct);
 
                 if (response is { IsSuccessful: true, Content: not null })
                 {
@@ -50,7 +51,7 @@ public sealed class LinkService
 
                 return null;
             },
-            tags: [CachingConstants.SiteApi.Tags.Links, id.ToString(), culture]);
+            tags: [CachingConstants.SiteApi.Tags.Links, id.ToString(), linkCulture]);
 
         return data;
     }

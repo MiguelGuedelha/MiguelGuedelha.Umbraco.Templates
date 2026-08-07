@@ -10,7 +10,6 @@ using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Core.Routing;
 using Umbraco.Cms.Core.Security;
 using UmbracoHeadlessBFF.Cms.Modules.Common.Links;
-using UmbracoHeadlessBFF.SharedModules.Common.Strings;
 
 namespace UmbracoHeadlessBFF.Cms.Modules.Common.Preview;
 
@@ -55,18 +54,16 @@ internal sealed class PreviewUrlProvider : IUrlProvider
             return Task.FromResult<UrlInfo?>(null);
         }
 
-        var link = _linkService.GetLinkByContentId(content.Key, culture, true);
+        var link = _linkService.GetUriByContentId(content.Key, culture, null, true);
 
         if (link is null)
         {
             return Task.FromResult<UrlInfo?>(null);
         }
 
-        var domain = link.Authority.EnsureHttpScheme(forceHttps: true);
-
-        var uriBuilder = new UriBuilder(domain)
+        var uriBuilder = new UriBuilder(link)
         {
-            Path = link.Path,
+            Scheme = "https",
             Query = $"?previewMode=true&previewToken={GenerateToken()}"
         };
 

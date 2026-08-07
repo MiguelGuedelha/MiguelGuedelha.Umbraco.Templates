@@ -3,7 +3,6 @@ using Umbraco.Cms.Core.PublishedCache;
 using Umbraco.Cms.Core.Routing;
 using Umbraco.Cms.Core.Services.Navigation;
 using UmbracoHeadlessBFF.Cms.Modules.Common.Umbraco.Models;
-using UmbracoHeadlessBFF.SharedModules.Cms.Links;
 using UmbracoHeadlessBFF.SharedModules.Common.Collections;
 using UmbracoHeadlessBFF.SharedModules.Common.Strings;
 
@@ -31,7 +30,7 @@ public sealed class LinkService
         _documentNavigationQueryService = documentNavigationQueryService;
     }
 
-    public Uri? GetUriByContentId(Guid linkId, string culture, bool preview)
+    public Uri? GetUriByContentId(Guid linkId, string culture, string? domain, bool preview)
     {
         _variationContextAccessor.VariationContext = new(culture);
         var item = _publishedContentCache.GetById(preview, linkId);
@@ -43,41 +42,39 @@ public sealed class LinkService
 
         return preview
             ? GetPreviewUrl(item, culture)
-            : GetLiveUrl(item, culture);
+            : GetLiveUrl(item, domain, culture);
     }
 
-    public Link? GetLinkByContentId(Guid linkId, string culture, bool preview)
+    private Uri? GetLiveUrl(IPublishedContent item, string? domain, string culture)
     {
-        var uri = GetUriByContentId(linkId, culture, preview);
+        var domainUri = string.IsNullOrWhiteSpace(domain)
+            ? null
+            : new Uri(domain.StartsWith("http") ? domain : $"https://{domain}");
 
-        if (uri is null)
+        var route = _publishedUrlProvider.GetUrl(item, UrlMode.Absolute, culture: culture, current: domainUri);
+
+        if (domainUri is null)
         {
-            return null;
+            return route.Equals("#") ? null : new(route);
         }
 
-        return new()
-        {
-            Authority = uri.Authority,
-            Path = uri.PathAndQuery
-        };
-    }
+        var routeUri = new Uri(route);
 
-    private Uri? GetLiveUrl(IPublishedContent item, string culture)
-    {
-        var route = _publishedUrlProvider.GetUrl(item, UrlMode.Absolute, culture: culture);
-
-        if (route.Equals("#"))
+        if (routeUri.Authority.Equals(domainUri.Authority))
         {
-            return null;
+            return routeUri;
         }
 
-        return new(route);
+        var routeWithMatchingAuthority = _publishedUrlProvider
+            .GetOtherUrls(item.Id)
+            .FirstOrDefault(x => (x.Url?.Authority.Equals(domainUri.Authority) ?? false) && (x.Culture?.Equals(culture) ?? false));
+
+        return routeWithMatchingAuthority?.Url ?? routeUri;
     }
 
     private Uri? GetPreviewUrl(IPublishedContent item, string culture)
     {
         Domain? domain;
-        string? domainValue;
         bool parsedDomain;
         Uri? uri;
 
@@ -132,9 +129,7 @@ public sealed class LinkService
             .WhereNotNull()
             .ToArray();
 
-        domainValue = domain.Name.CombineUri(nodesExcHome);
-
-        parsedDomain = Uri.TryCreate(domainValue, UriKind.Absolute, out uri);
+        parsedDomain = Uri.TryCreate(domain.Name.CombineUri(nodesExcHome), UriKind.Absolute, out uri);
 
         return parsedDomain ? uri : null;
     }

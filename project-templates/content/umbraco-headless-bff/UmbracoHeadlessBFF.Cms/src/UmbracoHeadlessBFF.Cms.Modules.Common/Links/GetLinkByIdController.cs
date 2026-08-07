@@ -25,10 +25,10 @@ public sealed class GetLinkByIdController : ControllerBase
     }
 
     [HttpGet("{id:guid}")]
-    public Results<Ok<Link>, NotFound, ProblemHttpResult> GetLinkById(Guid id, string culture, bool preview)
+    public Results<Ok<Link>, NotFound, ProblemHttpResult> GetLinkById(Guid id, string culture, string domain, bool preview)
     {
-        var link = _linkService.GetLinkByContentId(id, culture, preview);
+        var link = _linkService.GetUriByContentId(id, culture, domain, preview);
 
-        return link is not null ? TypedResults.Ok(link) : TypedResults.NotFound();
+        return link is not null ? TypedResults.Ok(new Link{ Url = link }) : TypedResults.NotFound();
     }
 }

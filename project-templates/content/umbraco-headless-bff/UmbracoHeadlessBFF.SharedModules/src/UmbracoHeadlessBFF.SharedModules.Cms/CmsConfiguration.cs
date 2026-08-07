@@ -38,7 +38,7 @@ public static class CmsConfiguration
             // Delivery Api
             builder.Services.Configure<CmsServiceOptions>(builder.Configuration.GetSection(CmsServiceOptions.SectionName));
             builder.Services.AddTransient<DeliveryApiHeadersHandler>();
-            builder.Services.AddRefitClient<IUmbracoDeliveryApi>(s_clientSettings)
+            builder.Services.AddRefitGeneratedClient<IUmbracoDeliveryApi>(s_clientSettings)
                 .ConfigureHttpClient(c =>
                 {
                     c.BaseAddress = new($"https://{Services.Cms}/umbraco/delivery/api/v2");
@@ -48,7 +48,7 @@ public static class CmsConfiguration
 
             // Site Resolution
             builder.Services.AddTransient<DeliveryApiHeadersHandler>();
-            builder.Services.AddRefitClient<ISiteResolutionApi>()
+            builder.Services.AddRefitGeneratedClient<ISiteResolutionApi>()
                 .ConfigureHttpClient(c =>
                 {
                     c.BaseAddress = new($"https://{Services.Cms}/api/v1.0/sites");
@@ -57,7 +57,7 @@ public static class CmsConfiguration
                 .AddHeaderPropagation();
 
             // Links
-            builder.Services.AddRefitClient<ILinksApi>()
+            builder.Services.AddRefitGeneratedClient<ILinksApi>()
                 .ConfigureHttpClient(c =>
                 {
                     c.BaseAddress = new($"https://{Services.Cms}/api/v1.0/links");
@@ -66,7 +66,7 @@ public static class CmsConfiguration
                 .AddHeaderPropagation();
 
             // Preview
-            builder.Services.AddRefitClient<IPreviewVerificationApi>()
+            builder.Services.AddRefitGeneratedClient<IPreviewVerificationApi>()
                 .ConfigureHttpClient(c =>
                 {
                     c.BaseAddress = new($"https://{Services.Cms}/api/v1.0/preview");
@@ -74,7 +74,7 @@ public static class CmsConfiguration
                 .AddHeaderPropagation();
 
             // Sitemap
-            builder.Services.AddRefitClient<ISitemapsApi>()
+            builder.Services.AddRefitGeneratedClient<ISitemapsApi>()
                 .ConfigureHttpClient(c =>
                 {
                     c.BaseAddress = new($"https://{Services.Cms}/api/v1.0/pages");
@@ -83,7 +83,7 @@ public static class CmsConfiguration
                 .AddHeaderPropagation();
 
             // Robots
-            builder.Services.AddRefitClient<IRobotsApi>()
+            builder.Services.AddRefitGeneratedClient<IRobotsApi>()
                 .ConfigureHttpClient(c =>
                 {
                     c.BaseAddress = new($"https://{Services.Cms}/api/v1.0/pages");
