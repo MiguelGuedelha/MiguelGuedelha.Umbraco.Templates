@@ -57,4 +57,32 @@ public abstract class SiteApiOutputCachePolicyBase
 
         context.AllowCacheStorage = false;
     }
+
+    protected static bool CanCacheBySitePath(SiteResolutionContext siteResolutionContext, [NotNullWhen(true)] out string? sitePath)
+    {
+        sitePath = null;
+        try
+        {
+            sitePath = siteResolutionContext.Path;
+            return !string.IsNullOrWhiteSpace(sitePath);
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    protected static bool CanCacheBySiteDomain(SiteResolutionContext siteResolutionContext, [NotNullWhen(true)] out string? siteDomain)
+    {
+        siteDomain = null;
+        try
+        {
+            siteDomain = siteResolutionContext.Domain;
+            return !string.IsNullOrWhiteSpace(siteDomain);
+        }
+        catch
+        {
+            return false;
+        }
+    }
 }

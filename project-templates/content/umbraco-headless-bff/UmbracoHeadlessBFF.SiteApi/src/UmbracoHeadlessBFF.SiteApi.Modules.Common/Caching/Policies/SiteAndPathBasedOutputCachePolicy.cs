@@ -1,4 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.OutputCaching;
 using Microsoft.Extensions.DependencyInjection;
 using UmbracoHeadlessBFF.SharedModules.Common.Caching;
@@ -32,9 +31,10 @@ public sealed class SiteAndPathBasedOutputCachePolicy : SiteApiOutputCachePolicy
         }
 
         var canCacheBySitePath = CanCacheBySitePath(siteResolutionContext, out var sitePath);
-        var canCacheBySite = CanCacheBase(context, siteResolutionContext, out var siteId);
+        var canCacheBase = CanCacheBase(context, siteResolutionContext, out var siteId);
+        var canCacheByDomain = CanCacheBySiteDomain(siteResolutionContext, out var siteDomain);
 
-        var canCache = canCacheBySitePath && canCacheBySite;
+        var canCache = canCacheBySitePath && canCacheBase && canCacheByDomain;
 
         context.EnableOutputCaching = true;
         context.AllowCacheLookup = canCache;
@@ -48,6 +48,7 @@ public sealed class SiteAndPathBasedOutputCachePolicy : SiteApiOutputCachePolicy
 
         context.CacheVaryByRules.VaryByValues["siteId"] = siteId!;
         context.CacheVaryByRules.VaryByValues["sitePath"] = sitePath!;
+        context.CacheVaryByRules.VaryByValues["siteDomain"] = siteDomain!;
 
         return ValueTask.CompletedTask;
     }
@@ -75,19 +76,5 @@ public sealed class SiteAndPathBasedOutputCachePolicy : SiteApiOutputCachePolicy
             throw;
         }
         return ValueTask.CompletedTask;
-    }
-
-    private static bool CanCacheBySitePath(SiteResolutionContext siteResolutionContext, [NotNullWhen(true)] out string? sitePath)
-    {
-        sitePath = null;
-        try
-        {
-            sitePath = siteResolutionContext.Path;
-            return !string.IsNullOrWhiteSpace(sitePath);
-        }
-        catch
-        {
-            return false;
-        }
     }
 }

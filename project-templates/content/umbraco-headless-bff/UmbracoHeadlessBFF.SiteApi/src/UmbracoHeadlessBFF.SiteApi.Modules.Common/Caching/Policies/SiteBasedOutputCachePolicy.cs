@@ -29,7 +29,11 @@ public sealed class SiteBasedOutputCachePolicy : SiteApiOutputCachePolicyBase, I
             return ValueTask.CompletedTask;
         }
 
-        var canCache = CanCacheBase(context, siteResolutionContext, out var siteId);
+        var canCacheBase = CanCacheBase(context, siteResolutionContext, out var siteId);
+        var canCacheByDomain = CanCacheBySiteDomain(siteResolutionContext, out var siteDomain);
+
+        var canCache = canCacheBase && canCacheByDomain;
+
         context.EnableOutputCaching = true;
         context.AllowCacheLookup = canCache;
         context.AllowCacheStorage = canCache;
@@ -37,6 +41,7 @@ public sealed class SiteBasedOutputCachePolicy : SiteApiOutputCachePolicyBase, I
         if (canCache)
         {
             context.CacheVaryByRules.VaryByValues["siteId"] = siteId!;
+            context.CacheVaryByRules.VaryByValues["siteDomain"] = siteDomain!;
         }
 
         return ValueTask.CompletedTask;

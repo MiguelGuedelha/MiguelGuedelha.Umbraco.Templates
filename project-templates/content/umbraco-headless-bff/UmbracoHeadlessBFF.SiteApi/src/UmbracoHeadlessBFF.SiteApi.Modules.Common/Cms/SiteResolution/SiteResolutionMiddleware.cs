@@ -47,23 +47,6 @@ public sealed class SiteResolutionMiddleware : IMiddleware
             _siteResolutionContext.Path = sitePath.ToString();
         }
 
-        context.Response.OnStarting(() =>
-        {
-            if (context.Response.StatusCode > 299)
-            {
-                return Task.CompletedTask;
-            }
-
-            var headerExists = context.Request.Headers.TryGetValue(CorrelationConstants.Headers.SiteId, out _);
-
-            if (!headerExists)
-            {
-                context.Response.Headers.Append(CorrelationConstants.Headers.SiteId, site.Value.SiteId);
-            }
-
-            return Task.CompletedTask;
-        });
-
         await next(context);
     }
 }

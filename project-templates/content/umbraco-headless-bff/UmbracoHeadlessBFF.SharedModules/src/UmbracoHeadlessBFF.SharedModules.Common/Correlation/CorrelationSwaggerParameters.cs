@@ -27,14 +27,6 @@ public sealed class CorrelationSwaggerParameters : IOperationFilter
 
         operation.Parameters.Add(new OpenApiParameter
         {
-            Name = CorrelationConstants.Headers.SiteId,
-            Description = "The resolved CMS/Site id, allows to skip the resolution step otherwise required if this is sent",
-            In = ParameterLocation.Header,
-            Required = false
-        });
-
-        operation.Parameters.Add(new OpenApiParameter
-        {
             Name = CorrelationConstants.Headers.PreviewMode,
             Description = "Whether or not the API should return preview content",
             In = ParameterLocation.Header,

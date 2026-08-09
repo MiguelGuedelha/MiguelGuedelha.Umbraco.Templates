@@ -29,19 +29,23 @@ public sealed class SiteAndIdBasedOutputCachePolicy : SiteApiOutputCachePolicyBa
             return ValueTask.CompletedTask;
         }
 
-        var canCacheBySite = CanCacheBase(context, siteResolutionContext, out var siteId);
+        var canCacheBase = CanCacheBase(context, siteResolutionContext, out var siteId);
+        var canCacheByDomain = CanCacheBySiteDomain(siteResolutionContext, out var siteDomain);
+
+        var canCache = canCacheBase && canCacheByDomain;
 
         context.EnableOutputCaching = true;
-        context.AllowCacheLookup = canCacheBySite;
-        context.AllowCacheStorage = canCacheBySite;
+        context.AllowCacheLookup = canCache;
+        context.AllowCacheStorage = canCache;
         context.AllowLocking = true;
 
-        if (!canCacheBySite)
+        if (canCache)
         {
             return ValueTask.CompletedTask;
         }
 
         context.CacheVaryByRules.VaryByValues["siteId"] = siteId!;
+        context.CacheVaryByRules.VaryByValues["domain"] = siteDomain!;
         context.CacheVaryByRules.QueryKeys = new("id");
 
         return ValueTask.CompletedTask;
