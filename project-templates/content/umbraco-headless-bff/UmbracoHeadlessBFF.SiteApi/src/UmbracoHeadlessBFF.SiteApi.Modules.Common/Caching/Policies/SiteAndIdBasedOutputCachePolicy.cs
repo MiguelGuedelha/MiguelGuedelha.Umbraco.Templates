@@ -39,7 +39,7 @@ public sealed class SiteAndIdBasedOutputCachePolicy : SiteApiOutputCachePolicyBa
         context.AllowCacheStorage = canCache;
         context.AllowLocking = true;
 
-        if (canCache)
+        if (!canCache)
         {
             return ValueTask.CompletedTask;
         }
