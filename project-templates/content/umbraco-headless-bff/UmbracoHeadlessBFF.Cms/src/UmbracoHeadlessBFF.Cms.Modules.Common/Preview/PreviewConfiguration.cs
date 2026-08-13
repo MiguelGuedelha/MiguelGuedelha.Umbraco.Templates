@@ -34,9 +34,11 @@ public static class FeaturesConfiguration
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
                     ValidateIssuer = false,
-                    ValidateAudience = false
+                    ValidateAudience = false,
+                    ValidAlgorithms = [ SecurityAlgorithms.HmacSha512 ]
                 };
             });
+            builder.Services.AddAuthorization();
         }
     }
 }

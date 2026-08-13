@@ -88,7 +88,7 @@ internal sealed class PreviewUrlProvider : IUrlProvider
         }
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_previewOptions.CurrentValue.SecretKey));
-        var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha512);
+        var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
         var tokenDescriptor = new SecurityTokenDescriptor
         {

@@ -17,6 +17,11 @@ using UmbracoHeadlessBFF.SharedModules.Common.Environment;
 
 var builder = WebApplication.CreateBuilder(args);
 
+if (builder.Environment.IsLocal())
+{
+    builder.Configuration.AddUserSecrets<Program>();
+}
+
 //needs to be configured before Umbraco adds output cache
 builder.AddCachingCommonModule();
 
@@ -70,11 +75,6 @@ builder.Services.AddControllers().AddJsonOptions(Constants.JsonOptionsNames.Deli
     options.JsonSerializerOptions.MaxDepth = 128;
 });
 
-if (builder.Environment.IsLocal())
-{
-    builder.Configuration.AddUserSecrets<Program>();
-}
-
 var app = builder.Build();
 
 app.Use(async (context, next) =>
@@ -87,6 +87,9 @@ app.Use(async (context, next) =>
 await app.BootUmbracoAsync();
 
 app.UseCorrelationSharedModules();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapDefaultEndpoints();
 

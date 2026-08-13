@@ -129,7 +129,7 @@ public sealed class LinkService
             .WhereNotNull()
             .ToArray();
 
-        parsedDomain = Uri.TryCreate(domain.Name.CombineUri(nodesExcHome), UriKind.Absolute, out uri);
+        parsedDomain = Uri.TryCreate(domain.Name.EnsureHttpScheme().CombineUri(nodesExcHome), UriKind.Absolute, out uri);
 
         return parsedDomain ? uri : null;
     }
