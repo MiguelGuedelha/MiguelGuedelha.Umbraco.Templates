@@ -4,6 +4,7 @@
     <OutputType>Exe</OutputType>
     <IsAspireHost>true</IsAspireHost>
     <UserSecretsId>UmbracoHeadlessBFF.Aspire.AppHost-759145f7-38d6-4b5f-a862-55c536235b63</UserSecretsId>
+    <AspireUseCliBundle>true</AspireUseCliBundle>
   </PropertyGroup>
 
   <ItemGroup>

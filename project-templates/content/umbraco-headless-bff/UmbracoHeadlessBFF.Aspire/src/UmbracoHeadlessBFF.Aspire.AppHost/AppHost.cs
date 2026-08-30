@@ -106,7 +106,9 @@ cmsDeliveryApiKey.WithParentRelationship(cms);
 cms.WithUrlForEndpoint("https", x =>
 {
     x.DisplayLocation = UrlDisplayLocation.DetailsOnly;
+#pragma warning disable CS0618
     x.DisplayOrder = 9999;
+#pragma warning restore CS0618
 });
 
 cms.WithUrls(x =>
@@ -118,7 +120,9 @@ cms.WithUrls(x =>
         DisplayLocation = UrlDisplayLocation.SummaryAndDetails,
         DisplayText = "Umbraco Dashboard",
         Url = $"{httpsUrl}/umbraco",
+#pragma warning disable CS0618
         DisplayOrder = 50
+#pragma warning restore CS0618
     });
 
     x.Urls.Add(new()
@@ -126,7 +130,9 @@ cms.WithUrls(x =>
         DisplayLocation = UrlDisplayLocation.SummaryAndDetails,
         DisplayText = "Swagger - Delivery API",
         Url = $"{httpsUrl}/umbraco/swagger/index.html?urls.primaryName=Umbraco+Delivery+API",
+#pragma warning disable CS0618
         DisplayOrder = 10
+#pragma warning restore CS0618
     });
 
     x.Urls.Add(new()
@@ -134,7 +140,9 @@ cms.WithUrls(x =>
         DisplayLocation = UrlDisplayLocation.SummaryAndDetails,
         DisplayText = "Scalar - Default API",
         Url = $"{httpsUrl}/scalar/default",
+#pragma warning disable CS0618
         DisplayOrder = 9
+#pragma warning restore CS0618
     });
 });
 
@@ -149,7 +157,10 @@ var siteApi = builder.AddProject<Projects.SiteApi>(Services.SiteApi)
 siteApi.WithUrlForEndpoint("https", x =>
 {
     x.DisplayLocation = UrlDisplayLocation.DetailsOnly;
+#pragma warning disable CS0618
     x.DisplayOrder = 9999;
+#pragma warning restore CS0618
+
 });
 
 siteApi.WithUrls(x =>
@@ -161,7 +172,9 @@ siteApi.WithUrls(x =>
         DisplayText = "Scalar",
         DisplayLocation = UrlDisplayLocation.SummaryAndDetails,
         Url = $"{httpsUrl}/scalar",
+#pragma warning disable CS0618
         DisplayOrder = 50
+#pragma warning restore CS0618
     });
 });
 
